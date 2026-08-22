@@ -1,4 +1,17 @@
-[[reward]]
-name = "reward"
-aggregation = "weighted_mean"
-weights = { cognitive_structure = 7.0, genericity_resistance = 1.0, authorial_organization = 1.0, hard_constraints = 1.0 }
+# V1 scalar reward is intentionally not frozen.
+#
+# During development, the verifier must emit at least:
+#
+# - cognitive_relation_coverage
+# - complete_core_path_rate
+# - hard_constraints
+# - genericity_failure_rate
+# - judge_disagreement_rate
+#
+# Harbor compatibility may temporarily set:
+#
+# reward = cognitive_relation_coverage
+#
+# Do not combine relation coverage and path completion into a permanent
+# leaderboard score until the development book, Oracle, and calibration
+# variants have been run and reviewed.

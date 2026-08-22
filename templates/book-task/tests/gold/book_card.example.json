@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "2.0",
   "status": "draft",
   "book_id": "replace-me",
   "title": "Replace Me",
@@ -13,77 +13,221 @@
     "min_chars": 3000,
     "max_chars": 4000
   },
-  "relations": [
+  "source_anchors": [
     {
-      "id": "R-01",
-      "summary": "用一个书特异的概念关系替换此占位说明。",
-      "source_anchors": [
+      "id": "SA-001",
+      "locator": "chapter-01/section-01/p0001-p0005",
+      "chapter": "Replace Me",
+      "section": "Replace Me",
+      "evidence_summary": "原书先呈现一种表面合理的解释，随后用关键案例暴露其缺陷。",
+      "argument_function": "支撑假设、反例、机制和结论之间的完整推进。"
+    }
+  ],
+  "cognitive_structures": [
+    {
+      "id": "CS-01",
+      "label": "从常见解释到作者判断的转换",
+      "central_question": "作者如何从一个表面合理但不足的解释，推进到自己的限定性结论？",
+      "summary": "示例结构展示反方假设、构成性案例、中间机制和作者结论如何形成一条必要路径。",
+      "nodes": [
         {
-          "id": "R-01-S-01",
-          "locator": "chapter-01/section-01/p0001-p0005",
-          "chapter": "Replace Me",
-          "section": "Replace Me",
-          "evidence_summary": "用忠实概述记录该关系的来源依据，不复制长段原文。"
+          "id": "N-01",
+          "statement": "一种表面合理的常见解释。",
+          "role": "assumption",
+          "stance_owner": "opponent",
+          "epistemic_status": "assumed",
+          "source_anchor_ids": [
+            "SA-001"
+          ],
+          "essential": true
+        },
+        {
+          "id": "N-02",
+          "statement": "一个暴露该解释缺陷的关键案例。",
+          "role": "counterexample",
+          "stance_owner": "author",
+          "epistemic_status": "observed",
+          "source_anchor_ids": [
+            "SA-001"
+          ],
+          "essential": true,
+          "case_profile": {
+            "function": "constitutive",
+            "preservation": "required",
+            "replacement_rule": "必须保留该案例及其反驳功能，不能替换成无关的一般例子。"
+          }
+        },
+        {
+          "id": "N-03",
+          "statement": "作者据此提出的中间机制。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": [
+            "SA-001"
+          ],
+          "essential": true
+        },
+        {
+          "id": "N-04",
+          "statement": "带有明确适用边界的最终判断。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": [
+            "SA-001"
+          ],
+          "essential": true
         }
       ],
-      "atoms": [
+      "relations": [
         {
-          "id": "R-01-A-01",
-          "requirement": "候选文章必须明确表达一个可单独判断的关系命题。",
+          "id": "R-01",
+          "source_node_ids": [
+            "N-02"
+          ],
+          "target_node_ids": [
+            "N-01"
+          ],
+          "relation_type": "refutes",
+          "requirement": "候选文章必须表明关键案例被作者用于反驳常见解释，而不是把两者写成并列观点。",
+          "required_facets": [
+            "direction",
+            "stance_owner",
+            "argument_function",
+            "case_identity"
+          ],
           "source_anchor_ids": [
-            "R-01-S-01"
+            "SA-001"
           ],
           "acceptable_paraphrases": [
-            "允许不同措辞，只要关系方向和限定条件保持一致。"
+            "允许改变措辞和叙述顺序，只要案例的反驳对象和论证功能清楚。"
           ],
           "pass_if": [
-            "候选文章中可以找到明确支持该关系的证据。"
+            "明确区分常见解释与作者立场。",
+            "明确说明关键案例为何削弱或推翻该解释。"
           ],
           "fail_if": [
-            "只出现相关关键词，没有表达概念之间的关系。"
+            "只提到解释和案例，却没有说明两者的反驳关系。",
+            "把常见解释误写成作者最终主张。"
           ],
           "common_false_positives": [
-            "领域常识与原书结论表面相似，但缺少本书特异限定。"
+            "相关术语都出现，但案例只是装饰性故事，没有承担反驳功能。"
           ],
           "contradiction_patterns": [
-            "候选文章在其他位置反转或否定该关系。"
+            "声称该案例证明了常见解释正确。"
           ],
           "weight": 1.0,
-          "critical": false
+          "critical": true
+        },
+        {
+          "id": "R-02",
+          "source_node_ids": [
+            "N-02"
+          ],
+          "target_node_ids": [
+            "N-03"
+          ],
+          "relation_type": "supports",
+          "requirement": "候选文章必须说明关键案例如何引出作者的中间机制。",
+          "required_facets": [
+            "mechanism",
+            "argument_function"
+          ],
+          "source_anchor_ids": [
+            "SA-001"
+          ],
+          "acceptable_paraphrases": [
+            "可以先讲机制再回到案例，只要二者的支持关系不变。"
+          ],
+          "pass_if": [
+            "案例与机制之间存在明确的解释或支持关系。"
+          ],
+          "fail_if": [
+            "案例和机制只是分别出现，缺少连接。"
+          ],
+          "common_false_positives": [
+            "用领域常识替代作者从案例中提出的具体机制。"
+          ],
+          "contradiction_patterns": [
+            "把机制描述成与该案例无关。"
+          ],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-03",
+          "source_node_ids": [
+            "N-03"
+          ],
+          "target_node_ids": [
+            "N-04"
+          ],
+          "relation_type": "supports",
+          "requirement": "候选文章必须保留中间机制如何支持带边界的最终判断。",
+          "required_facets": [
+            "direction",
+            "mechanism",
+            "boundary",
+            "epistemic_status"
+          ],
+          "source_anchor_ids": [
+            "SA-001"
+          ],
+          "acceptable_paraphrases": [
+            "不要求复述原句，但不能删除结论的关键限定。"
+          ],
+          "pass_if": [
+            "机制与最终判断之间的推导方向明确。",
+            "最终判断的必要边界仍被保留。"
+          ],
+          "fail_if": [
+            "只写最终结论，没有保留机制。",
+            "把限定性结论改写成无条件口号。"
+          ],
+          "common_false_positives": [
+            "最终结论文字正确，但没有恢复作者得出它的路径。"
+          ],
+          "contradiction_patterns": [
+            "反转机制与结论之间的方向。"
+          ],
+          "weight": 1.0,
+          "critical": true
         }
       ],
-      "non_examples": [
-        "正确但过于一般、无法区分本书的说法。"
-      ],
-      "contradictions": [
-        "明确反转该关系方向的说法。"
+      "paths": [
+        {
+          "id": "P-01",
+          "label": "反例到限定性结论的核心路径",
+          "relation_ids": [
+            "R-01",
+            "R-02",
+            "R-03"
+          ],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "只保留最终结论不足以重建作者的认知推进；三条关系共同构成满分所需的核心路径。"
+        }
       ],
       "weight": 1.0,
-      "rationale": "说明这条关系为何对全书认知结构重要。"
+      "rationale": "替换为该书中真正具有区分力、删除后会显著改变读者理解的核心结构。"
     }
   ],
   "genericity_traps": [
     {
       "id": "G-01",
-      "statement": "用一个看似正确但不足以代表本书的领域常识替换。",
-      "why_insufficient": "说明它遗漏了哪些书特异关系、条件或反驳。",
-      "related_atom_ids": [
-        "R-01-A-01"
+      "statement": "只复述最终结论或相关领域常识，却省略反驳、机制和适用边界。",
+      "why_insufficient": "它没有恢复作者如何形成判断，也无法区分本书与普通主题文章。",
+      "related_relation_ids": [
+        "R-01",
+        "R-02",
+        "R-03"
       ]
-    }
-  ],
-  "organization_behaviors": [
-    {
-      "id": "O-01",
-      "behavior": "用一个可观察的组织行为替换，避免直接评价“作者感”。",
-      "positive_anchor": "描述满足该行为的可观察文本特征。",
-      "negative_anchor": "描述表面流畅但不满足该行为的文本特征。",
-      "weight": 1.0
     }
   ],
   "provenance": {
     "generated_by": "replace-me",
     "reviewed_by": [],
-    "review_notes": "只有人工审核后才能改为 human_reviewed 或 frozen。"
+    "review_notes": "只有人工确认核心结构、来源、路径与满分可达性后，才能改为 human_reviewed 或 frozen。"
   }
 }

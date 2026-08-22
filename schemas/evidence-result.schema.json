@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/evidence-result.schema.json",
+  "title": "Submission evidence locator result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_result_id",
+    "book_id",
+    "submission_id",
+    "criterion_id",
+    "status",
+    "candidates",
+    "attempts",
+    "locator_model",
+    "prompt_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "evidence_result_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "book_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "submission_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "criterion_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "found",
+        "none",
+        "locator_error"
+      ]
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "quote",
+          "start_char",
+          "end_char"
+        ],
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_char": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "end_char": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "context_before": {
+            "type": "string"
+          },
+          "context_after": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "attempts": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "locator_model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prompt_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "found"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "candidates": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "none",
+              "locator_error"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "candidates": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}
