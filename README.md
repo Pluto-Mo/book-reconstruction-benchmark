@@ -9,7 +9,7 @@
 
 ## V1 基准问题
 
-> 给定一本完整的非虚构作品和固定篇幅，模型能否既重建作者形成判断时使用的书特异认知结构，又把这些内容组织成一篇面向真实读者、内部连贯且独立成立的文章？
+> 给定一本完整的非虚构作品和固定篇幅，模型能否为一个没有足够时间逐字读完整本书、但仍希望认真理解作者的读者，既重建作者形成判断时使用的书特异认知结构，又把这些内容组织成一篇内部连贯、信息密度高且可以直接阅读的压缩共读文章？
 
 V1 不把“作者感”理解为模仿原作者的句法、词汇或口头禅。新的 `discourse_reconstruction` 维度由两个可审计子分组成：
 
@@ -70,7 +70,7 @@ harbor run -p "." -a claude-code -m "<model>" -k 3
 ## 核心设计
 
 ```text
-公开 instruction：真实编辑委托，目标清楚但不泄露答案
+公开 instruction：自然的 AI 压缩共读请求，目标清楚但不泄露答案
                     ↓
 Book Card：原书认知结构图
 Nodes → Typed Relations → Required / Alternative Paths
@@ -104,6 +104,20 @@ Discourse Reconstruction Pipeline
 - 编辑性探针配置和校准扰动；
 - `pass_if`、`fail_if`、Hard Negatives 和人工审核记录。
 
+## Instruction 信息充分度
+
+V1 默认公开任务不是“知识杂志编辑委托”，而是一个真实的 AI 助学场景：读者没有足够时间逐字读完整本书，希望 AI 先完整阅读，再生成一篇自己可以直接认真阅读的压缩共读文章。
+
+Instruction 变体按**需求信息充分度**定义，而不是按字数长短定义：
+
+- `natural`：主 Benchmark 条件；自然表达时间约束、学习目的和明显偏好，但不替模型拆解单书答案；
+- `explicit`：显式规格消融；把高层质量要求说得更完整，但仍不泄露任何书特异金标准；
+- `minimal`：隐含意图诊断；只给用途和少量方向，测试模型自行展开用户需求的能力。
+
+三个条件若用于同一本书，必须是三个彼此隔离的标准 Harbor Tasks，保持书稿、篇幅、Agent scaffold、工具、预算、Verifier、Book Card、Discourse Card、Judge 和聚合不变，只改变各自的 `instruction.md`。`natural` 进入主榜；`explicit` 和 `minimal` 只作为消融／诊断，不与主榜混成一个分数。
+
+详细契约见 [Instruction 信息充分度实验契约](docs/instruction-variants.md)。
+
 V1 Pilot 先并列报告：
 
 - `cognitive_relation_coverage`；
@@ -123,6 +137,7 @@ book-reconstruction-benchmark/
 ├── metric.py
 ├── docs/
 │   ├── benchmark-v1.md
+│   ├── instruction-variants.md
 │   ├── cognitive-structure-contract.md
 │   ├── discourse-reconstruction-contract.md
 │   ├── paperbench-adaptation.md
@@ -154,11 +169,12 @@ Judge 凭据和冻结的 Judge 模型通过 Harbor verifier 环境参数传入�
 ## 推荐阅读顺序
 
 1. [V1 基准问题](docs/benchmark-v1.md)
-2. [认知结构 Rubric 契约](docs/cognitive-structure-contract.md)
-3. [篇章关系重构契约](docs/discourse-reconstruction-contract.md)
-4. [Rubric 生产协议](docs/rubric-production.md)
-5. [PaperBench 迁移原则](docs/paperbench-adaptation.md)
-6. [Harbor 映射](docs/harbor-mapping.md)
+2. [Instruction 信息充分度实验契约](docs/instruction-variants.md)
+3. [认知结构 Rubric 契约](docs/cognitive-structure-contract.md)
+4. [篇章关系重构契约](docs/discourse-reconstruction-contract.md)
+5. [Rubric 生产协议](docs/rubric-production.md)
+6. [PaperBench 迁移原则](docs/paperbench-adaptation.md)
+7. [Harbor 映射](docs/harbor-mapping.md)
 
 ## Card 验证
 
