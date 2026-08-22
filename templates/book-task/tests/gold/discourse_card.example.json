@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "status": "draft",
+  "book_id": "replace-me",
+  "source": {
+    "document_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "book_card_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "notes": "Draft examples may use zero hashes; frozen cards may not."
+  },
+  "authorial_edges": [
+    {
+      "id": "AE-001",
+      "label": "构成性案例推动作者从旧解释转向新机制",
+      "source_a_anchor_ids": [
+        "SA-001"
+      ],
+      "source_b_anchor_ids": [
+        "SA-002"
+      ],
+      "linked_cognitive_relation_ids": [
+        "R-02",
+        "R-03"
+      ],
+      "edge_type": "case_to_inference",
+      "relation_description": "前部的关键反例不是装饰，而是迫使作者提出中间机制，并使后续限定性结论成为必要。",
+      "rhetorical_role": "turn",
+      "required_facets": [
+        "direction",
+        "rhetorical_function",
+        "downstream_dependency",
+        "case_function"
+      ],
+      "expected_downstream": [
+        "候选文章后续的机制和结论必须显式使用该案例制造的转折。"
+      ],
+      "hard_negative_relations": [
+        "案例与机制只是并列出现，或案例仅用于说明一个已经成立的观点。"
+      ],
+      "stratum": "global_cross_chapter",
+      "weight": 1.0,
+      "critical": true
+    }
+  ],
+  "sampling_plan": {
+    "strategy": "stratified_fixed_panels",
+    "seed": 20260822,
+    "same_panels_for_all_models": true,
+    "position_reversal": true,
+    "resample_after_freeze": false,
+    "required_strata": [
+      "global_cross_chapter"
+    ],
+    "panels": [
+      {
+        "id": "PANEL-01",
+        "edge_ids": [
+          "AE-001"
+        ],
+        "rollout_indices": [
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "panel_assignment_rule": "All evaluated models use PANEL-01 for rollout indices 1-3."
+  },
+  "editorial_probe_config": {
+    "structure_extraction": {
+      "max_major_units": 8,
+      "use_headings_as_signal": true,
+      "require_char_spans": true
+    },
+    "local_progression": {
+      "sample_size": 8,
+      "selection": "deterministic_hash",
+      "criteria": [
+        "relation_identifiable",
+        "forward_dependency",
+        "advances_argument"
+      ]
+    },
+    "global_order": {
+      "sample_size": 4,
+      "perturbation": "swap_major_units",
+      "position_reversal": true,
+      "tie_value": 0.5
+    },
+    "spine_connectivity": {
+      "require_controlling_question": true,
+      "accepted_roles": [
+        "establish_premise",
+        "frame_problem",
+        "introduce_distinction",
+        "raise_objection",
+        "answer_objection",
+        "develop_mechanism",
+        "qualify_claim",
+        "synthesize",
+        "apply",
+        "close_argument"
+      ],
+      "orphan_definition": "A major unit is orphaned when the evaluator cannot state how it advances, qualifies, contests, applies, or closes the controlling question."
+    },
+    "example_integration": {
+      "sample_size": 3,
+      "accepted_functions": [
+        "evidence",
+        "counterexample",
+        "boundary",
+        "turn",
+        "application",
+        "synthesis"
+      ]
+    },
+    "closure": {
+      "criteria": [
+        "returns_to_opening",
+        "depends_on_body",
+        "non_generic"
+      ]
+    },
+    "weights": {
+      "local_progression": 0.3,
+      "global_order": 0.3,
+      "spine_connectivity": 0.2,
+      "example_integration": 0.1,
+      "closure": 0.1
+    }
+  },
+  "dimension_weights": {
+    "authorial_edge_recovery": 0.5,
+    "editorial_coherence": 0.5
+  },
+  "calibration_perturbations": [
+    {
+      "id": "DP-001",
+      "type": "section_shuffle",
+      "description": "Swap two major argumentative units while preserving their sentences.",
+      "expected_decrease": [
+        "global_order",
+        "editorial_coherence",
+        "discourse_reconstruction"
+      ],
+      "expected_stable": [
+        "cognitive_relation_coverage"
+      ]
+    },
+    {
+      "id": "DP-002",
+      "type": "semantic_preserving_rewrite",
+      "description": "Rewrite wording without changing relations, rhetorical roles, or article order.",
+      "expected_decrease": [],
+      "expected_stable": [
+        "cognitive_relation_coverage",
+        "complete_core_path_rate",
+        "authorial_edge_recovery",
+        "editorial_coherence",
+        "discourse_reconstruction"
+      ]
+    }
+  ],
+  "provenance": {
+    "generated_by": "replace-me",
+    "reviewed_by": [],
+    "review_notes": "Human review is required before status becomes human_reviewed or frozen."
+  }
+}

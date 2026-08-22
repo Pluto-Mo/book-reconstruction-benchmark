@@ -1,0 +1,665 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/discourse-card.schema.json",
+  "title": "Book-specific discourse-reconstruction rubric card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "book_id",
+    "source",
+    "authorial_edges",
+    "sampling_plan",
+    "editorial_probe_config",
+    "dimension_weights",
+    "calibration_perturbations",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "human_reviewed",
+        "frozen"
+      ]
+    },
+    "book_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document_sha256",
+        "book_card_sha256"
+      ],
+      "properties": {
+        "document_sha256": {
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]{64}$"
+        },
+        "book_card_sha256": {
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]{64}$"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "authorial_edges": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "source_a_anchor_ids",
+          "source_b_anchor_ids",
+          "linked_cognitive_relation_ids",
+          "edge_type",
+          "relation_description",
+          "rhetorical_role",
+          "required_facets",
+          "expected_downstream",
+          "hard_negative_relations",
+          "stratum",
+          "weight",
+          "critical"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_a_anchor_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "source_b_anchor_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "linked_cognitive_relation_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "edge_type": {
+            "type": "string",
+            "enum": [
+              "premise_to_consequence",
+              "constraint_to_strategy",
+              "problem_to_reframing",
+              "objection_to_rebuttal",
+              "case_to_inference",
+              "contrast",
+              "condition_to_scope",
+              "escalation",
+              "turn",
+              "synthesis",
+              "opening_to_closure",
+              "other"
+            ]
+          },
+          "relation_description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rhetorical_role": {
+            "type": "string",
+            "enum": [
+              "governing_premise",
+              "problem_reframing",
+              "contrast",
+              "objection",
+              "rebuttal",
+              "condition",
+              "boundary",
+              "example_support",
+              "counterexample",
+              "turn",
+              "synthesis",
+              "closure"
+            ]
+          },
+          "required_facets": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "direction",
+                "hierarchy",
+                "rhetorical_function",
+                "downstream_dependency",
+                "scope",
+                "case_function",
+                "closure_return"
+              ]
+            }
+          },
+          "expected_downstream": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "hard_negative_relations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "stratum": {
+            "type": "string",
+            "enum": [
+              "global_cross_chapter",
+              "local_argument",
+              "condition_boundary",
+              "stance_turn",
+              "case_function",
+              "opening_closure"
+            ]
+          },
+          "weight": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "critical": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "sampling_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "seed",
+        "same_panels_for_all_models",
+        "position_reversal",
+        "resample_after_freeze",
+        "required_strata",
+        "panels",
+        "panel_assignment_rule"
+      ],
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "const": "stratified_fixed_panels"
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "same_panels_for_all_models": {
+          "type": "boolean",
+          "const": true
+        },
+        "position_reversal": {
+          "type": "boolean",
+          "const": true
+        },
+        "resample_after_freeze": {
+          "type": "boolean",
+          "const": false
+        },
+        "required_strata": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "global_cross_chapter",
+              "local_argument",
+              "condition_boundary",
+              "stance_turn",
+              "case_function",
+              "opening_closure"
+            ]
+          }
+        },
+        "panels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "edge_ids",
+              "rollout_indices"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "edge_ids": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "rollout_indices": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "panel_assignment_rule": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "editorial_probe_config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "structure_extraction",
+        "local_progression",
+        "global_order",
+        "spine_connectivity",
+        "example_integration",
+        "closure",
+        "weights"
+      ],
+      "properties": {
+        "structure_extraction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "max_major_units",
+            "use_headings_as_signal",
+            "require_char_spans"
+          ],
+          "properties": {
+            "max_major_units": {
+              "type": "integer",
+              "minimum": 3,
+              "maximum": 12
+            },
+            "use_headings_as_signal": {
+              "type": "boolean"
+            },
+            "require_char_spans": {
+              "type": "boolean",
+              "const": true
+            }
+          }
+        },
+        "local_progression": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sample_size",
+            "selection",
+            "criteria"
+          ],
+          "properties": {
+            "sample_size": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "selection": {
+              "type": "string",
+              "const": "deterministic_hash"
+            },
+            "criteria": {
+              "type": "array",
+              "const": [
+                "relation_identifiable",
+                "forward_dependency",
+                "advances_argument"
+              ]
+            }
+          }
+        },
+        "global_order": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sample_size",
+            "perturbation",
+            "position_reversal",
+            "tie_value"
+          ],
+          "properties": {
+            "sample_size": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "perturbation": {
+              "type": "string",
+              "const": "swap_major_units"
+            },
+            "position_reversal": {
+              "type": "boolean",
+              "const": true
+            },
+            "tie_value": {
+              "type": "number",
+              "const": 0.5
+            }
+          }
+        },
+        "spine_connectivity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "require_controlling_question",
+            "accepted_roles",
+            "orphan_definition"
+          ],
+          "properties": {
+            "require_controlling_question": {
+              "type": "boolean",
+              "const": true
+            },
+            "accepted_roles": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "establish_premise",
+                  "frame_problem",
+                  "introduce_distinction",
+                  "raise_objection",
+                  "answer_objection",
+                  "develop_mechanism",
+                  "qualify_claim",
+                  "synthesize",
+                  "apply",
+                  "close_argument"
+                ]
+              }
+            },
+            "orphan_definition": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "example_integration": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sample_size",
+            "accepted_functions"
+          ],
+          "properties": {
+            "sample_size": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "accepted_functions": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "evidence",
+                  "counterexample",
+                  "boundary",
+                  "turn",
+                  "application",
+                  "synthesis"
+                ]
+              }
+            }
+          }
+        },
+        "closure": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "criteria"
+          ],
+          "properties": {
+            "criteria": {
+              "type": "array",
+              "const": [
+                "returns_to_opening",
+                "depends_on_body",
+                "non_generic"
+              ]
+            }
+          }
+        },
+        "weights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "local_progression",
+            "global_order",
+            "spine_connectivity",
+            "example_integration",
+            "closure"
+          ],
+          "properties": {
+            "local_progression": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "global_order": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "spine_connectivity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "example_integration": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "closure": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      }
+    },
+    "dimension_weights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorial_edge_recovery",
+        "editorial_coherence"
+      ],
+      "properties": {
+        "authorial_edge_recovery": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "editorial_coherence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "calibration_perturbations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "description",
+          "expected_decrease",
+          "expected_stable"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "section_shuffle",
+              "transition_flattening",
+              "definition_example_modularization",
+              "example_relocation",
+              "generic_closure",
+              "semantic_preserving_rewrite"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_decrease": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "authorial_edge_recovery",
+                "local_progression",
+                "global_order",
+                "spine_connectivity",
+                "example_integration",
+                "closure",
+                "editorial_coherence",
+                "discourse_reconstruction"
+              ]
+            }
+          },
+          "expected_stable": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "cognitive_relation_coverage",
+                "complete_core_path_rate",
+                "authorial_edge_recovery",
+                "local_progression",
+                "global_order",
+                "spine_connectivity",
+                "example_integration",
+                "closure",
+                "editorial_coherence",
+                "discourse_reconstruction"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generated_by",
+        "reviewed_by",
+        "review_notes"
+      ],
+      "properties": {
+        "generated_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_by": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "review_notes": {
+          "type": "string"
+        },
+        "frozen_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "frozen"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "provenance": {
+            "required": [
+              "frozen_at"
+            ],
+            "properties": {
+              "reviewed_by": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

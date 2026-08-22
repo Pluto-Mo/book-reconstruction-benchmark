@@ -1,17 +1,22 @@
 # Book Reconstruction Benchmark
 
-一个独立的 Harbor benchmark 项目，用来测量模型能否在固定篇幅的整书重构中：
+一个独立的 Harbor benchmark 项目，用来测量模型能否在固定篇幅的整书重构中同时做到两件事：
 
-1. 保留一本书真正具有区分力的核心问题、关系和推理路径；
-2. 正确区分作者主张、假设、让步、反驳、条件和边界；
-3. 保留对结论具有构成作用的案例与论证材料；
-4. 避免把作品压缩成正确但无信息量的领域常识。
+1. **认知结构保留**：保留一本书真正具有区分力的问题、关系、推理路径、立场、条件、边界和构成性材料；
+2. **篇章关系重构**：把这些内容重新组织成一篇有中心线、真实推进、材料层级和有效收束的文章，而不是评分点填空或模块化知识笔记。
 
 当前状态：**V1 设计与 Task 脚手架阶段，尚未加入正式书目，也尚未形成可跑榜任务。**
 
 ## V1 基准问题
 
-> 给定一本完整的非虚构作品和固定篇幅，模型能否重构作者形成判断时使用的书特异认知结构，而不是只生成一篇流畅的主题摘要？
+> 给定一本完整的非虚构作品和固定篇幅，模型能否既重建作者形成判断时使用的书特异认知结构，又把这些内容组织成一篇面向真实读者、内部连贯且独立成立的文章？
+
+V1 不把“作者感”理解为模仿原作者的句法、词汇或口头禅。新的 `discourse_reconstruction` 维度由两个可审计子分组成：
+
+- `authorial_edge_recovery`：原书重要材料之间的篇章／修辞关系是否被保留；
+- `editorial_coherence`：候选文章内部是否形成真实的局部推进、全局顺序、中心线、案例功能和结尾回环。
+
+认知正确性是作者关系边得分的门槛，避免同一内容关系被重复奖励。
 
 ## Harbor 目录边界
 
@@ -31,17 +36,22 @@ tasks/<book-id>/
     ├── Dockerfile                  # separate verifier environment
     ├── test.sh
     ├── gold/
-    │   └── book_card.json
-    └── cognitive_structure/
-        ├── evidence_locator/
-        ├── relation_adjudicator/
-        ├── quote_validator/
-        └── graph_aggregator/
+    │   ├── book_card.json
+    │   └── discourse_card.json
+    ├── cognitive_structure/
+    │   ├── evidence_locator/
+    │   ├── relation_adjudicator/
+    │   ├── quote_validator/
+    │   └── graph_aggregator/
+    └── discourse_reconstruction/
+        ├── authorial_edge_recovery/
+        ├── editorial_coherence/
+        └── discourse_aggregator/
 ```
 
 最外层五项与 Harbor 官方 Task 结构一致；`tests/`、`solution/` 和 `environment/` 中允许放置额外依赖文件。
 
-`templates/book-task/` 只是上面结构的未实例化脚手架。它目前可以被 Harbor 识别为一个 Task 目录，但会在 verifier 阶段明确失败，因为正式 Book Card、Oracle 和生产 verifier 尚未实现。它也尚未加入 `dataset.toml`。
+`templates/book-task/` 只是未实例化脚手架。它目前可以被 Harbor 识别为一个 Task 目录，但会在 verifier 阶段明确失败，因为正式 Book Card、Discourse Card、Oracle 和生产 verifier 尚未实现。它也尚未加入 `dataset.toml`。
 
 单独运行一个已实例化 Task：
 
@@ -60,45 +70,50 @@ harbor run -p "." -a claude-code -m "<model>" -k 3
 ## 核心设计
 
 ```text
-公开 instruction：目标清楚，不泄露答案
+公开 instruction：真实编辑委托，目标清楚但不泄露答案
                     ↓
-每本书独立的认知结构图
+Book Card：原书认知结构图
 Nodes → Typed Relations → Required / Alternative Paths
                     ↓
-证据定位与关系判断分离
+Discourse Card：作者关系边池 + 冻结面板 + 编辑探针
                     ↓
-LLM Judge 只做冻结的窄语义判断
+两条独立评分流水线
+Cognitive Structure Pipeline
+Discourse Reconstruction Pipeline
                     ↓
-程序计算关系覆盖和核心路径完整度
+程序分别计算细分指标
                     ↓
 每书归一化，再跨书宏平均
 ```
 
-所有书共享的是：
+所有书共享：
 
 - 公开任务契约；
-- 认知结构 Schema；
-- Judge 协议；
-- 聚合与失败处理；
+- Book Card / Discourse Card Schema；
+- Locator、Judge 和受控扰动协议；
+- 抽样、位置反转、聚合与失败处理；
 - Harbor 和固定 Agent scaffold。
 
 每本书独立拥有：
 
-- 核心认知结构；
-- 命题与材料节点；
-- 有方向关系；
-- 必需路径和替代路径；
-- 构成性案例；
+- 核心认知结构与路径；
 - 原书来源锚点；
-- `pass_if`、`fail_if` 和校准变体。
+- 构成性案例；
+- 有意义的作者关系边池；
+- 分层固定面板；
+- 编辑性探针配置和校准扰动；
+- `pass_if`、`fail_if`、Hard Negatives 和人工审核记录。
 
 V1 Pilot 先并列报告：
 
 - `cognitive_relation_coverage`；
 - `complete_core_path_rate`；
+- `authorial_edge_recovery`；
+- `editorial_coherence`；
+- `local_progression`、`global_order`、`spine_connectivity`、`example_integration`、`closure`；
 - `hard_constraints`。
 
-最终单一排行榜公式需要在开发书、Oracle 和破坏样本试跑后再冻结。
+`discourse_reconstruction` 可以作为篇章维度内部的诊断性聚合，但认知结构和篇章关系如何合成最终排行榜标量，仍需开发书、Oracle 和破坏样本试跑后冻结。
 
 ## 项目结构
 
@@ -109,15 +124,18 @@ book-reconstruction-benchmark/
 ├── docs/
 │   ├── benchmark-v1.md
 │   ├── cognitive-structure-contract.md
+│   ├── discourse-reconstruction-contract.md
 │   ├── paperbench-adaptation.md
 │   ├── rubric-production.md
 │   └── harbor-mapping.md
 ├── schemas/
 │   ├── book-card.schema.json
+│   ├── discourse-card.schema.json
 │   ├── evidence-result.schema.json
 │   └── judge-result.schema.json
 ├── scripts/
-│   └── validate_book_card.py
+│   ├── validate_book_card.py
+│   └── validate_discourse_card.py
 ├── calibration/
 ├── configs/
 ├── tasks/                         # 已实例化、审核通过的 Harbor Tasks
@@ -127,38 +145,36 @@ book-reconstruction-benchmark/
 
 ## 运行隔离
 
-被测 Agent 使用 `no-network` 环境读取私有书稿。LLM Judge 放在独立 verifier 环境中；`/app/submission.md` 通过 `artifacts` 明确传入，隐藏 Book Card 和 verifier 代码由 `tests/Dockerfile` 打进 verifier 镜像。
+被测 Agent 使用 `no-network` 环境读取私有书稿。LLM Judge 放在独立 verifier 环境中；`/app/submission.md` 通过 `artifacts` 明确传入，隐藏 Book Card、Discourse Card 和 verifier 代码由 `tests/Dockerfile` 打进 verifier 镜像。
 
-Judge 凭据和冻结的 Judge 模型通过 Harbor verifier 环境参数传入，不写入仓库：
+Judge 凭据和冻结的 Judge 模型通过 Harbor verifier 环境参数传入，不写入仓库。
 
-```bash
-harbor run -p "tasks/<book-id>" \
-  -a claude-code \
-  -m "<evaluated-model>" \
-  --ve ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
-  --ve REWARDKIT_JUDGE="anthropic/<frozen-judge-model>"
-```
-
-`/logs/verifier/reward.json` 只能包含数值字段。版本、状态、理由和审计信息必须写入 `reward-details.json`、`verifier-status.json` 或其他日志文件。
+`/logs/verifier/reward.json` 只能包含数值字段。版本、状态、引用、边面板、位置反转结果、理由和审计信息必须写入其他日志文件。
 
 ## 推荐阅读顺序
 
 1. [V1 基准问题](docs/benchmark-v1.md)
 2. [认知结构 Rubric 契约](docs/cognitive-structure-contract.md)
-3. [Rubric 生产协议](docs/rubric-production.md)
-4. [PaperBench 迁移原则](docs/paperbench-adaptation.md)
-5. [Harbor 映射](docs/harbor-mapping.md)
+3. [篇章关系重构契约](docs/discourse-reconstruction-contract.md)
+4. [Rubric 生产协议](docs/rubric-production.md)
+5. [PaperBench 迁移原则](docs/paperbench-adaptation.md)
+6. [Harbor 映射](docs/harbor-mapping.md)
 
-## Book Card 验证
+## Card 验证
 
 ```bash
 uv run scripts/validate_book_card.py \
   --card templates/book-task/tests/gold/book_card.example.json \
   --schema schemas/book-card.schema.json
+
+uv run scripts/validate_discourse_card.py \
+  --card templates/book-task/tests/gold/discourse_card.example.json \
+  --schema schemas/discourse-card.schema.json \
+  --book-card templates/book-task/tests/gold/book_card.example.json
 ```
 
-该脚本验证 Schema、ID 唯一性、节点/关系/路径交叉引用、构成性案例规则和冻结状态。它不能代替人工确认内容是否忠于原书，也不能代替 Harbor Oracle 运行。
+验证脚本只能检查 Schema、ID、引用、面板、权重和冻结状态，不能代替人工确认内容是否忠于原书，也不能代替 Harbor Oracle 运行。
 
 ## 隐私与版权
 
-正式书稿默认放在各 Task 的 `environment/source/`，该路径由 `.gitignore` 排除。仓库只保存说明文件、评分卡和可公开材料。公开或发布 Harbor Dataset 前需要单独检查授权。
+正式书稿默认放在各 Task 的 `environment/source/`，该路径由 `.gitignore` 排除。Discourse Card 只保存 Source Anchor IDs、短摘要和关系说明；正式评分所需的原文短片段在私有 verifier 环境中按 locator 提取。公开或发布 Harbor Dataset 前需要单独检查授权。
