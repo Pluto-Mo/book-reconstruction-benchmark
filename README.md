@@ -7,11 +7,55 @@
 3. 保留对结论具有构成作用的案例与论证材料；
 4. 避免把作品压缩成正确但无信息量的领域常识。
 
-当前状态：**V1 设计与脚手架阶段，尚未加入正式书目，也尚未形成可跑榜任务。**
+当前状态：**V1 设计与 Task 脚手架阶段，尚未加入正式书目，也尚未形成可跑榜任务。**
 
 ## V1 基准问题
 
 > 给定一本完整的非虚构作品和固定篇幅，模型能否重构作者形成判断时使用的书特异认知结构，而不是只生成一篇流畅的主题摘要？
+
+## Harbor 目录边界
+
+仓库根目录是 **Dataset 项目目录**，不是单个 Harbor Task。Harbor 真正识别的单书任务根目录应当是：
+
+```text
+tasks/<book-id>/
+├── instruction.md
+├── task.toml
+├── environment/
+│   ├── Dockerfile
+│   └── source/                     # 私有书稿，不进 git
+├── solution/
+│   ├── solve.sh
+│   └── reference_submission.md
+└── tests/
+    ├── Dockerfile                  # separate verifier environment
+    ├── test.sh
+    ├── gold/
+    │   └── book_card.json
+    └── cognitive_structure/
+        ├── evidence_locator/
+        ├── relation_adjudicator/
+        ├── quote_validator/
+        └── graph_aggregator/
+```
+
+最外层五项与 Harbor 官方 Task 结构一致；`tests/`、`solution/` 和 `environment/` 中允许放置额外依赖文件。
+
+`templates/book-task/` 只是上面结构的未实例化脚手架。它目前可以被 Harbor 识别为一个 Task 目录，但会在 verifier 阶段明确失败，因为正式 Book Card、Oracle 和生产 verifier 尚未实现。它也尚未加入 `dataset.toml`。
+
+单独运行一个已实例化 Task：
+
+```bash
+harbor run -p "tasks/<book-id>" -a claude-code -m "<model>" -k 3
+```
+
+运行整个本地 Dataset：
+
+```bash
+harbor run -p "." -a claude-code -m "<model>" -k 3
+```
+
+前提是已经通过 `harbor add "tasks/<book-id>"` 把任务写入 `dataset.toml`。
 
 ## 核心设计
 
@@ -76,33 +120,26 @@ book-reconstruction-benchmark/
 │   └── validate_book_card.py
 ├── calibration/
 ├── configs/
-├── tasks/
+├── tasks/                         # 已实例化、审核通过的 Harbor Tasks
 ├── results/
-└── templates/book-task/
-    └── tests/gold/
-        ├── book_card.example.json
-        └── rubric_authoring.template.md
+└── templates/book-task/           # 未实例化 Task 脚手架
 ```
 
-## 运行角色
+## 运行隔离
 
-```text
-Codex：构建 Benchmark
-        ↓
-Harbor：harness / runner / verifier orchestration
-        ↓
-固定 Agent scaffold：首个 Pilot 为 Claude Code
-        ↓
-模型 backend
-```
+被测 Agent 使用 `no-network` 环境读取私有书稿。LLM Judge 放在独立 verifier 环境中；`/app/submission.md` 通过 `artifacts` 明确传入，隐藏 Book Card 和 verifier 代码由 `tests/Dockerfile` 打进 verifier 镜像。
 
-首个 Pilot 示例：
+Judge 凭据和冻结的 Judge 模型通过 Harbor verifier 环境参数传入，不写入仓库：
 
 ```bash
-harbor run -p "tasks/<book-id>" -a claude-code -m "<anthropic-model>" -k 3
+harbor run -p "tasks/<book-id>" \
+  -a claude-code \
+  -m "<evaluated-model>" \
+  --ve ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
+  --ve REWARDKIT_JUDGE="anthropic/<frozen-judge-model>"
 ```
 
-跨模型比较时，Harbor、Agent scaffold、系统提示词、工具、预算、采样和失败处理都必须冻结；只替换模型 backend。若不同模型使用不同 scaffold，结果只能解释为 Agent 系统比较。
+`/logs/verifier/reward.json` 只能包含数值字段。版本、状态、理由和审计信息必须写入 `reward-details.json`、`verifier-status.json` 或其他日志文件。
 
 ## 推荐阅读顺序
 
@@ -120,7 +157,7 @@ uv run scripts/validate_book_card.py \
   --schema schemas/book-card.schema.json
 ```
 
-该脚本验证 Schema、ID 唯一性、节点/关系/路径交叉引用、构成性案例规则和冻结状态。它不能代替人工确认内容是否忠于原书。
+该脚本验证 Schema、ID 唯一性、节点/关系/路径交叉引用、构成性案例规则和冻结状态。它不能代替人工确认内容是否忠于原书，也不能代替 Harbor Oracle 运行。
 
 ## 隐私与版权
 

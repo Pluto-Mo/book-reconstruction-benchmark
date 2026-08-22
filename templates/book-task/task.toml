@@ -17,15 +17,10 @@ tags = ["nonfiction", "high-compression", "v1-template"]
 expert_time_estimate_min = 0.0
 junior_time_estimate_min = 0.0
 
-[verifier]
-timeout_sec = 600.0
-collect = []
-
-[verifier.env]
-
 [agent]
 timeout_sec = 3600.0
 
+# The evaluated agent reads the private book source without network access.
 [environment]
 network_mode = "no-network"
 build_timeout_sec = 600.0
@@ -33,8 +28,24 @@ os = "linux"
 cpus = 2
 memory_mb = 4096
 storage_mb = 4096
-mcp_servers = []
 
-[environment.env]
+# The verifier is isolated from the agent workspace except for declared
+# artifacts. Its image is built from tests/Dockerfile, which copies the
+# hidden Book Card and verifier code into /tests.
+[verifier]
+timeout_sec = 900.0
+environment_mode = "separate"
 
-[solution.env]
+[verifier.environment]
+network_mode = "public"
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+
+# Judge credentials and the frozen judge/model override must be supplied at
+# run time through Harbor verifier environment flags, for example:
+#   --ve ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY"
+#   --ve REWARDKIT_JUDGE="anthropic/<frozen-judge-model>"
+# Do not commit secrets or silently change the judge between compared runs.
