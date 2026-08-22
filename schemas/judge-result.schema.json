@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://local.invalid/schemas/judge-result.schema.json",
-  "title": "Atomic judge result",
+  "title": "Relation adjudication result",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -9,9 +9,12 @@
     "book_id",
     "submission_id",
     "criterion_id",
-    "verdict",
-    "evidence",
+    "evidence_result_id",
+    "selected_candidate_ids",
+    "decision",
+    "support_found",
     "contradiction_found",
+    "missing_facets",
     "reason",
     "confidence",
     "judge_model",
@@ -20,7 +23,7 @@
   "properties": {
     "schema_version": {
       "type": "string",
-      "const": "1.0"
+      "const": "2.0"
     },
     "book_id": {
       "type": "string",
@@ -34,43 +37,48 @@
       "type": "string",
       "minLength": 1
     },
-    "verdict": {
-      "type": "integer",
+    "evidence_result_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selected_candidate_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "decision": {
+      "type": "string",
       "enum": [
-        0,
-        1
+        "pass",
+        "fail",
+        "abstain"
       ]
     },
-    "evidence": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "status",
-        "quote"
-      ],
-      "properties": {
-        "status": {
-          "type": "string",
-          "enum": [
-            "found",
-            "none"
-          ]
-        },
-        "quote": {
-          "type": "string"
-        },
-        "start_char": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "end_char": {
-          "type": "integer",
-          "minimum": 0
-        }
-      }
+    "support_found": {
+      "type": "boolean"
     },
     "contradiction_found": {
       "type": "boolean"
+    },
+    "missing_facets": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "direction",
+          "mechanism",
+          "condition",
+          "boundary",
+          "stance_owner",
+          "epistemic_status",
+          "argument_function",
+          "case_identity"
+        ]
+      }
     },
     "reason": {
       "type": "string",
@@ -88,38 +96,57 @@
     "prompt_version": {
       "type": "string",
       "minLength": 1
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "not_run",
+            "confirmed",
+            "rejected",
+            "conflict"
+          ]
+        },
+        "reviewer_model": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
     }
   },
   "allOf": [
     {
       "if": {
         "properties": {
-          "evidence": {
-            "properties": {
-              "status": {
-                "const": "none"
-              }
-            },
-            "required": [
-              "status"
-            ]
+          "decision": {
+            "const": "pass"
           }
-        }
+        },
+        "required": [
+          "decision"
+        ]
       },
       "then": {
         "properties": {
-          "verdict": {
-            "const": 0
+          "selected_candidate_ids": {
+            "minItems": 1
           },
-          "evidence": {
-            "properties": {
-              "quote": {
-                "const": ""
-              }
-            },
-            "required": [
-              "quote"
-            ]
+          "support_found": {
+            "const": true
+          },
+          "contradiction_found": {
+            "const": false
+          },
+          "missing_facets": {
+            "maxItems": 0
           }
         }
       }
@@ -127,25 +154,18 @@
     {
       "if": {
         "properties": {
-          "verdict": {
-            "const": 1
+          "decision": {
+            "const": "abstain"
           }
-        }
+        },
+        "required": [
+          "decision"
+        ]
       },
       "then": {
         "properties": {
-          "evidence": {
-            "properties": {
-              "status": {
-                "const": "found"
-              },
-              "quote": {
-                "minLength": 1
-              }
-            }
-          },
-          "contradiction_found": {
-            "const": false
+          "confidence": {
+            "maximum": 0.5
           }
         }
       }

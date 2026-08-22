@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://local.invalid/schemas/book-card.schema.json",
-  "title": "Book-specific evaluation card",
+  "title": "Book-specific cognitive-structure rubric card",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -12,15 +12,15 @@
     "domain",
     "source",
     "compression",
-    "relations",
+    "source_anchors",
+    "cognitive_structures",
     "genericity_traps",
-    "organization_behaviors",
     "provenance"
   ],
   "properties": {
     "schema_version": {
       "type": "string",
-      "const": "1.1"
+      "const": "2.0"
     },
     "status": {
       "type": "string",
@@ -81,7 +81,7 @@
         }
       }
     },
-    "relations": {
+    "source_anchors": {
       "type": "array",
       "minItems": 1,
       "items": {
@@ -89,11 +89,50 @@
         "additionalProperties": false,
         "required": [
           "id",
+          "locator",
+          "evidence_summary",
+          "argument_function"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "chapter": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "evidence_summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "argument_function": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "cognitive_structures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "central_question",
           "summary",
-          "source_anchors",
-          "atoms",
-          "non_examples",
-          "contradictions",
+          "nodes",
+          "relations",
+          "paths",
           "weight",
           "rationale"
         ],
@@ -102,44 +141,150 @@
             "type": "string",
             "minLength": 1
           },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "central_question": {
+            "type": "string",
+            "minLength": 1
+          },
           "summary": {
             "type": "string",
             "minLength": 1
           },
-          "source_anchors": {
+          "nodes": {
             "type": "array",
-            "minItems": 1,
+            "minItems": 2,
             "items": {
               "type": "object",
               "additionalProperties": false,
               "required": [
                 "id",
-                "locator",
-                "evidence_summary"
+                "statement",
+                "role",
+                "stance_owner",
+                "epistemic_status",
+                "source_anchor_ids",
+                "essential"
               ],
               "properties": {
                 "id": {
                   "type": "string",
                   "minLength": 1
                 },
-                "locator": {
+                "statement": {
                   "type": "string",
                   "minLength": 1
                 },
-                "chapter": {
-                  "type": "string"
-                },
-                "section": {
-                  "type": "string"
-                },
-                "evidence_summary": {
+                "role": {
                   "type": "string",
-                  "minLength": 1
+                  "enum": [
+                    "question",
+                    "claim",
+                    "premise",
+                    "assumption",
+                    "mechanism",
+                    "condition",
+                    "boundary",
+                    "evidence",
+                    "case",
+                    "counterexample",
+                    "objection",
+                    "rebuttal",
+                    "conclusion",
+                    "implication",
+                    "action"
+                  ]
+                },
+                "stance_owner": {
+                  "type": "string",
+                  "enum": [
+                    "author",
+                    "opponent",
+                    "cited_source",
+                    "hypothetical",
+                    "neutral"
+                  ]
+                },
+                "epistemic_status": {
+                  "type": "string",
+                  "enum": [
+                    "asserted",
+                    "assumed",
+                    "conceded",
+                    "rejected",
+                    "qualified",
+                    "unresolved",
+                    "observed"
+                  ]
+                },
+                "source_anchor_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "essential": {
+                  "type": "boolean"
+                },
+                "case_profile": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "function",
+                    "preservation"
+                  ],
+                  "properties": {
+                    "function": {
+                      "type": "string",
+                      "enum": [
+                        "constitutive",
+                        "illustrative"
+                      ]
+                    },
+                    "preservation": {
+                      "type": "string",
+                      "enum": [
+                        "required",
+                        "replaceable",
+                        "optional"
+                      ]
+                    },
+                    "replacement_rule": {
+                      "type": "string"
+                    }
+                  }
                 }
-              }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "role": {
+                        "enum": [
+                          "case",
+                          "counterexample"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "role"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "case_profile"
+                    ]
+                  }
+                }
+              ]
             }
           },
-          "atoms": {
+          "relations": {
             "type": "array",
             "minItems": 1,
             "items": {
@@ -147,7 +292,11 @@
               "additionalProperties": false,
               "required": [
                 "id",
+                "source_node_ids",
+                "target_node_ids",
+                "relation_type",
                 "requirement",
+                "required_facets",
                 "source_anchor_ids",
                 "acceptable_paraphrases",
                 "pass_if",
@@ -162,9 +311,64 @@
                   "type": "string",
                   "minLength": 1
                 },
+                "source_node_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "target_node_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "relation_type": {
+                  "type": "string",
+                  "enum": [
+                    "causes",
+                    "supports",
+                    "jointly_supports",
+                    "explains",
+                    "qualifies",
+                    "limits",
+                    "refutes",
+                    "contradicts",
+                    "distinguishes",
+                    "exemplifies",
+                    "instantiates",
+                    "enables",
+                    "implies",
+                    "precedes"
+                  ]
+                },
                 "requirement": {
                   "type": "string",
                   "minLength": 1
+                },
+                "required_facets": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "direction",
+                      "mechanism",
+                      "condition",
+                      "boundary",
+                      "stance_owner",
+                      "epistemic_status",
+                      "argument_function",
+                      "case_identity"
+                    ]
+                  }
                 },
                 "source_anchor_ids": {
                   "type": "array",
@@ -223,18 +427,77 @@
               }
             }
           },
-          "non_examples": {
+          "paths": {
             "type": "array",
+            "minItems": 1,
             "items": {
-              "type": "string",
-              "minLength": 1
-            }
-          },
-          "contradictions": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "label",
+                "relation_ids",
+                "path_type",
+                "weight",
+                "rationale"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "relation_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "path_type": {
+                  "type": "string",
+                  "enum": [
+                    "mandatory",
+                    "alternative"
+                  ]
+                },
+                "alternative_group": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "weight": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "path_type": {
+                        "const": "alternative"
+                      }
+                    },
+                    "required": [
+                      "path_type"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "alternative_group"
+                    ]
+                  }
+                }
+              ]
             }
           },
           "weight": {
@@ -257,7 +520,7 @@
           "id",
           "statement",
           "why_insufficient",
-          "related_atom_ids"
+          "related_relation_ids"
         ],
         "properties": {
           "id": {
@@ -272,7 +535,7 @@
             "type": "string",
             "minLength": 1
           },
-          "related_atom_ids": {
+          "related_relation_ids": {
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
@@ -280,42 +543,6 @@
               "type": "string",
               "minLength": 1
             }
-          }
-        }
-      }
-    },
-    "organization_behaviors": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "behavior",
-          "positive_anchor",
-          "negative_anchor",
-          "weight"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "behavior": {
-            "type": "string",
-            "minLength": 1
-          },
-          "positive_anchor": {
-            "type": "string",
-            "minLength": 1
-          },
-          "negative_anchor": {
-            "type": "string",
-            "minLength": 1
-          },
-          "weight": {
-            "type": "number",
-            "exclusiveMinimum": 0
           }
         }
       }
@@ -367,7 +594,12 @@
           "provenance": {
             "required": [
               "frozen_at"
-            ]
+            ],
+            "properties": {
+              "reviewed_by": {
+                "minItems": 1
+              }
+            }
           }
         }
       }
