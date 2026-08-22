@@ -1,6 +1,6 @@
 # Harbor 映射
 
-本项目遵循 Harbor 当前的 `dataset → task → verifier/reward` 结构。
+本项目遵循 Harbor 当前的 `dataset → task → trial → verifier/reward` 结构。
 
 ## 运行角色
 
@@ -12,10 +12,10 @@ Harbor（harness / runner / verifier orchestration）
 Claude Code（被测 agent，在容器内完成书稿重构）
 ```
 
-首个 pilot 的运行入口以 Claude Code 为准：
+首个 Pilot 的运行入口以 Claude Code 为准：
 
 ```bash
-harbor run -p "tasks/<book-id>" -a claude-code -m "<anthropic-model>"
+harbor run -p "tasks/<book-id>" -a claude-code -m "<anthropic-model>" -k 3
 ```
 
 不要把 Codex 当前任务本身当作 Harbor 的被测 agent。
@@ -36,17 +36,40 @@ Harbor task + verifier（稳定）
 Claude Code runner   API model adapters
 ```
 
+## 概念映射
+
 | Harbor 概念 | 本项目中的含义 |
 |---|---|
 | Dataset | 整个 Book Reconstruction Benchmark |
 | Task | 一次固定条件下对一本书进行高压缩重构 |
+| Trial | 一个 Agent 对一本书的一次 Rollout |
 | `instruction.md` | 对被测模型公开的写作任务和篇幅约束 |
 | `environment/source/` | 该任务提供的书稿及允许公开给模型的材料 |
-| `solution/` | 经审核的 oracle 输出；不是唯一正确措辞 |
+| `/app/submission.md` | 单次 Rollout 的主要提交 Artifact |
+| `solution/` | 经审核的 Oracle 输出；不是唯一正确措辞 |
 | `tests/gold/` | 隐藏的书特异关系卡、锚点和评分配置 |
 | Verifier | 硬约束检查、证据提取、二元语义判断与复核 |
 | `reward.json` | 各维度分数、主分和可审计诊断指标 |
 | `metric.py` | 先对单书归一化，再跨书进行宏平均 |
+
+一个 Task 对应一本书，而不是一次随机采样。`-k 3` 会为同一本书创建三次 Trial；不需要复制三个 Task 目录。
+
+## 与 PaperBench 运行阶段的区别
+
+PaperBench 必须把代码提交物复制到干净容器重新执行。本项目的提交物是静态 Markdown，不设置额外 Reproduction 阶段：
+
+```text
+Agent Rollout
+      ↓
+/app/submission.md
+      ↓
+Verifier
+├── 程序性硬约束
+├── 证据优先的二元 Judge
+└── 确定性聚合
+```
+
+Verifier 不应让 Judge 临场重新读完整书稿并定义评分标准；Judge 只执行冻结的 Book Card。
 
 ## 单本书任务目录
 
@@ -70,7 +93,7 @@ Claude Code runner   API model adapters
     └── authorial_organization/
 ```
 
-## 预期 reward 输出
+## 预期 Reward 输出
 
 ```json
 {
@@ -85,6 +108,17 @@ Claude Code runner   API model adapters
 
 `reward` 由程序按冻结权重计算。`judge_disagreement_rate` 是诊断指标，不应被混入质量分。
 
+## 多次 Trial 和 Dataset Metric
+
+同一本书多次 Trial：
+
+- 主结果使用均值；
+- 同时报告标准差；
+- `best-of-k` 只作单独诊断；
+- 超时、缺失提交和 Verifier 失败的处理规则必须提前冻结。
+
+跨书汇总时，每本书先产生一个归一化根分数，再做宏平均。不得把所有书的叶子直接池化。
+
 ## 当前初始化边界
 
-模板遵循 Harbor 的任务目录约定，但还不是正式可跑任务：尚未选择书、写入书稿、冻结金标准卡、提供 oracle 输出或接通生产 verifier。首次可运行里程碑应由一本文本合法、结构清楚的 pilot 书完成。
+模板遵循 Harbor 的任务目录约定，但还不是正式可跑任务：尚未选择书、写入书稿、冻结金标准卡、提供 Oracle 输出或接通生产 Verifier。首次可运行里程碑应由一本文本合法、结构清楚的开发书完成；正式 Pilot 则使用冻结协议后的保留书。
