@@ -5,11 +5,12 @@ This repository is an independent Harbor benchmark project for high-compression 
 Before making material design decisions, read these foundational documents in full:
 
 1. `docs/benchmark-v1.md`
-2. `docs/cognitive-structure-contract.md`
-3. `docs/discourse-reconstruction-contract.md`
-4. `docs/rubric-production.md`
-5. `docs/paperbench-adaptation.md`
-6. `docs/harbor-mapping.md`
+2. `docs/instruction-variants.md`
+3. `docs/cognitive-structure-contract.md`
+4. `docs/discourse-reconstruction-contract.md`
+5. `docs/rubric-production.md`
+6. `docs/paperbench-adaptation.md`
+7. `docs/harbor-mapping.md`
 
 Project invariants:
 
@@ -19,6 +20,11 @@ Project invariants:
 - A task is not part of the dataset until it is added to `dataset.toml` with `harbor add`.
 - Codex builds the benchmark. Harbor is the harness. The first pilot uses Claude Code as the evaluated agent scaffold.
 - Later models enter through adapters. Never fork the task prompt, scaffold, tools, verifier, or budgets by model when claiming a model comparison.
+- The primary public-use scenario is AI-assisted compressed co-reading for a time-constrained serious nonfiction reader, not a magazine commission, review, publication draft, or study-note handout.
+- The default public instruction condition is `natural`: it states the reader's use case and meaningful quality preferences but does not provide book-specific task analysis or gold content.
+- `explicit` and `minimal` are instruction-information ablations, not alternative leaderboard prompts. When used, they must be instantiated as isolated standard Harbor Tasks with the same source, length, scaffold, tools, budgets, verifier, gold cards, judge, and aggregation as `natural`.
+- Instruction variants are defined by information sufficiency, not by superficial prompt length. `explicit` may reveal more high-level quality preferences but never book-specific gold relations, paths, cases, edges, probes, or weights. `minimal` intentionally under-specifies those preferences and is diagnostic only.
+- Never mix `natural`, `explicit`, and `minimal` results into one primary leaderboard score. V1 primary results use `natural`; `explicit - natural` and `natural - minimal` may be reported as diagnostics.
 - V1 has two distinct evaluation dimensions: `cognitive_structure` and `discourse_reconstruction`.
 - Cognitive structure measures whether book-specific propositions, typed relations, paths, stance, boundaries, and constitutive material are preserved under compression.
 - Discourse reconstruction measures (a) recovery of source-grounded authorial edges and (b) editorial coherence inside the reconstructed article.
