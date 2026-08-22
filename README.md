@@ -21,6 +21,24 @@ V1 暂定评分维度：
 
 权重是待校准的设计假设，不是既定结论。
 
+## 核心设计
+
+本项目借鉴 PaperBench 的不是代码复现流程，而是以下分层：
+
+```text
+共享的评分协议
+        ↓
+每本书独立的关系与认知原子树
+        ↓
+LLM Judge 只做证据优先的窄二元判断
+        ↓
+程序确定性汇总单书分数
+        ↓
+跨书宏平均
+```
+
+PaperBench 的 8,316 个叶子是 20 篇论文各自节点的总和。本项目同样只共享 Meta-Rubric 和 Judge 协议，不跨书复用具体内容叶子。
+
 ## 项目结构
 
 ```text
@@ -28,10 +46,13 @@ book-reconstruction-benchmark/
 ├── dataset.toml                 # Harbor dataset manifest
 ├── metric.py                    # 跨书宏平均
 ├── docs/
-│   ├── benchmark-v1.md          # 第一版问题与边界
-│   └── harbor-mapping.md        # 本项目如何映射到 Harbor
+│   ├── benchmark-v1.md          # 第一版问题、样本与边界
+│   ├── harbor-mapping.md        # 本项目如何映射到 Harbor
+│   ├── paperbench-adaptation.md # 可迁移与不可照搬的设计
+│   └── rubric-production.md     # Agent 辅助 Rebreak 和冻结协议
 ├── schemas/
-│   └── book-card.schema.json    # 单本书金标准卡草案
+│   ├── book-card.schema.json    # 单本书金标准卡
+│   └── judge-result.schema.json # 单原子 Judge 结果
 ├── calibration/                 # 裁判资格考试与校准样本
 ├── configs/                     # 被测模型与 Harbor 的运行配置
 ├── tasks/                       # 审核通过的正式 benchmark 测试集
@@ -42,14 +63,17 @@ book-reconstruction-benchmark/
 Harbor 中：一个 benchmark 对应一个 dataset，一本书对应一个 task。正式任务创建后可用：
 
 ```bash
-harbor run -p "<task-path>" -a claude-code -m "<anthropic-model>"
+harbor run -p "<task-path>" -a claude-code -m "<anthropic-model>" -k 3
 ```
 
 本项目中的角色边界是：Codex 负责构建 benchmark；Harbor 是执行 harness；Claude Code 是首个由 Harbor 启动、读取书稿并产出文章的被测 agent。后续模型通过 API adapter 接入，但必须复用同一任务输入、输出契约和 verifier。
 
-仓库名称为 `book-reconstruction-benchmark`。它同时承载 benchmark 定义、经审核的测试集、运行配置、校准材料及可复现的测试结果；模型接入方式本身不应分叉出另一套 benchmark。
+## 推荐阅读顺序
 
-详细设计从 [docs/benchmark-v1.md](docs/benchmark-v1.md) 开始阅读。
+1. [V1 基准问题](docs/benchmark-v1.md)
+2. [PaperBench 迁移原则](docs/paperbench-adaptation.md)
+3. [Rubric 生产协议](docs/rubric-production.md)
+4. [Harbor 映射](docs/harbor-mapping.md)
 
 ## 隐私与版权
 

@@ -1,11 +1,89 @@
 {
+  "schema_version": "1.1",
+  "status": "draft",
   "book_id": "replace-me",
   "title": "Replace Me",
   "domain": "replace-me",
+  "source": {
+    "document_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "locator_scheme": "chapter/section/paragraph-range",
+    "notes": "实例化任务时替换占位哈希和定位方案。"
+  },
   "compression": {
     "min_chars": 3000,
     "max_chars": 4000
   },
-  "relations": [],
-  "organization_behaviors": []
+  "relations": [
+    {
+      "id": "R-01",
+      "summary": "用一个书特异的概念关系替换此占位说明。",
+      "source_anchors": [
+        {
+          "id": "R-01-S-01",
+          "locator": "chapter-01/section-01/p0001-p0005",
+          "chapter": "Replace Me",
+          "section": "Replace Me",
+          "evidence_summary": "用忠实概述记录该关系的来源依据，不复制长段原文。"
+        }
+      ],
+      "atoms": [
+        {
+          "id": "R-01-A-01",
+          "requirement": "候选文章必须明确表达一个可单独判断的关系命题。",
+          "source_anchor_ids": [
+            "R-01-S-01"
+          ],
+          "acceptable_paraphrases": [
+            "允许不同措辞，只要关系方向和限定条件保持一致。"
+          ],
+          "pass_if": [
+            "候选文章中可以找到明确支持该关系的证据。"
+          ],
+          "fail_if": [
+            "只出现相关关键词，没有表达概念之间的关系。"
+          ],
+          "common_false_positives": [
+            "领域常识与原书结论表面相似，但缺少本书特异限定。"
+          ],
+          "contradiction_patterns": [
+            "候选文章在其他位置反转或否定该关系。"
+          ],
+          "weight": 1.0,
+          "critical": false
+        }
+      ],
+      "non_examples": [
+        "正确但过于一般、无法区分本书的说法。"
+      ],
+      "contradictions": [
+        "明确反转该关系方向的说法。"
+      ],
+      "weight": 1.0,
+      "rationale": "说明这条关系为何对全书认知结构重要。"
+    }
+  ],
+  "genericity_traps": [
+    {
+      "id": "G-01",
+      "statement": "用一个看似正确但不足以代表本书的领域常识替换。",
+      "why_insufficient": "说明它遗漏了哪些书特异关系、条件或反驳。",
+      "related_atom_ids": [
+        "R-01-A-01"
+      ]
+    }
+  ],
+  "organization_behaviors": [
+    {
+      "id": "O-01",
+      "behavior": "用一个可观察的组织行为替换，避免直接评价“作者感”。",
+      "positive_anchor": "描述满足该行为的可观察文本特征。",
+      "negative_anchor": "描述表面流畅但不满足该行为的文本特征。",
+      "weight": 1.0
+    }
+  ],
+  "provenance": {
+    "generated_by": "replace-me",
+    "reviewed_by": [],
+    "review_notes": "只有人工审核后才能改为 human_reviewed 或 frozen。"
+  }
 }
