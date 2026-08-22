@@ -1,0 +1,16 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-C-003",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_common_sense_mechanism_advice.draft.md",
+  "expected_output_sha256": "5513b4c1125c2e07d222445bb47029aca6fb6042d77d7db8487c4beedd9aec09",
+  "expected_nonwhitespace_codepoints": 6300,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "前面对市场熟化的诊断在这里决定机制的篇章地位。机制已知且被接受时，一个名称可能已经足够；机制陌生、产品看起来又与同类相似时，需要销售性地描述它怎样运作；旧承诺已经耗尽，而产品又拥有强且可区分的机制时，机制才可以前置到标题成为主声明。市场越熟化并不等于技术细节越多，真正改变的是读者需要机制的时点和机制在文章中的等级。",
+      "new": "前面对市场熟化的诊断提醒我们：机制说明不能脱离受众。无论市场处在什么阶段，文案都应把复杂原理译成清楚、易懂而有吸引力的语言，说明产品怎样工作。市场越熟化，越要把机制讲得生动，以维持读者的兴趣。"
+    }
+  ]
+}

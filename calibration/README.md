@@ -31,6 +31,10 @@ calibration/
 
 由 Agent 生成的扰动仍需 Benchmark 作者确认只改变目标变量。
 
+开发期允许用确定性 mutation spec 生成变体，以减少手工复制产生的隐性改动。spec 至少绑定基准文本 SHA-256、精确操作、输出路径、预期输出 SHA-256 与计数；生成文本仍须落盘、接受独立语义审计并由 Human Owner 确认。mutation spec 证明字节级改动范围，不替代对“哪些关系、路径、作者边和探针应变化”的语义判断。
+
+每个编辑探针必须完整落入 `changed / stable / unfrozen` 三态之一，三组不得重叠。存在未冻结作者边时，不得填写看似确定的精确恢复分数；先保留聚合结果未冻结，等取证范围、抽样和 Judge 全部固定后再二值化。
+
 ## 1. 认知校准
 
 最低包括：
@@ -104,3 +108,13 @@ calibration/
 - 聚合与失败处理。
 
 关键认知损伤或关键篇章扰动仍被判为完整通过时，不得冻结该书 Task。
+
+## 6. 开发期聚合回放
+
+scripts/replay_calibration.py 将认知 expected.jsonl 中的关系变化作为夹具判决，经过生产形态的确定性 Graph Aggregator，检查路径传播、加权指标和篇幅硬约束：
+
+~~~bash
+uv run scripts/replay_calibration.py
+~~~
+
+该命令不运行 Evidence Locator 或语义 Judge，输出中的 semantic_judge_exercised 因而固定为 false。19/19 通过只表示聚合实现与当前预期标签一致，不表示 Judge 已通过校准；正式冻结仍须分别测量 Locator 召回、Judge 假阳性／假阴性、重复判决和失败重试。

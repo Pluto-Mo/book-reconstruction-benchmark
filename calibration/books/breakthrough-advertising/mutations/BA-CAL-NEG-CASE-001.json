@@ -1,0 +1,26 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-CASE-001",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_delete_chesterfield_case.draft.md",
+  "expected_output_sha256": "0cfa187b1623c33a5e31fea938de08462fec2d366a9adec8036dc3b94389e1e8",
+  "expected_nonwhitespace_codepoints": 6220,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "切斯特菲尔德香烟的历史广告完整地展示了这座桥。烟草主张和其中的性别想象属于它的时代，结构上重要的是广告没有删除品牌原有的男性形象。它先承认旧形象，再降低旧形象对女性的排斥强度，随后把它连接到女性受众在当时可能接受的亲密、共同和自由场景。新形象由旧形象生长，而不是把旧形象抹去。",
+      "new": ""
+    },
+    {
+      "type": "replace_once",
+      "old": "切斯特菲尔德不可被一个普通“理想生活”案例替换，正因为它保存了旧形象、降低强度、搭桥和新角色的完整次序。",
+      "new": "普通“理想生活”图景不能替代完整的形象桥：后者必须保存旧形象、降低强度、搭桥和新角色的完整次序。"
+    },
+    {
+      "type": "replace_once",
+      "old": "案例同样必须留在它们发挥作用的位置。切斯特菲尔德反驳直接更换人格；电视维修先建立接受次序，又被重读为事实框架的变化；救生圈说明重新界定不能删除事实；火焰喷射器先完成顾客利益比较，再为权威证明制造需要。把四个案例抽出来排成故事集，内容似乎仍在，支撑关系却已经消失。",
+      "new": "构成性材料同样必须留在它们发挥作用的位置。形象桥反驳直接更换人格；电视维修先建立接受次序，又被重读为事实框架的变化；救生圈说明重新界定不能删除事实；火焰喷射器先完成顾客利益比较，再为权威证明制造需要。把这些材料抽出来排成故事集，内容似乎仍在，支撑关系却已经消失。"
+    }
+  ]
+}

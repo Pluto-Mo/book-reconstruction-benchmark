@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/editorial-local-model-response.schema.json",
+  "title": "Raw local progression Judge response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "probe_id",
+    "relation_identifiable",
+    "forward_dependency",
+    "advances_argument",
+    "evidence",
+    "reason"
+  ],
+  "properties": {
+    "probe_id": {"type": "string", "minLength": 1},
+    "relation_identifiable": {"type": "boolean"},
+    "forward_dependency": {"type": "boolean"},
+    "advances_argument": {"type": "boolean"},
+    "evidence": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "reason": {"type": "string", "minLength": 1}
+  }
+}

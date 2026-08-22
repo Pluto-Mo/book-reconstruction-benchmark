@@ -5,7 +5,7 @@
 1. **认知结构保留**：保留一本书真正具有区分力的问题、关系、推理路径、立场、条件、边界和构成性材料；
 2. **篇章关系重构**：把这些内容重新组织成一篇有中心线、真实推进、材料层级和有效收束的文章，而不是评分点填空或模块化知识笔记。
 
-当前状态：**V1 设计与 Task 脚手架阶段，尚未加入正式书目，也尚未形成可跑榜任务。**
+当前状态：**V1 设计与开发书端到端校准阶段。认知结构和篇章关系两条运行层都已接入一个可由 Harbor 原生解析的开发 Task；Card、Judge、Oracle 和正式标量仍未冻结，因此尚不是正式排行榜任务。**
 
 ## V1 基准问题
 
@@ -53,19 +53,62 @@ tasks/<book-id>/
 
 `templates/book-task/` 只是未实例化脚手架。它目前可以被 Harbor 识别为一个 Task 目录，但会在 verifier 阶段明确失败，因为正式 Book Card、Discourse Card、Oracle 和生产 verifier 尚未实现。它也尚未加入 `dataset.toml`。
 
-单独运行一个已实例化 Task：
+单独运行一个已实例化的正式 Task：
 
 ```bash
-harbor run -p "tasks/<book-id>" -a claude-code -m "<model>" -k 3
+harbor run -p "tasks/<book-id>" -a pi -m "<provider>/<model>" -k 3
 ```
 
 运行整个本地 Dataset：
 
 ```bash
-harbor run -p "." -a claude-code -m "<model>" -k 3
+harbor run -p "." -a pi -m "<provider>/<model>" -k 3
 ```
 
 前提是已经通过 `harbor add "tasks/<book-id>"` 把任务写入 `dataset.toml`。
+
+当前开发 Task 的五模型 Pi 矩阵可以直接以路径运行，不需要先加入 Dataset。四个 provider 的非敏感定义冻结在 Task 镜像内；启动器不会读取 `~/.pi/agent`、个人 OAuth、PAT 或当前 shell 中的个人 provider key。仓库和 JobConfig 只保存 Harbor secret 名称：
+
+```bash
+PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py
+PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py --print-config
+PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py \
+  --write-hosted-config /tmp/pi-five-models.hosted.json \
+  --hosted-task "<org>/<published-task>" \
+  --hosted-task-ref "<frozen-ref>"
+```
+
+本轮矩阵固定为 GPT‑5.6 sol、Opus 5、Qwen 3.8 Max、K3、DS V4 Pro，Pi 0.84.1，单任务每模型一次、trial 顺序执行。Agent 使用 Harbor 0.22 原生 Pi adapter 的最高档 `xhigh`；Pi 会把 DeepSeek V4 的这一档收敛为官方 `reasoning_effort=max`。其余三组 provider 记录只暴露“是否思考”，没有可审计的分档 effort，因此运行的是各记录可表达的最高模式。Judge 固定为 Qwen 3.8 Max 并开启 Qwen thinking。
+
+路由是硬约束：GPT‑5.6 sol 与 Opus 5 只使用 `openai-benchmark`，Qwen 只使用 `qwen-benchmark`，K3 只使用 `kimi-benchmark`，DS V4 Pro 只使用 `https://api.deepseek.com` 的官方 API。不会读取或回退到个人 OAuth、`opencode-go` 或其他 Pi provider。路由来源和非敏感配置 SHA‑256 会进入预检。
+
+Hosted 运行必须先在 Benchmark 所属 Harbor 组织中独立录入四个 stored secrets；录入过程隐藏输入，值不会进入 task、dataset、JobConfig 或命令行：
+
+```bash
+harbor hub secrets add OPENAI_BENCHMARK_API_KEY --org "<benchmark-org>"
+harbor hub secrets add QWEN_BENCHMARK_API_KEY --org "<benchmark-org>"
+harbor hub secrets add KIMI_BENCHMARK_API_KEY --org "<benchmark-org>"
+harbor hub secrets add DEEPSEEK_API_KEY --org "<benchmark-org>"
+```
+
+正式 hosted 启动使用已发布的冻结 Task；本地路径不会被 Harbor Hub 自动上传：
+
+```bash
+PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py \
+  --launch \
+  --org "<benchmark-org>" \
+  --hosted-task "<benchmark-org>/<published-task>" \
+  --hosted-task-ref "<frozen-ref>"
+```
+
+若只在本机 Docker 上校准，`--run` 必须显式提供一个仓库外、权限为 `0600`、只含四个独立比赛 key 的文件；启动器会清除子进程中的其他 token/key 环境变量。它绝不会自动借用 Pi `auth.json`：
+
+```bash
+PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py \
+  --run --secrets-file "/absolute/path/outside/repository/benchmark-secrets.env"
+```
+
+若使用 Harbor 托管基础设施，先运行 `harbor auth login`。本 Benchmark 只选择组织级 stored secrets，不使用会从本机环境取值的 one-off secret 路径。
 
 ## 核心设计
 
@@ -142,25 +185,39 @@ book-reconstruction-benchmark/
 │   ├── discourse-reconstruction-contract.md
 │   ├── paperbench-adaptation.md
 │   ├── rubric-production.md
-│   └── harbor-mapping.md
+│   ├── harbor-mapping.md
+│   ├── runtime-scoring.md
+│   ├── semantic-runtime.md
+│   └── discourse-semantic-runtime.md
 ├── schemas/
 │   ├── book-card.schema.json
 │   ├── discourse-card.schema.json
 │   ├── evidence-result.schema.json
-│   └── judge-result.schema.json
+│   ├── judge-result.schema.json
+│   └── cognitive-aggregate.schema.json
 ├── scripts/
+│   ├── runtime_scoring.py
+│   ├── cognitive_semantic_runtime.py
+│   ├── discourse_runtime_scoring.py
+│   ├── discourse_semantic_runtime.py
+│   ├── harbor_cognitive_verifier.py
+│   ├── litellm_provider_adapter.py
+│   ├── run_pi_benchmark.py
+│   ├── compile_cognitive_criteria.py
+│   ├── evaluate_cognitive_semantic_runs.py
+│   ├── replay_calibration.py
 │   ├── validate_book_card.py
 │   └── validate_discourse_card.py
 ├── calibration/
 ├── configs/
-├── tasks/                         # 已实例化、审核通过的 Harbor Tasks
+├── tasks/                         # 已实例化的正式或明确标记的开发 Tasks
 ├── results/
 └── templates/book-task/           # 未实例化 Task 脚手架
 ```
 
 ## 运行隔离
 
-被测 Agent 使用 `no-network` 环境读取私有书稿。LLM Judge 放在独立 verifier 环境中；`/app/submission.md` 通过 `artifacts` 明确传入，隐藏 Book Card、Discourse Card 和 verifier 代码由 `tests/Dockerfile` 打进 verifier 镜像。
+Task 的 Agent 基线仍是 `no-network`。Pi 运行配置只在 setup 阶段放行冻结的 Node/npm 主机，并在各 agent.run 阶段仅放行该模型自己的 provider 主机；LLM Judge 放在独立 verifier 环境中。无密钥的 Pi `models.json` 由 Task 镜像提供，API key 只经 Harbor secret 注入。`/app/submission.md` 通过 `artifacts` 明确传入，隐藏 Book Card、Discourse Card 和 verifier 代码由 `tests/Dockerfile` 打进 verifier 镜像。
 
 Judge 凭据和冻结的 Judge 模型通过 Harbor verifier 环境参数传入，不写入仓库。
 
@@ -175,6 +232,9 @@ Judge 凭据和冻结的 Judge 模型通过 Harbor verifier 环境参数传入�
 5. [Rubric 生产协议](docs/rubric-production.md)
 6. [PaperBench 迁移原则](docs/paperbench-adaptation.md)
 7. [Harbor 映射](docs/harbor-mapping.md)
+8. [认知评分运行契约](docs/runtime-scoring.md)
+9. [认知语义运行层](docs/semantic-runtime.md)
+10. [篇章语义运行层](docs/discourse-semantic-runtime.md)
 
 ## Card 验证
 
@@ -190,6 +250,17 @@ uv run scripts/validate_discourse_card.py \
 ```
 
 验证脚本只能检查 Schema、ID、引用、面板、权重和冻结状态，不能代替人工确认内容是否忠于原书，也不能代替 Harbor Oracle 运行。
+
+## 开发期语义运行
+
+当前已经实现认知 Locator/Judge、Quote Validator、Graph Aggregator、Authorial Edge gate/Locator/Judge、结构提取和五类 Editorial Probe。所有总分由程序确定性聚合；模型只裁决冻结的窄问题。Locator 或 Judge 的基础设施失败、弃权和协议错误会把相应运行标为 unscorable，不会变成模型零分。
+
+~~~bash
+uv run scripts/replay_calibration.py
+python3 -m unittest discover -s scripts -p 'test_*.py'
+~~~
+
+静态校准回放仍只用预期关系标签验证确定性认知聚合；真实篇章校准需要提供冻结 Judge 后运行 19 组候选。完整协议见 [认知评分运行契约](docs/runtime-scoring.md)和[篇章语义运行层](docs/discourse-semantic-runtime.md)。
 
 ## 隐私与版权
 

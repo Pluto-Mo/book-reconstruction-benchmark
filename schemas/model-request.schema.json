@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/model-request.schema.json",
+  "title": "Provider-neutral structured model request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "request_id",
+    "stage",
+    "attempt",
+    "model_id",
+    "generation_parameters",
+    "messages",
+    "response_schema",
+    "metadata"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "request_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "stage": {
+      "type": "string",
+      "enum": [
+        "evidence_locator",
+        "relation_adjudicator",
+        "authorial_edge_locator",
+        "authorial_edge_adjudicator",
+        "discourse_structure_extractor",
+        "editorial_local_progression",
+        "editorial_global_order",
+        "editorial_spine_connectivity",
+        "editorial_example_integration",
+        "editorial_closure"
+      ]
+    },
+    "attempt": {"type": "integer", "minimum": 1, "maximum": 2},
+    "model_id": {"type": "string", "minLength": 1},
+    "generation_parameters": {
+      "$ref": "#/$defs/generation_parameters"
+    },
+    "messages": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "content"],
+        "properties": {
+          "role": {"type": "string", "enum": ["system", "user"]},
+          "content": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "response_schema": {"type": "object"},
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "book_id",
+        "submission_id",
+        "submission_sha256",
+        "criterion_id",
+        "prompt_version"
+      ],
+      "properties": {
+        "book_id": {"type": "string", "minLength": 1},
+        "submission_id": {"type": "string", "minLength": 1},
+        "submission_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "criterion_id": {"type": "string", "minLength": 1},
+        "prompt_version": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "$defs": {
+    "generation_parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["temperature", "top_p", "max_output_tokens", "seed"],
+      "properties": {
+        "temperature": {"type": "number", "minimum": 0, "maximum": 2},
+        "top_p": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "max_output_tokens": {"type": "integer", "minimum": 64},
+        "seed": {"type": ["integer", "null"]}
+      }
+    }
+  }
+}

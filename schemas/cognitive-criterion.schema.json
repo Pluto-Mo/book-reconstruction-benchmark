@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/cognitive-criterion.schema.json",
+  "title": "Verifier-only narrow cognitive relation criterion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "visibility",
+    "book_id",
+    "criterion_id",
+    "relation",
+    "review_policy",
+    "prompt_versions"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "visibility": {"type": "string", "const": "verifier_only"},
+    "book_id": {"type": "string", "minLength": 1},
+    "criterion_id": {"type": "string", "minLength": 1},
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation_type",
+        "requirement",
+        "required_facets",
+        "source_nodes",
+        "target_nodes",
+        "acceptable_paraphrases",
+        "pass_if",
+        "fail_if",
+        "common_false_positives",
+        "contradiction_patterns"
+      ],
+      "properties": {
+        "relation_type": {
+          "type": "string",
+          "enum": [
+            "causes",
+            "supports",
+            "jointly_supports",
+            "explains",
+            "qualifies",
+            "limits",
+            "refutes",
+            "contradicts",
+            "distinguishes",
+            "exemplifies",
+            "instantiates",
+            "enables",
+            "implies",
+            "precedes"
+          ]
+        },
+        "requirement": {"type": "string", "minLength": 1},
+        "required_facets": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "direction",
+              "mechanism",
+              "condition",
+              "boundary",
+              "stance_owner",
+              "epistemic_status",
+              "argument_function",
+              "case_identity"
+            ]
+          }
+        },
+        "source_nodes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/node"}
+        },
+        "target_nodes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/node"}
+        },
+        "acceptable_paraphrases": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "pass_if": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "fail_if": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "common_false_positives": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "contradiction_patterns": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "review_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommended", "risk_flags"],
+      "properties": {
+        "recommended": {"type": "boolean"},
+        "risk_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "direction",
+              "condition_or_boundary",
+              "stance_or_epistemic",
+              "case_identity",
+              "constitutive_case",
+              "dense_facets"
+            ]
+          }
+        }
+      }
+    },
+    "prompt_versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locator", "judge"],
+      "properties": {
+        "locator": {"type": "string", "minLength": 1},
+        "judge": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement", "role", "stance_owner", "epistemic_status"],
+      "properties": {
+        "statement": {"type": "string", "minLength": 1},
+        "role": {"type": "string", "minLength": 1},
+        "stance_owner": {"type": "string", "minLength": 1},
+        "epistemic_status": {"type": "string", "minLength": 1},
+        "case_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["function", "preservation"],
+          "properties": {
+            "function": {
+              "type": "string",
+              "enum": ["constitutive", "illustrative"]
+            },
+            "preservation": {
+              "type": "string",
+              "enum": ["required", "replaceable", "optional"]
+            },
+            "replacement_rule": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-CASE-003",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_delete_lifebuoy_case.draft.md",
+  "expected_output_sha256": "1e9abc7b31ddbcf42199ffd366cd08da024f630c99e4dcb6456d96c83d7bebdc",
+  "expected_nonwhitespace_codepoints": 6248,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "救生圈香皂的历史体味广告又划出一条边界。药味不能在不损伤清洁力主张的情况下轻易删除，广告便保留这个事实，把注意转向体味问题，使药味从不利因素变成除味承诺的感官证明。医学功效不是这项结构分析的论据；重要的是事实没有被遮掩，改变的只是事实在论证中的意义。重新界定若靠删除事实完成，就已经不再是重新界定。",
+      "new": "重新界定并不删除事实；它只改变事实在论证中的视角、分类或意义。若靠删除事实完成，就已经不再是重新界定。"
+    },
+    {
+      "type": "replace_once",
+      "old": "案例同样必须留在它们发挥作用的位置。切斯特菲尔德反驳直接更换人格；电视维修先建立接受次序，又被重读为事实框架的变化；救生圈说明重新界定不能删除事实；火焰喷射器先完成顾客利益比较，再为权威证明制造需要。把四个案例抽出来排成故事集，内容似乎仍在，支撑关系却已经消失。",
+      "new": "案例同样必须留在它们发挥作用的位置。切斯特菲尔德反驳直接更换人格；电视维修先建立接受次序，又被重读为事实框架的变化；火焰喷射器先完成顾客利益比较，再为权威证明制造需要。把这些案例抽出来排成故事集，内容似乎仍在，支撑关系却已经消失。"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-X-001",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_lifebuoy_bridge_deletion.draft.md",
+  "expected_output_sha256": "4db3bbe7b0b6a38ed3fe354198ee43cdb504d48236084ea93976bc1780d36284",
+  "expected_nonwhitespace_codepoints": 6332,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "药味不能在不损伤清洁力主张的情况下轻易删除，广告便保留这个事实，把注意转向体味问题，使药味从不利因素变成除味承诺的感官证明。",
+      "new": "广告把注意转向体味问题，使药味从不利因素变成除味承诺的感官证明。"
+    }
+  ]
+}

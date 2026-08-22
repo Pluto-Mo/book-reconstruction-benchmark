@@ -1,0 +1,16 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-C-005",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_fire_injectors_stance_misattribution.draft.md",
+  "expected_output_sha256": "5a6372f532ff173b822d67831617c2d0daab270f28da132e5e758780e2f2e384",
+  "expected_nonwhitespace_codepoints": 6366,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "这些技术效果只是广告自己的主张，并不自动成为工程事实。",
+      "new": "这些技术效果并非广告中的一面之词，而是已经得到证实的工程事实。"
+    }
+  ]
+}

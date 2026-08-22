@@ -1,0 +1,21 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-D-003",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_definition_example_modularization.draft.md",
+  "expected_output_sha256": "121b9bab9e0589a4f2251c2954ebd2252dc6b0a3dc7f63865c2f4cb20acecf32",
+  "expected_nonwhitespace_codepoints": 6375,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "《电视维修手册》的历史广告把接受之路完整地摆了出来。直接要求普通人购买手册、自行处理电视问题并节省维修费，会撞上“复杂机器应由专业人员处理”的信念。广告于是从共同的不满、昂贵的维修经历和熟悉的症状开始，使读者不断同意“这也是我的问题”。然后才建立第一个目标结论：电视总体可靠，许多故障并不意味着机器彻底损坏。这个结论成立以后，广告才能区分重大故障与常见的外部小调整，并使普通人能够处理一部分小调整成为第二个结论。最后，买到知识、减少维修依赖和节省费用，才作为两个结论共同支持的回报出现。",
+      "new": ""
+    },
+    {
+      "type": "replace_once",
+      "old": "## 七、结构不是内容的容器",
+      "new": "## 案例模块：电视维修手册\n\n《电视维修手册》的历史广告把接受之路完整地摆了出来。直接要求普通人购买手册、自行处理电视问题并节省维修费，会撞上“复杂机器应由专业人员处理”的信念。广告于是从共同的不满、昂贵的维修经历和熟悉的症状开始，使读者不断同意“这也是我的问题”。然后才建立第一个目标结论：电视总体可靠，许多故障并不意味着机器彻底损坏。这个结论成立以后，广告才能区分重大故障与常见的外部小调整，并使普通人能够处理一部分小调整成为第二个结论。最后，买到知识、减少维修依赖和节省费用，才作为两个结论共同支持的回报出现。\n\n## 七、结构不是内容的容器"
+    }
+  ]
+}

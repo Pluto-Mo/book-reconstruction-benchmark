@@ -263,26 +263,28 @@ harbor add "tasks/<book-id>"
 
 跨书不确定性以书为聚类单位；同一本书的多条边不是多个独立书样本。
 
-## 11. 当前初始化边界
+## 11. 当前接入边界
 
-模板符合 Harbor Task 最小目录，但仍不可正式跑榜：
+模板符合 Harbor Task 最小目录。`tasks/breakthrough-advertising-dev/` 已完成认知和篇章两条开发运行层的原生 Harbor 接入：Agent 使用断网环境，`submission.md` 作为唯一 artifact，Judge 在 separate public verifier 中通过 LiteLLM 调用，并生成 numeric reward 与分离的审计日志。Harbor 的原生边界是 `task.toml`、artifact 生命周期、独立 verifier、`/tests/test.sh` 和 `/logs/verifier/reward.json`；任务专用 Judge 脚本直接实现复杂协议，不额外套 Rewardkit。
 
-- 没有正式书稿；
+该开发 Task 仍不可正式跑榜：
+
+- 本地私有书稿已与 Card 哈希绑定，但不进入仓库或公开 Dataset；
 - 没有冻结 Book Card 和 Discourse Card；
-- 没有 Oracle；
-- 没有生产 Locator、Judge、扰动器和聚合器；
+- 没有经人工批准并冻结的正式 Oracle；
+- 认知 Locator / Judge / Quote Validator / Graph Aggregator，以及 Authorial Edge、结构提取、五类 Editorial Probe 和确定性篇章聚合均已接入开发 Task，但具体 Judge 模型尚未校准和冻结；
+- 开发期 Authorial Edge 使用 Book Card 短证据摘要验证接线，正式版本仍需人工确认私有短摘录；
+- 19 组篇章校准尚未通过真实冻结 Judge 运行并人工确认；
 - 没有加入 Dataset Manifest；
 - 跨维度排行榜公式尚未冻结。
 
 下一里程碑：
 
 ```text
-开发书
-→ Source Map
-→ Cognitive Graph / Book Card
-→ Authorial Edge Pool / Discourse Card
-→ Oracle
-→ Cognitive + Discourse Calibration
-→ First Runnable Verifier
-→ harbor run -p tasks/<book-id> -a oracle
+当前：开发 Card / Oracle / 19 组校准
+     + 已实例化的认知和篇章 Harbor Verifier
+→ 在可用的 Docker 环境中选定 Judge 模型并运行两条校准
+→ 人工确认 Authorial Edge 私有短摘录与篇章校准预期
+→ 人工批准并冻结 Card、Oracle、Prompt 和 Provider
+→ 加入 Dataset Manifest 并开始正式多 Trial 运行
 ```

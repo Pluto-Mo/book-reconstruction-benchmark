@@ -1,0 +1,16 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-C-002",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_only_final_conclusion_tv_repair.draft.md",
+  "expected_output_sha256": "8b9fc231d71c925405958b35510aa025290b6a7207ca3ee62540ffd4923189e9",
+  "expected_nonwhitespace_codepoints": 6044,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "《电视维修手册》的历史广告把接受之路完整地摆了出来。直接要求普通人购买手册、自行处理电视问题并节省维修费，会撞上“复杂机器应由专业人员处理”的信念。广告于是从共同的不满、昂贵的维修经历和熟悉的症状开始，使读者不断同意“这也是我的问题”。然后才建立第一个目标结论：电视总体可靠，许多故障并不意味着机器彻底损坏。这个结论成立以后，广告才能区分重大故障与常见的外部小调整，并使普通人能够处理一部分小调整成为第二个结论。最后，买到知识、减少维修依赖和节省费用，才作为两个结论共同支持的回报出现。\n\n这条路不能被缩成“痛点以后给方案”。电视可靠必须先于普通人可调整，普通人可调整又必须先于经济回报。次序一旦改变，案例的认知功能也随之改变。它证明的不是材料越多越可信，而是目标结论要被延迟，每一步同意都要为下一步准备位置。",
+      "new": "《电视维修手册》的广告最终承诺：买到相关知识、减少维修依赖并节省费用。"
+    }
+  ]
+}

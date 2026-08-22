@@ -1,0 +1,46 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-POS-002",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/pos_correct_reorganization_macro_sections.draft.md",
+  "expected_output_sha256": "f9e95dd0767c50514704e87aaa5bce5f89f92968c095dc763df8ca8e21ea039b",
+  "expected_nonwhitespace_codepoints": 6414,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "## 一、广告只能引导已经存在的欲望",
+      "new": "## 诊断：先确定市场力量与进入点\n\n### 一、广告只能引导已经存在的欲望"
+    },
+    {
+      "type": "replace_once",
+      "old": "## 二、标题取决于读者知道什么，也取决于市场听腻了什么",
+      "new": "### 二、标题取决于读者知道什么，也取决于市场听腻了什么"
+    },
+    {
+      "type": "replace_once",
+      "old": "## 三、标题以后，正文必须形成确信",
+      "new": "## 说服：把注意推进为确信\n\n### 三、标题以后，正文必须形成确信"
+    },
+    {
+      "type": "replace_once",
+      "old": "## 四、信念不是被击碎的，而是被逐步延伸的",
+      "new": "### 四、信念不是被击碎的，而是被逐步延伸的"
+    },
+    {
+      "type": "replace_once",
+      "old": "## 五、机制、比较和媒介信用回答三种不同的问题",
+      "new": "## 编排：让材料在读者需要时进入\n\n### 五、机制、比较和媒介信用回答三种不同的问题"
+    },
+    {
+      "type": "replace_once",
+      "old": "## 六、证明只有在被需要时才获得力量",
+      "new": "### 六、证明只有在被需要时才获得力量"
+    },
+    {
+      "type": "replace_once",
+      "old": "## 七、结构不是内容的容器",
+      "new": "### 七、结构不是内容的容器"
+    }
+  ]
+}

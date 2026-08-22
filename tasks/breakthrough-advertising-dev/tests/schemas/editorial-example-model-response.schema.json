@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/editorial-example-model-response.schema.json",
+  "title": "Raw example integration Judge response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["probe_id", "function", "integrated", "reason"],
+  "properties": {
+    "probe_id": {"type": "string", "minLength": 1},
+    "function": {
+      "type": "string",
+      "enum": [
+        "evidence",
+        "counterexample",
+        "boundary",
+        "turn",
+        "application",
+        "synthesis",
+        "decorative"
+      ]
+    },
+    "integrated": {"type": "boolean"},
+    "reason": {"type": "string", "minLength": 1}
+  }
+}

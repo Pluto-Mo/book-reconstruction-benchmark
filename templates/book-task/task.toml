@@ -47,6 +47,7 @@ storage_mb = 4096
 
 # Judge credentials and the frozen judge/model override must be supplied at
 # run time through Harbor verifier environment flags, for example:
-#   --ve ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY"
-#   --ve REWARDKIT_JUDGE="anthropic/<frozen-judge-model>"
+#   --ve BENCHMARK_JUDGE_MODEL="openai/<frozen-judge-model>"
+#   --ve BENCHMARK_JUDGE_API_KEY="$BENCHMARK_JUDGE_API_KEY"
+#   --ve BENCHMARK_JUDGE_BASE_URL="$BENCHMARK_JUDGE_BASE_URL"
 # Do not commit secrets or silently change the judge between compared runs.

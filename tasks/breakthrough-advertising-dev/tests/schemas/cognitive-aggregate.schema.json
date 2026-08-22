@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/cognitive-aggregate.schema.json",
+  "title": "Deterministic cognitive graph aggregate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "book_id",
+    "submission_id",
+    "relation_counts",
+    "relation_results",
+    "structure_results",
+    "path_results",
+    "metrics"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["complete", "unscorable"]
+    },
+    "book_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "submission_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relation_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pass", "fail", "unresolved", "infrastructure_error", "total"],
+      "properties": {
+        "pass": {"type": "integer", "minimum": 0},
+        "fail": {"type": "integer", "minimum": 0},
+        "unresolved": {"type": "integer", "minimum": 0},
+        "infrastructure_error": {"type": "integer", "minimum": 0},
+        "total": {"type": "integer", "minimum": 1}
+      }
+    },
+    "relation_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["relation_id", "structure_id", "outcome", "weight"],
+        "properties": {
+          "relation_id": {"type": "string", "minLength": 1},
+          "structure_id": {"type": "string", "minLength": 1},
+          "outcome": {
+            "type": "string",
+            "enum": ["pass", "fail", "unresolved", "infrastructure_error"]
+          },
+          "weight": {"type": "number", "exclusiveMinimum": 0}
+        }
+      }
+    },
+    "structure_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "structure_id",
+          "weight",
+          "relation_coverage",
+          "passed_relation_weight",
+          "total_relation_weight",
+          "path_requirements_completed",
+          "path_requirements_total",
+          "path_requirement_rate",
+          "path_complete"
+        ],
+        "properties": {
+          "structure_id": {"type": "string", "minLength": 1},
+          "weight": {"type": "number", "exclusiveMinimum": 0},
+          "relation_coverage": {
+            "type": ["number", "null"],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "passed_relation_weight": {"type": "number", "minimum": 0},
+          "total_relation_weight": {"type": "number", "exclusiveMinimum": 0},
+          "path_requirements_completed": {"type": "integer", "minimum": 0},
+          "path_requirements_total": {"type": "integer", "minimum": 1},
+          "path_requirement_rate": {
+            "type": ["number", "null"],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "path_complete": {"type": ["boolean", "null"]}
+        }
+      }
+    },
+    "path_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unit_id",
+          "structure_id",
+          "unit_type",
+          "member_path_ids",
+          "weight",
+          "complete",
+          "blocking_relation_ids",
+          "unresolved_relation_ids"
+        ],
+        "properties": {
+          "unit_id": {"type": "string", "minLength": 1},
+          "structure_id": {"type": "string", "minLength": 1},
+          "unit_type": {
+            "type": "string",
+            "enum": ["mandatory", "alternative_group"]
+          },
+          "member_path_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "weight": {"type": "number", "exclusiveMinimum": 0},
+          "complete": {"type": ["boolean", "null"]},
+          "blocking_relation_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "unresolved_relation_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cognitive_relation_coverage", "complete_core_path_rate"],
+      "properties": {
+        "cognitive_relation_coverage": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "complete_core_path_rate": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"status": {"const": "complete"}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "relation_counts": {
+            "properties": {
+              "unresolved": {"const": 0},
+              "infrastructure_error": {"const": 0}
+            }
+          },
+          "metrics": {
+            "properties": {
+              "cognitive_relation_coverage": {"type": "number"},
+              "complete_core_path_rate": {"type": "number"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"status": {"const": "unscorable"}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "metrics": {
+            "properties": {
+              "cognitive_relation_coverage": {"const": null},
+              "complete_core_path_rate": {"const": null}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

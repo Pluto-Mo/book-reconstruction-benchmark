@@ -18,7 +18,7 @@ Project invariants:
 - The repository root is a dataset workspace, not a task root. Runnable tasks live under `tasks/<book-id>/`; `templates/book-task/` is only a scaffold.
 - Every instantiated task must preserve Harbor's canonical root files: `instruction.md`, `task.toml`, `environment/Dockerfile`, optional `solution/solve.sh`, and `tests/test.sh`. Extra rubric and verifier files belong under `tests/`.
 - A task is not part of the dataset until it is added to `dataset.toml` with `harbor add`.
-- Codex builds the benchmark. Harbor is the harness. The first pilot uses Claude Code as the evaluated agent scaffold.
+- Codex builds the benchmark. Harbor is the harness. The first pilot uses Harbor's Pi agent scaffold, with the same frozen Pi version, tools, thinking policy, task, and verifier across compared models.
 - Later models enter through adapters. Never fork the task prompt, scaffold, tools, verifier, or budgets by model when claiming a model comparison.
 - The primary public-use scenario is AI-assisted compressed co-reading for a time-constrained serious nonfiction reader, not a magazine commission, review, publication draft, or study-note handout.
 - The default public instruction condition is `natural`: it states the reader's use case and meaningful quality preferences but does not provide book-specific task analysis or gold content.

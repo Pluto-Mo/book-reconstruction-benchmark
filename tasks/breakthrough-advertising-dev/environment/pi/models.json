@@ -1,0 +1,131 @@
+{
+  "providers": {
+    "kimi-benchmark": {
+      "name": "Kimi (Benchmark 比赛临时用)",
+      "baseUrl": "https://api.moonshot.cn/v1",
+      "apiKey": "${KIMI_BENCHMARK_API_KEY}",
+      "api": "openai-completions",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        {
+          "id": "kimi-k3",
+          "name": "Kimi K3 (Benchmark)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1048576,
+          "maxTokens": 131072,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          }
+        }
+      ]
+    },
+    "qwen-benchmark": {
+      "name": "Qwen 千问官方 (Benchmark 比赛临时用)",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "apiKey": "${QWEN_BENCHMARK_API_KEY}",
+      "api": "openai-completions",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "thinkingFormat": "qwen"
+      },
+      "models": [
+        {
+          "id": "qwen3.8-max",
+          "name": "Qwen3.8 Max (Benchmark)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1000000,
+          "maxTokens": 131072,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          }
+        }
+      ]
+    },
+    "openai-benchmark": {
+      "name": "自定义 OpenAI 兼容网关 (Benchmark 比赛临时用)",
+      "baseUrl": "https://api.wodex.ai/v1",
+      "apiKey": "${OPENAI_BENCHMARK_API_KEY}",
+      "api": "openai-completions",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        {
+          "id": "gpt-5.6-sol",
+          "name": "GPT 5.6 Sol (Benchmark)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 272000,
+          "maxTokens": 32768,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          }
+        },
+        {
+          "id": "claude-opus-5",
+          "name": "Claude Opus 5 (Benchmark)",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 200000,
+          "maxTokens": 32768,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          }
+        }
+      ]
+    },
+    "deepseek": {
+      "name": "DeepSeek Official API (Benchmark)",
+      "baseUrl": "https://api.deepseek.com",
+      "apiKey": "${DEEPSEEK_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "deepseek-v4-pro",
+          "name": "DeepSeek V4 Pro (Official API)",
+          "reasoning": true,
+          "input": ["text"],
+          "contextWindow": 1000000,
+          "maxTokens": 384000,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "max": "max"
+          },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "requiresReasoningContentOnAssistantMessages": true,
+            "thinkingFormat": "deepseek"
+          },
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          }
+        }
+      ]
+    }
+  }
+}

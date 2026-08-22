@@ -1,0 +1,17 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-D-001",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_v_vi_section_swap.draft.md",
+  "expected_output_sha256": "2fa86e716270fee9d843d6df57a07afdf28b1a7c34003392b23961bef221f042",
+  "expected_nonwhitespace_codepoints": 6362,
+  "operations": [
+    {
+      "type": "swap_blocks",
+      "first_start": "## 五、机制、比较和媒介信用回答三种不同的问题",
+      "second_start": "## 六、证明只有在被需要时才获得力量",
+      "after_second": "## 七、结构不是内容的容器"
+    }
+  ]
+}

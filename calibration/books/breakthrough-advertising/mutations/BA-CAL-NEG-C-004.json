@@ -1,0 +1,16 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-C-004",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_terminology_pileup.draft.md",
+  "expected_output_sha256": "c5dc84d4080b256cce8db2d66f902b3338c9977537f70525c14abeb59eea2047",
+  "expected_nonwhitespace_codepoints": 6322,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "标题截获注意，正文完成销售。正文并非标题的延长说明，它要使读者从“这件事与我有关”走到“这个产品值得要、适合我，而且确实能够兑现”。这项工作有三个方面。欲望使满足鲜明而强烈；认同使产品进入读者对自己和理想角色的理解；信念则决定所有承诺能否被当作现实接受。三个方面可以分别分析，却必须共同形成确信并推动行动。",
+      "new": "进入正文以后，标题、注意、销售、产品、读者、欲望、认同、信念、理想角色、现实接受、确信和行动，构成广告必须兼顾的一组要素。欲望、认同和信念是三个常用方面；产品、角色与现实接受则是这些方面所涉及的内容。写作时应把它们一一照顾到。"
+    }
+  ]
+}

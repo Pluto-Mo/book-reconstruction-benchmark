@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/judge-result.schema.json",
+  "title": "Relation adjudication result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "book_id",
+    "submission_id",
+    "criterion_id",
+    "evidence_result_id",
+    "selected_candidate_ids",
+    "decision",
+    "support_found",
+    "contradiction_found",
+    "missing_facets",
+    "reason",
+    "confidence",
+    "judge_model",
+    "prompt_version"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "2.0"
+    },
+    "book_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "submission_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "criterion_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_result_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selected_candidate_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "abstain"
+      ]
+    },
+    "support_found": {
+      "type": "boolean"
+    },
+    "contradiction_found": {
+      "type": "boolean"
+    },
+    "missing_facets": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "direction",
+          "mechanism",
+          "condition",
+          "boundary",
+          "stance_owner",
+          "epistemic_status",
+          "argument_function",
+          "case_identity"
+        ]
+      }
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "judge_model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prompt_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "not_run",
+            "confirmed",
+            "rejected",
+            "conflict"
+          ]
+        },
+        "reviewer_model": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "pass"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "selected_candidate_ids": {
+            "minItems": 1
+          },
+          "support_found": {
+            "const": true
+          },
+          "contradiction_found": {
+            "const": false
+          },
+          "missing_facets": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "abstain"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "confidence": {
+            "maximum": 0.5
+          }
+        }
+      }
+    }
+  ]
+}

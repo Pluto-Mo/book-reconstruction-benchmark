@@ -1,0 +1,16 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-C-006",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_delete_core_relation_r0306.draft.md",
+  "expected_output_sha256": "b023d3044cd63ac925ba3832fb9ea3355f9f435103059e343cfe8c5b0bfcf603",
+  "expected_nonwhitespace_codepoints": 6323,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "市场第一次听见一类产品时，直接说出需要或承诺就可能足够，正文再引入和证明产品。",
+      "new": ""
+    }
+  ]
+}

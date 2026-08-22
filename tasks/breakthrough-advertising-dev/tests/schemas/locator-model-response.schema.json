@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/locator-model-response.schema.json",
+  "title": "Raw semantic Locator model response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "quotes"],
+  "properties": {
+    "status": {"type": "string", "enum": ["found", "none"]},
+    "quotes": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["quote"],
+        "properties": {
+          "quote": {"type": "string", "minLength": 1},
+          "context_before": {"type": "string", "maxLength": 240},
+          "context_after": {"type": "string", "maxLength": 240}
+        }
+      }
+    },
+    "notes": {"type": "string"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"status": {"const": "found"}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {"quotes": {"minItems": 1}}
+      }
+    },
+    {
+      "if": {
+        "properties": {"status": {"const": "none"}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {"quotes": {"maxItems": 0}}
+      }
+    }
+  ]
+}

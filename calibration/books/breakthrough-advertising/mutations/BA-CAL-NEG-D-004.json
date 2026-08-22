@@ -1,0 +1,21 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-D-004",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_fire_example_relocation.draft.md",
+  "expected_output_sha256": "772f9cbe2c6ebeccde0cd04075412e576fe91da7a477e96e1c25d213832465fa",
+  "expected_nonwhitespace_codepoints": 6362,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "火焰喷射器与火花塞的历史广告演示了完整比较。火花塞的每一项弱点都被连接到车主可能承受的损害，喷射装置的相应设计再逐点提供补救，使坏处与好处彼此交织。这些技术效果只是广告自己的主张，并不自动成为工程事实。结构的力量来自每个补救都回答同一个弱点，而不是先展示一大段本品技术，再附带贬低竞争者。",
+      "new": ""
+    },
+    {
+      "type": "replace_once",
+      "old": "这条路不能被缩成“痛点以后给方案”。电视可靠必须先于普通人可调整，普通人可调整又必须先于经济回报。次序一旦改变，案例的认知功能也随之改变。它证明的不是材料越多越可信，而是目标结论要被延迟，每一步同意都要为下一步准备位置。",
+      "new": "这条路不能被缩成“痛点以后给方案”。电视可靠必须先于普通人可调整，普通人可调整又必须先于经济回报。次序一旦改变，案例的认知功能也随之改变。它证明的不是材料越多越可信，而是目标结论要被延迟，每一步同意都要为下一步准备位置。\n\n火焰喷射器与火花塞的历史广告演示了完整比较。火花塞的每一项弱点都被连接到车主可能承受的损害，喷射装置的相应设计再逐点提供补救，使坏处与好处彼此交织。这些技术效果只是广告自己的主张，并不自动成为工程事实。结构的力量来自每个补救都回答同一个弱点，而不是先展示一大段本品技术，再附带贬低竞争者。"
+    }
+  ]
+}

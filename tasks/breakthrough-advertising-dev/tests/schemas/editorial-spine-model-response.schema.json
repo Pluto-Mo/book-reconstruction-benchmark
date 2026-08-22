@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/editorial-spine-model-response.schema.json",
+  "title": "Raw spine connectivity Judge response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["units"],
+  "properties": {
+    "units": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["unit_id", "orphan", "reason"],
+        "properties": {
+          "unit_id": {"type": "string", "pattern": "^U[0-9]{2}$"},
+          "orphan": {"type": "boolean"},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

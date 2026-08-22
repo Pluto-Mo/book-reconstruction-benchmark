@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/discourse-structure-model-response.schema.json",
+  "title": "Raw discourse structure extractor response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["controlling_question", "major_units", "examples"],
+  "properties": {
+    "controlling_question": {"type": "string", "minLength": 1},
+    "major_units": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unit_id",
+          "start_char",
+          "end_char",
+          "function",
+          "spine_contribution"
+        ],
+        "properties": {
+          "unit_id": {"type": "string", "pattern": "^U[0-9]{2}$"},
+          "start_char": {"type": "integer", "minimum": 0},
+          "end_char": {"type": "integer", "minimum": 1},
+          "function": {
+            "type": "string",
+            "enum": [
+              "establish_premise",
+              "frame_problem",
+              "introduce_distinction",
+              "raise_objection",
+              "answer_objection",
+              "develop_mechanism",
+              "qualify_claim",
+              "synthesize",
+              "apply",
+              "close_argument"
+            ]
+          },
+          "spine_contribution": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "example_id",
+          "start_char",
+          "end_char",
+          "host_unit_id",
+          "proposed_function"
+        ],
+        "properties": {
+          "example_id": {"type": "string", "pattern": "^EX[0-9]{2}$"},
+          "start_char": {"type": "integer", "minimum": 0},
+          "end_char": {"type": "integer", "minimum": 1},
+          "host_unit_id": {"type": "string", "pattern": "^U[0-9]{2}$"},
+          "proposed_function": {
+            "type": "string",
+            "enum": [
+              "evidence",
+              "counterexample",
+              "boundary",
+              "turn",
+              "application",
+              "synthesis",
+              "other"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

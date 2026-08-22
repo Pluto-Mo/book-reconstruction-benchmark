@@ -1,0 +1,2694 @@
+{
+  "schema_version": "2.0",
+  "status": "draft",
+  "book_id": "breakthrough-advertising-dev",
+  "title": "Breakthrough Advertising / 突破性广告",
+  "domain": "direct-response advertising, copywriting, and market persuasion",
+  "source": {
+    "document_sha256": "e077e6b8467b30b9499a48021a0b360f87c43a2442a0d3a42d420efd74274a3c",
+    "locator_scheme": "BA-<sha12>-<chapter>-src-<kind>-L<start>-L<end>",
+    "notes": "所有定位都使用这一份哈希绑定源文件的绝对行空间；src 不表示任何语言具有主锚地位。双语部分只是在本书开发中可互校的两个文本见证，其他书按各自经人工确认的可靠来源定位。当前多数工作锚位于英文半部，是 OCR 清晰度与术语核对的临时工程选择，不构成跨书评分规则；高权重关系冻结前仍须与中文对应段及可靠原版复核。"
+  },
+  "compression": {
+    "min_chars": 6000,
+    "max_chars": 8000
+  },
+  "source_anchors": [
+    {
+      "id": "SA-001",
+      "locator": "BA-e077e6b8467b-FRONT-src-analysis-L4855-L4871",
+      "chapter": "Introduction",
+      "section": "Analysis rather than formulas",
+      "evidence_summary": "作者把每个新市场、产品和广告视为独特问题；过去公式是过去问题的解，分析才让当前问题决定答案。",
+      "argument_function": "建立反公式的上位认识论与分析方法。"
+    },
+    {
+      "id": "SA-002",
+      "locator": "BA-e077e6b8467b-C05-src-creativity-L6294-L6324",
+      "chapter": "Chapter 5",
+      "section": "The Three Levels of Creativity",
+      "evidence_summary": "作者区分替词模仿、仅用于 verbalization 的公式，以及从产品—市场—时机关系中寻找独特解法的分析。",
+      "argument_function": "限定公式的合法用途并反驳用历史模板生成创意。"
+    },
+    {
+      "id": "SA-003",
+      "locator": "BA-e077e6b8467b-C05-src-summary-L6398-L6434",
+      "chapter": "Chapter 5",
+      "section": "Summary: The Art of Creative Planning",
+      "evidence_summary": "市场分析与产品分析汇合为 theme，再由 Awareness 与 Sophistication 找到 headline entry，正文随后建立 conviction。",
+      "argument_function": "给出第一部总路径并连接标题与正文。"
+    },
+    {
+      "id": "SA-004",
+      "locator": "BA-e077e6b8467b-C01-src-mass-desire-L5104-L5134",
+      "chapter": "Chapter 1",
+      "section": "Mass Desire",
+      "evidence_summary": "大众欲望由市场中的社会、经济和技术力量长期形成；文案不能创造或对抗，只能导向特定产品。",
+      "argument_function": "建立大众欲望的因果来源、广告边界与导流职责。"
+    },
+    {
+      "id": "SA-005",
+      "locator": "BA-e077e6b8467b-C01-src-channel-desire-L5160-L5180",
+      "chapter": "Chapter 1",
+      "section": "How to Channel Mass Desire",
+      "evidence_summary": "作者以 urgency、staying power、scope 比较欲望，只让一个主导欲望通过标题连接产品。",
+      "argument_function": "给出主导欲望选择机制与标题桥梁。"
+    },
+    {
+      "id": "SA-006",
+      "locator": "BA-e077e6b8467b-C01-src-product-analysis-L5188-L5214",
+      "chapter": "Chapter 1",
+      "section": "The Analysis of Your Product",
+      "evidence_summary": "产品分为物理产品与功能产品；物理事实从属于功能表现，用来证明、强化或赋予可信基础。",
+      "argument_function": "建立物理事实与功能性销售承诺的从属关系。"
+    },
+    {
+      "id": "SA-007",
+      "locator": "BA-e077e6b8467b-C01-src-dominant-performance-L5218-L5250",
+      "chapter": "Chapter 1",
+      "section": "Dominant performance",
+      "evidence_summary": "一个产品有多项表现，但广告一次只能突出最能接入主导欲望的一项；其余表现只支持主诉求。",
+      "argument_function": "建立单一主导 performance 及其他材料的支持角色。"
+    },
+    {
+      "id": "SA-008",
+      "locator": "BA-e077e6b8467b-C02-src-three-questions-L5266-L5298",
+      "chapter": "Chapter 2",
+      "section": "Headline's real job",
+      "evidence_summary": "Mass Desire、Awareness 与 Sophistication 三问共同决定标题内容；标题通常只负责让读者继续读下一句。",
+      "argument_function": "建立标题诊断输入、真实职责与最知情特价例外。"
+    },
+    {
+      "id": "SA-009",
+      "locator": "BA-e077e6b8467b-C02-src-aware-branches-L5404-L5456",
+      "chapter": "Chapter 2",
+      "section": "New products and need-solving products",
+      "evidence_summary": "已知结果但不知产品时，从欲望或方案进入并证明机制；已知需要但未连接产品时，从需要进入并把产品呈为必然方案。",
+      "argument_function": "支撑 Awareness 中段的条件分支。"
+    },
+    {
+      "id": "SA-010",
+      "locator": "BA-e077e6b8467b-C02-src-unaware-L5492-L5534",
+      "chapter": "Chapter 2",
+      "section": "Completely Unaware Market",
+      "evidence_summary": "完全不知情或抗拒的市场不能从价格、产品、功能或欲望直入，而要以市场身份开头，逐步走到问题、方案和产品。",
+      "argument_function": "建立 Awareness 第五阶段的排除规则与渐进路径。"
+    },
+    {
+      "id": "SA-011",
+      "locator": "BA-e077e6b8467b-C03-src-sophistication-1-2-L5776-L5854",
+      "chapter": "Chapter 3",
+      "section": "Sophistication stages 1–2",
+      "evidence_summary": "无同类信息时直接陈述需要或主张；竞争出现且直接主张仍有效时扩大主张，直到可信度耗竭。",
+      "argument_function": "建立 Sophistication 前两阶段及其转移条件。"
+    },
+    {
+      "id": "SA-012",
+      "locator": "BA-e077e6b8467b-C03-src-sophistication-3-5-L5856-L5944",
+      "chapter": "Chapter 3",
+      "section": "Sophistication stages 3–5",
+      "evidence_summary": "旧主张饱和后机制进入标题、主张后置；机制也耗竭后转向 prospect identification。",
+      "argument_function": "建立 what→how 换位、机制扩张和第五阶段转向。"
+    },
+    {
+      "id": "SA-013",
+      "locator": "BA-e077e6b8467b-C06-src-three-dimensions-L6442-L6508",
+      "chapter": "Chapter 6",
+      "section": "Desires, Identifications, Beliefs",
+      "evidence_summary": "标题带来注意，正文通过 Desire、Identification、Belief 三维改变读者现实图景并把产品建成主导欲望的实现。",
+      "argument_function": "连接标题与正文，定义三维心智及整体编织目标。"
+    },
+    {
+      "id": "SA-014",
+      "locator": "BA-e077e6b8467b-C07-src-intensification-L6512-L6556",
+      "chapter": "Chapter 7",
+      "section": "Intensification",
+      "evidence_summary": "把模糊欲望变成连续而不同的具体满足图景；不可复述同一表述，但可用新视角强化同一承诺。",
+      "argument_function": "定义 Intensification 并给出新鲜性、篇幅和市场饱和边界。"
+    },
+    {
+      "id": "SA-015",
+      "locator": "BA-e077e6b8467b-C08-src-identification-L7010-L7150",
+      "chapter": "Chapter 8",
+      "section": "Identification and desired roles",
+      "evidence_summary": "产品既满足功能需要，也可成为角色的实现工具或已实现角色的社会符号；角色分 character 与 achievement。",
+      "argument_function": "定义 Identification、双重购买理由和角色分类。"
+    },
+    {
+      "id": "SA-016",
+      "locator": "BA-e077e6b8467b-C08-src-primary-image-L7178-L7246",
+      "chapter": "Chapter 8",
+      "section": "Primary Image",
+      "evidence_summary": "既有 primary image 不能被丢弃或直接反驳；不利形象须保留、降强度并作为通向有利形象的逻辑桥。",
+      "argument_function": "建立形象转换的事实边界与 Chesterfield 例的完整桥接功能。"
+    },
+    {
+      "id": "SA-017",
+      "locator": "BA-e077e6b8467b-C08-src-image-limits-L7286-L7308",
+      "chapter": "Chapter 8",
+      "section": "Limits to Identification Images",
+      "evidence_summary": "受众若不相信产品具备目标特质或无法与自身连接，就必须从已接受形象建立 believability bridge；要求跨越鸿沟会失败。",
+      "argument_function": "限定目标形象的可接受性并定义桥接失败。"
+    },
+    {
+      "id": "SA-018",
+      "locator": "BA-e077e6b8467b-C09-src-gradualization-L7354-L7420",
+      "chapter": "Chapter 9",
+      "section": "Belief and Gradualization",
+      "evidence_summary": "Desire 与 Identification 必须同 Belief 融合为 conviction；Gradualization 从已接受事实逐步延伸到原本不接受的结论。",
+      "argument_function": "建立 belief 边界、接受链及其与 proof/documentation 的区分。"
+    },
+    {
+      "id": "SA-019",
+      "locator": "BA-e077e6b8467b-C09-src-belief-architecture-L7430-L7470",
+      "chapter": "Chapter 9",
+      "section": "The Architecture of Belief",
+      "evidence_summary": "陈述力量同时来自内容和前置准备；位置与顺序可提高接受度，Awareness 可重述为 readiness to accept。",
+      "argument_function": "说明结构、位置和准备如何改变同一主张的可信力。"
+    },
+    {
+      "id": "SA-020",
+      "locator": "BA-e077e6b8467b-C09-src-tv-case-L7472-L7630",
+      "chapter": "Chapter 9",
+      "section": "TV Repair Manual case",
+      "evidence_summary": "案例从共同怨气与连续 agreement，推进到电视可靠、普通人可做 minor adjustments，再推出应获得知识并节省维修费。",
+      "argument_function": "构成性演示完整 Gradualization 接受链。"
+    },
+    {
+      "id": "SA-021",
+      "locator": "BA-e077e6b8467b-C09-src-restatement-L7634-L7652",
+      "chapter": "Chapter 9",
+      "section": "Restatement of the Theory",
+      "evidence_summary": "目标结论在读者准备好后再出现；逐层 agreement 和 believability structure 比堆叠未被相信的承诺更有力。",
+      "argument_function": "从 TV 案例抽象出延迟结论和结构性接受原则。"
+    },
+    {
+      "id": "SA-022",
+      "locator": "BA-e077e6b8467b-C10-src-redefinition-L7806-L7846",
+      "chapter": "Chapter 10",
+      "section": "Redefinition and Lifebuoy",
+      "evidence_summary": "Redefinition 为内置阻力提供新的解释而非否认事实；Lifebuoy 将不可移除的药味转成清洁力的感官证明。",
+      "argument_function": "定义视角重排并提供 liability→asset 构成性案例。"
+    },
+    {
+      "id": "SA-023",
+      "locator": "BA-e077e6b8467b-C10-src-tv-simplification-L7850-L7910",
+      "chapter": "Chapter 10",
+      "section": "Simplification",
+      "evidence_summary": "TV 案例把 repair 重定义为常见、外部、轻微的 adjustments，同时保留少数真正 major breakdowns。",
+      "argument_function": "演示 simplification 不靠空喊简单，而靠事实分类和词义重组。"
+    },
+    {
+      "id": "SA-024",
+      "locator": "BA-e077e6b8467b-C10-src-three-redefinitions-L7912-L8008",
+      "chapter": "Chapter 10",
+      "section": "Simplification, Escalation, Price Reduction",
+      "evidence_summary": "复杂阻力对应简化，吸引面过窄对应扩大产品角色，高价对应切换到更高的比较标准。",
+      "argument_function": "建立三类阻力与三种 Redefinition 的条件映射。"
+    },
+    {
+      "id": "SA-025",
+      "locator": "BA-e077e6b8467b-C10-src-structure-perspective-L8046-L8048",
+      "chapter": "Chapter 10",
+      "section": "Gradualization versus Redefinition",
+      "evidence_summary": "Gradualization 通过事实与短语的安排工作，Redefinition 通过视角重排工作；二者都建立 belief。",
+      "argument_function": "防止把两种相邻机制混为同义词。"
+    },
+    {
+      "id": "SA-026",
+      "locator": "BA-e077e6b8467b-C11-src-mechanism-demand-L8074-L8104",
+      "chapter": "Chapter 11",
+      "section": "Demand for Mechanism",
+      "evidence_summary": "读者会依次要求更多欲望材料、proof 或 how-it-works；Mechanization 用语言与逻辑回答如何兑现结果。",
+      "argument_function": "定义机制需求、切换点和 verbal proof。"
+    },
+    {
+      "id": "SA-027",
+      "locator": "BA-e077e6b8467b-C11-src-mechanism-stages-L8106-L8204",
+      "chapter": "Chapter 11",
+      "section": "Name, Describe, Feature the Mechanism",
+      "evidence_summary": "机制已知时只命名，未知或同质时销售性描述，市场高度成熟或机制强时让机制成为 headline claim。",
+      "argument_function": "建立机制呈现强度的条件分支和次级主张支持主承诺的关系。"
+    },
+    {
+      "id": "SA-028",
+      "locator": "BA-e077e6b8467b-C12-src-concentration-L8246-L8296",
+      "chapter": "Chapter 12",
+      "section": "Concentration",
+      "evidence_summary": "Concentration 不是单纯攻击，而是证明替代方案的弱点如何损害读者，并证明本品消除该弱点。",
+      "argument_function": "建立竞争比较的完整因果桥与 attack-only 失败边界。"
+    },
+    {
+      "id": "SA-029",
+      "locator": "BA-e077e6b8467b-C13-src-camouflage-L8450-L8488",
+      "chapter": "Chapter 13",
+      "section": "Camouflage",
+      "evidence_summary": "读者对特定媒介的信任及其熟悉的 format、style、phraseology 可条件性迁移到适配的广告。",
+      "argument_function": "定义 borrowed believability，区别于通用新闻伪装。"
+    },
+    {
+      "id": "SA-030",
+      "locator": "BA-e077e6b8467b-C14-src-synthesis-L8782-L8800",
+      "chapter": "Chapter 14",
+      "section": "Tying the ad together",
+      "evidence_summary": "作者在分析拆分后要求把 promises、images、devices、structures 重新编织成持续注意力的 cohesive unit。",
+      "argument_function": "建立终章的整体综合目标。"
+    },
+    {
+      "id": "SA-031",
+      "locator": "BA-e077e6b8467b-C14-src-verification-L8802-L8880",
+      "chapter": "Chapter 14",
+      "section": "Verification",
+      "evidence_summary": "Documentation 是外部事实证明，Mechanization 是语言逻辑证明，Verification 是把 documentation 放在最可接受、最有情感效果的位置。",
+      "argument_function": "区分三种 proof 概念并建立 proof placement。"
+    },
+    {
+      "id": "SA-032",
+      "locator": "BA-e077e6b8467b-C14-src-reinforcement-interweaving-L8882-L8978",
+      "chapter": "Chapter 14",
+      "section": "Reinforcement and Interweaving",
+      "evidence_summary": "逻辑相邻的图像或主张可互相放大；句段应融合 promise、logic、emotion、image，而非机械拼装标签。",
+      "argument_function": "建立局部组合的非加和力量和多功能表达。"
+    },
+    {
+      "id": "SA-015A",
+      "locator": "BA-e077e6b8467b-C08-src-identification-role-L7010-L7048",
+      "chapter": "Chapter 8",
+      "section": "Identification as a second purchase value",
+      "evidence_summary": "Identification 在功能满足之外增加角色实现或角色确认，使同一次购买同时承担功能和身份价值。",
+      "argument_function": "为 Desire 到 Identification 的篇章转折提供窄锚。"
+    },
+    {
+      "id": "SA-015B",
+      "locator": "BA-e077e6b8467b-C08-src-identification-market-limits-L7140-L7158",
+      "chapter": "Chapter 8",
+      "section": "Market acceptance limits image choice",
+      "evidence_summary": "角色形象不能凭作者意愿强加，须先识别市场愿意接受或拒绝的角色，并以产品既有特性为事实基础。",
+      "argument_function": "把 Identification 的角色价值连接到 primary-image 创作边界。"
+    },
+    {
+      "id": "SA-016A",
+      "locator": "BA-e077e6b8467b-C08-src-primary-image-rule-L7178-L7218",
+      "chapter": "Chapter 8",
+      "section": "Primary image rule",
+      "evidence_summary": "既有形象是 image building 的原材料；有利形象可增强，不利或中性形象只能保留并降低强度，不能直接矛盾或丢弃。",
+      "argument_function": "为 primary image 的一般规则提供窄锚。"
+    },
+    {
+      "id": "SA-016B",
+      "locator": "BA-e077e6b8467b-C08-src-chesterfield-bridge-L7220-L7246",
+      "chapter": "Chapter 8",
+      "section": "Chesterfield primary-image bridge",
+      "evidence_summary": "Chesterfield 案例先承认男性 primary image，再降低其强度并把它桥接到女性可接受的新场景。",
+      "argument_function": "为构成性 Chesterfield 案例的桥接次序提供窄锚。"
+    },
+    {
+      "id": "SA-020A",
+      "locator": "BA-e077e6b8467b-C09-src-tv-case-setup-L7472-L7494",
+      "chapter": "Chapter 9",
+      "section": "TV Repair Manual setup",
+      "evidence_summary": "案例先界定未经准备就不能直说的目标结论，并从电视维修费用与共同不满启动接受链。",
+      "argument_function": "定位 TV 接受链的起点和延迟结论条件。"
+    },
+    {
+      "id": "SA-020B",
+      "locator": "BA-e077e6b8467b-C09-src-tv-case-agreement-L7494-L7546",
+      "chapter": "Chapter 9",
+      "section": "TV Repair Manual agreement and reliability",
+      "evidence_summary": "案例通过共同症状和连续 agreement 把读者纳入问题，并把电视总体可靠建立为第一个目标结论。",
+      "argument_function": "定位从共同经验到首个 goal conclusion 的推进。"
+    },
+    {
+      "id": "SA-020C",
+      "locator": "BA-e077e6b8467b-C09-src-tv-case-adjustments-L7548-L7602",
+      "chapter": "Chapter 9",
+      "section": "TV Repair Manual minor adjustments",
+      "evidence_summary": "在可靠性前提成立后，案例才区分 major breakdowns 与普通人可做的 minor external adjustments。",
+      "argument_function": "定位第一结论如何成为第二结论的必要前提。"
+    },
+    {
+      "id": "SA-020D",
+      "locator": "BA-e077e6b8467b-C09-src-tv-case-payoff-L7604-L7630",
+      "chapter": "Chapter 9",
+      "section": "TV Repair Manual payoff",
+      "evidence_summary": "前两层接受最终推出获取知识、减少维修依赖和节省费用的购买 payoff。",
+      "argument_function": "定位完整接受链的下游结论，而不是孤立销售口号。"
+    },
+    {
+      "id": "SA-022A",
+      "locator": "BA-e077e6b8467b-C10-src-redefinition-rule-L7806-L7830",
+      "chapter": "Chapter 10",
+      "section": "Redefinition rule",
+      "evidence_summary": "Redefinition 处理产品内置阻力时保留事实，但改变读者理解该事实的视角与分类。",
+      "argument_function": "为 Redefinition 的一般机制和反遮掩边界提供窄锚。"
+    },
+    {
+      "id": "SA-022B",
+      "locator": "BA-e077e6b8467b-C10-src-lifebuoy-case-L7830-L7846",
+      "chapter": "Chapter 10",
+      "section": "Lifebuoy / B.O. case",
+      "evidence_summary": "Lifebuoy 案例保留无法与清洁力分离的药味，并把它重定义为除体味能力的感官证明。",
+      "argument_function": "为 liability 到 performance proof 的构成性案例提供窄锚。"
+    },
+    {
+      "id": "SA-028A",
+      "locator": "BA-e077e6b8467b-C12-src-attack-only-boundary-L8282-L8288",
+      "chapter": "Chapter 12",
+      "section": "Attack-only boundary",
+      "evidence_summary": "只攻击竞争者会暴露广告主偏见，引起读者怀疑和反感；若不能证明本品如何补救，就不应攻击。",
+      "argument_function": "把被拒绝的 attack-only 路径从完整 Concentration 机制中分离。"
+    },
+    {
+      "id": "SA-028B",
+      "locator": "BA-e077e6b8467b-C12-src-concentration-chain-L8288-L8296",
+      "chapter": "Chapter 12",
+      "section": "Concentration causal chain",
+      "evidence_summary": "合格 Concentration 把竞品弱点连接到读者损害，再证明本品逐项消除该弱点，从而动摇旧忠诚。",
+      "argument_function": "为完整竞争比较因果链提供窄锚。"
+    },
+    {
+      "id": "SA-028C",
+      "locator": "BA-e077e6b8467b-C12-src-fire-injectors-case-L8298-L8374",
+      "chapter": "Chapter 12",
+      "section": "Fire Injectors versus spark plugs",
+      "evidence_summary": "案例把历史广告文案所声称的 spark-plug 弱点、车主损害与 Fire Injector 对应消除按 Bad—Good 次序交织；技术效果属于被分析的广告主张。",
+      "argument_function": "为 Concentration 的构成性逐点比较案例提供窄锚。"
+    },
+    {
+      "id": "SA-031A",
+      "locator": "BA-e077e6b8467b-C14-src-verification-rule-L8802-L8842",
+      "chapter": "Chapter 14",
+      "section": "Verification and proof placement",
+      "evidence_summary": "同一 documentation 的力量取决于前文准备和读者 readiness；Verification 是让 proof 在必要且合逻辑的位置出现。",
+      "argument_function": "为 proof placement 的一般原则提供窄锚。"
+    },
+    {
+      "id": "SA-031B",
+      "locator": "BA-e077e6b8467b-C14-src-fire-injectors-verification-L8844-L8856",
+      "chapter": "Chapter 14",
+      "section": "Fire Injectors authority placement",
+      "evidence_summary": "Fire Injectors 的比较先建立 believability，随后 Air Force authority 才进入，并反向增强前述比较。",
+      "argument_function": "定位 Concentration 案例如何在终章承担 Verification 与 Reinforcement 功能。"
+    },
+    {
+      "id": "SA-031C",
+      "locator": "BA-e077e6b8467b-C14-src-tv-verification-L8862-L8880",
+      "chapter": "Chapter 14",
+      "section": "TV Repair proof placement",
+      "evidence_summary": "TV test-room proof 在读者已主动寻求答案时由乏味统计变成戏剧性解决方案；本段同时区分 Documentation、Mechanization 与 Verification。",
+      "argument_function": "定位 TV 案例被跨章回收为 proof-placement 例证。"
+    },
+    {
+      "id": "SA-033A",
+      "locator": "BA-e077e6b8467b-C14-src-sensitivity-shift-L8980-L8998",
+      "chapter": "Chapter 14",
+      "section": "Sensitivity and shift points",
+      "evidence_summary": "作者须作为读者识别当前材料饱和或新问题出现的 shift point，并转向此刻需要的另一类材料。",
+      "argument_function": "为 reader-demand-driven module shift 提供单一范围锚。"
+    },
+    {
+      "id": "SA-033B",
+      "locator": "BA-e077e6b8467b-C14-src-architecture-closure-L9396-L9424",
+      "chapter": "Chapter 14",
+      "section": "Each problem demands a different structure",
+      "evidence_summary": "作者以每个问题要求不同 structure、同一内容换结构即成为新广告，回收开篇反公式认识论。",
+      "argument_function": "为全书 opening-to-closure 回环和反固定配方结论提供窄锚。"
+    }
+  ],
+  "cognitive_structures": [
+    {
+      "id": "CS-01",
+      "label": "独特问题与分析式创意",
+      "central_question": "为什么历史成功公式不能直接生成当前广告，作者要求怎样从独特问题中得到 theme？",
+      "summary": "作者把每个产品—市场—时机关系视为独特问题；表达公式最多帮助 verbalization，真正的 idea 必须由分析当前力量、关键部分和限制而构造。",
+      "nodes": [
+        {
+          "id": "N-01-01",
+          "statement": "每一次产品—市场—时机关系都是过去未曾以同样形式出现的独特问题。",
+          "role": "premise",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-001", "SA-002", "SA-003"],
+          "essential": true
+        },
+        {
+          "id": "N-01-02",
+          "statement": "过去成功的标题公式或替词模板可以直接产生当前广告的核心创意。",
+          "role": "assumption",
+          "stance_owner": "opponent",
+          "epistemic_status": "rejected",
+          "source_anchor_ids": ["SA-001", "SA-002"],
+          "essential": true
+        },
+        {
+          "id": "N-01-03",
+          "statement": "公式和表达原则在已有 idea 之后，可有限地用于强化 verbalization。",
+          "role": "boundary",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-002"],
+          "essential": true
+        },
+        {
+          "id": "N-01-04",
+          "statement": "分析通过测量、检查点和问题拆开当前情境，找出最重要的力量、部分与限制。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-001", "SA-003"],
+          "essential": true
+        },
+        {
+          "id": "N-01-05",
+          "statement": "广告的独特 theme 或 idea 从当前产品与市场内部被构造出来。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-003"],
+          "essential": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "R-01-01",
+          "source_node_ids": ["N-01-01"],
+          "target_node_ids": ["N-01-02"],
+          "relation_type": "contradicts",
+          "requirement": "候选文章须说明情境的独特性为何使过去公式不能原样迁移，而不只是泛称要原创。",
+          "required_facets": ["direction", "epistemic_status", "stance_owner"],
+          "source_anchor_ids": ["SA-001", "SA-002"],
+          "acceptable_paraphrases": ["可称为每个广告问题的约束组合不同，因此旧答案不能自动成为新答案。"],
+          "pass_if": ["明确把公式复用写成作者反对的做法，并给出产品、市场或时机变化这一理由。"],
+          "fail_if": ["只说广告要创新，或把复用成功公式写成作者的核心方法。"],
+          "common_false_positives": ["提到产品—市场—时机三个词，却没有表达它们使旧公式失效。"],
+          "contradiction_patterns": ["声称作者提供的规则可在所有市场机械套用。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-01-02",
+          "source_node_ids": ["N-01-03"],
+          "target_node_ids": ["N-01-02"],
+          "relation_type": "limits",
+          "requirement": "候选文章须保留作者对公式的限定性让步：可帮助表达强化，但不能产生独特 idea。",
+          "required_facets": ["boundary", "epistemic_status", "argument_function"],
+          "source_anchor_ids": ["SA-002"],
+          "acceptable_paraphrases": ["可以说模板是表达层工具，不是发现战略主题的来源。"],
+          "pass_if": ["同时写清公式的有限合法用途和不可替代分析的边界。"],
+          "fail_if": ["把作者写成彻底拒绝一切原则，或把原则升级为创意生成器。"],
+          "common_false_positives": ["只出现公式、分析、创意三个词，没有表达用途边界。"],
+          "contradiction_patterns": ["声称第四章技巧足以决定任何广告该说什么。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-01-03",
+          "source_node_ids": ["N-01-04"],
+          "target_node_ids": ["N-01-05"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明分析如何从当前问题的组成部分中找出独特 theme，而非把分析写成事后检查。",
+          "required_facets": ["direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-001", "SA-003"],
+          "acceptable_paraphrases": ["允许把分析描述为从市场研究和产品研究中抽取主导元素并构造解法。"],
+          "pass_if": ["分析被明确写成独特创意产生的前置机制。"],
+          "fail_if": ["只写分析很重要，未连接到 theme 或独特解法。"],
+          "common_false_positives": ["把竞品标题收集或公式匹配称为分析。"],
+          "contradiction_patterns": ["声称先有通用创意，再用分析为它寻找理由。"],
+          "weight": 1.0,
+          "critical": true
+        }
+      ],
+      "paths": [
+        {
+          "id": "P-01-01",
+          "label": "从拒绝旧公式到构造独特 theme",
+          "relation_ids": ["R-01-01", "R-01-02", "R-01-03"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "缺少任一环节都会把作者的分析认识论扁平化为反模板口号或另一套模板。"
+        }
+      ],
+      "weight": 1.0,
+      "rationale": "这是全书方法论入口，规定后续所有分类都是 guideposts 而非可机械复用的答案。"
+    },
+    {
+      "id": "CS-02",
+      "label": "既存大众欲望与主导产品表现",
+      "central_question": "文案能改变什么、不能创造什么，又怎样把市场力量聚焦到一个产品上？",
+      "summary": "大众欲望先由市场外部力量形成，文案只能导流；作者再按欲望强度、持续性和范围选择一个主导欲望，把它与产品最有销售力的功能性表现匹配成 theme。",
+      "nodes": [
+        {
+          "id": "N-02-01",
+          "statement": "大众欲望是被足够多人共享、可形成市场的私人欲望，并由社会、经济和技术力量长期形成。",
+          "role": "premise",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-004"],
+          "essential": true
+        },
+        {
+          "id": "N-02-02",
+          "statement": "单个广告可以创造或逆转大众欲望。",
+          "role": "assumption",
+          "stance_owner": "opponent",
+          "epistemic_status": "rejected",
+          "source_anchor_ids": ["SA-004"],
+          "essential": true
+        },
+        {
+          "id": "N-02-03",
+          "statement": "文案把已存在的欲望导向特定产品。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-004", "SA-005"],
+          "essential": true
+        },
+        {
+          "id": "N-02-04",
+          "statement": "欲望的 urgency 或 intensity。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-005"],
+          "essential": true
+        },
+        {
+          "id": "N-02-05",
+          "statement": "欲望的 staying power，即重复发生且不易满足饱和的程度。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-005"],
+          "essential": true
+        },
+        {
+          "id": "N-02-06",
+          "statement": "欲望的 scope，即共享该欲望的人数范围。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-005"],
+          "essential": true
+        },
+        {
+          "id": "N-02-07",
+          "statement": "在当前时点只选择一个经济力量最大的主导欲望。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-005"],
+          "essential": true
+        },
+        {
+          "id": "N-02-08",
+          "statement": "产品的材料、结构、制造与其他物理事实。",
+          "role": "evidence",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-006"],
+          "essential": true
+        },
+        {
+          "id": "N-02-09",
+          "statement": "产品在行动中为顾客完成的多项功能性表现与满足。",
+          "role": "premise",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-006", "SA-007"],
+          "essential": true
+        },
+        {
+          "id": "N-02-10",
+          "statement": "从多项表现中选出最能接入当前主导欲望的一项，其余表现转为支持材料。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-007"],
+          "essential": true
+        },
+        {
+          "id": "N-02-11",
+          "statement": "主导欲望及其产品满足方式共同构成广告 theme。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-003", "SA-007"],
+          "essential": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "R-02-01",
+          "source_node_ids": ["N-02-01"],
+          "target_node_ids": ["N-02-02"],
+          "relation_type": "contradicts",
+          "requirement": "候选文章须把大众欲望写成先于单个广告存在的市场力量，并明确否定广告凭空创造或逆势制造它。",
+          "required_facets": ["direction", "stance_owner", "epistemic_status", "boundary"],
+          "source_anchor_ids": ["SA-004"],
+          "acceptable_paraphrases": ["可以把创造欲望称为成本高昂的长期教育，但不能与本书定义的广告导流混同。"],
+          "pass_if": ["明确表达欲望的外部形成来源和作者对广告创造论的否定。"],
+          "fail_if": ["声称好文案能从无到有制造大众需求，或只说要洞察需求。"],
+          "common_false_positives": ["出现 Mass Desire 一词，却把它解释成文案设计出来的情绪。"],
+          "contradiction_patterns": ["把广告写成大众欲望的主要成因。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-02-02",
+          "source_node_ids": ["N-02-01"],
+          "target_node_ids": ["N-02-03"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明既存欲望为何使文案能够获得放大作用：文案检测、聚焦并把它导向产品。",
+          "required_facets": ["direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-004", "SA-005"],
+          "acceptable_paraphrases": ["可写成广告借用市场中已有力量，为它指定一个产品出口。"],
+          "pass_if": ["明确连接既存欲望与文案的 channel/direct 职责。"],
+          "fail_if": ["只说产品应满足需求，没有说明文案的导向关系。"],
+          "common_false_positives": ["把用户研究、市场欲望和产品并列罗列但不连接。"],
+          "contradiction_patterns": ["声称文案先造欲望，再把欲望导向产品。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-02-03",
+          "source_node_ids": ["N-02-04", "N-02-05", "N-02-06"],
+          "target_node_ids": ["N-02-07"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须保留 urgency/intensity、staying power、scope 三维共同用于选择一个主导欲望。",
+          "required_facets": ["mechanism", "condition", "boundary"],
+          "source_anchor_ids": ["SA-005"],
+          "acceptable_paraphrases": ["允许译为急迫强度、持续复现性和共享规模，只要三维及择一关系清楚。"],
+          "pass_if": ["三个判断维度和单一主导选择都被明确表达。"],
+          "fail_if": ["只选择最痛或最大人群，或把多个欲望并列成同等 headline 主张。"],
+          "common_false_positives": ["列出三项指标，却没有说明它们共同决定当前唯一主导欲望。"],
+          "contradiction_patterns": ["主张广告应同时平等突出产品能满足的所有欲望。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-02-04",
+          "source_node_ids": ["N-02-08"],
+          "target_node_ids": ["N-02-09"],
+          "relation_type": "supports",
+          "requirement": "候选文章须把物理事实放在证明、强化或赋予功能表现可信度的从属位置，而非把实体 feature 本身当销售终点。",
+          "required_facets": ["direction", "argument_function", "boundary"],
+          "source_anchor_ids": ["SA-006"],
+          "acceptable_paraphrases": ["可写成人们购买的是产品做到什么，材料结构只在支撑这一表现时有销售意义。"],
+          "pass_if": ["功能表现被置于主位，物理事实的支持功能和不能独立充当 headline 的边界被保留。"],
+          "fail_if": ["把 features 与 benefits 仅作并列，或声称制造事实天然就是主诉求。"],
+          "common_false_positives": ["泛称 benefits 比 features 重要，却不说明物理事实如何服务承诺。"],
+          "contradiction_patterns": ["主张工厂规模、材料重量或工艺精密本身就应成为标题。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-02-05",
+          "source_node_ids": ["N-02-07", "N-02-09"],
+          "target_node_ids": ["N-02-10"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须说明产品表现的取舍由当前主导欲望决定，一次只突出最能接入它的一项。",
+          "required_facets": ["direction", "condition", "boundary"],
+          "source_anchor_ids": ["SA-005", "SA-007"],
+          "acceptable_paraphrases": ["可称为在当前市场时点找唯一能打开锁的 product performance。"],
+          "pass_if": ["主导欲望与多项产品表现之间的选择关系清楚，其他表现被降为支持。"],
+          "fail_if": ["只说提炼卖点，没有说明卖点由哪种市场欲望和时点决定。"],
+          "common_false_positives": ["罗列许多功能后笼统称它们共同满足用户。"],
+          "contradiction_patterns": ["主张 headline 应尽量容纳所有产品表现。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-02-06",
+          "source_node_ids": ["N-02-07", "N-02-10"],
+          "target_node_ids": ["N-02-11"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须把 theme 表示为市场主导欲望与产品主导满足方式的匹配，而非一句孤立 slogan。",
+          "required_facets": ["direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-003", "SA-005", "SA-007"],
+          "acceptable_paraphrases": ["可以表述为欲望及其满足、需要及其方案、身份诉求及其表达方式的成对汇合。"],
+          "pass_if": ["theme 的两侧来源及其汇合关系明确。"],
+          "fail_if": ["只给出最终主题或卖点，没有恢复欲望—表现匹配。"],
+          "common_false_positives": ["把品牌定位、USP 或标题当作无需市场与产品分析即可产生的 theme。"],
+          "contradiction_patterns": ["声称先确定主题，再选择能为主题服务的欲望和产品事实。"],
+          "weight": 1.0,
+          "critical": true
+        }
+      ],
+      "paths": [
+        {
+          "id": "P-02-01",
+          "label": "从既存欲望到产品 theme",
+          "relation_ids": ["R-02-01", "R-02-02", "R-02-03", "R-02-04", "R-02-05", "R-02-06"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "作者的核心不是需求、产品、卖点三个节点，而是欲望来源、择一、从属和匹配构成的完整路径。"
+        }
+      ],
+      "weight": 1.0,
+      "rationale": "该结构定义广告力量来自哪里，以及产品如何成为该力量的具体出口。"
+    },
+    {
+      "id": "CS-03",
+      "label": "Awareness × Sophistication 的标题入口",
+      "central_question": "受众对满足方式知道多少、又见过多少同类产品，怎样共同改变标题从哪里进入？",
+      "summary": "Awareness 与 Sophistication 是两个独立状态变量。前者决定从产品、欲望、需要或市场身份起步，后者使竞争策略从直接主张、扩大主张，转到新机制、机制扩张，最后转向 identification。",
+      "nodes": [
+        {
+          "id": "N-03-01",
+          "statement": "已经选定的市场主导欲望。",
+          "role": "premise",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-008"],
+          "essential": true
+        },
+        {
+          "id": "N-03-02",
+          "statement": "Awareness：受众当前对产品及其满足欲望方式知道多少。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-008", "SA-009", "SA-010"],
+          "essential": true
+        },
+        {
+          "id": "N-03-03",
+          "statement": "Sophistication：受众此前见过多少相似产品、承诺和机制。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-008", "SA-011", "SA-012"],
+          "essential": true
+        },
+        {
+          "id": "N-03-04",
+          "statement": "标题采用受众最有兴趣且最愿接受的当前 point of entry。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-003", "SA-008"],
+          "essential": true
+        },
+        {
+          "id": "N-03-05",
+          "statement": "标题的通常职责是让目标读者读下一句，再由后续句子继续推进。",
+          "role": "action",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-008"],
+          "essential": true
+        },
+        {
+          "id": "N-03-06",
+          "statement": "只有已主动寻找特定品牌且得到特殊价格的 most-aware 受众，标题才可能完成全部销售。",
+          "role": "boundary",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-008"],
+          "essential": true
+        },
+        {
+          "id": "N-03-07",
+          "statement": "产品已知、结果已知和需要已知的市场分别具备不同的当前认知起点。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-008", "SA-009"],
+          "essential": true
+        },
+        {
+          "id": "N-03-08",
+          "statement": "标题分别从产品及优势、欲望或方案、需要或问题进入，再在正文连接到产品。",
+          "role": "action",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-008", "SA-009"],
+          "essential": true
+        },
+        {
+          "id": "N-03-09",
+          "statement": "完全不知情、拒绝承认或已对直接诉求失去接受意愿的市场。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-010"],
+          "essential": true
+        },
+        {
+          "id": "N-03-10",
+          "statement": "先以市场身份或情绪取得认同，再逐步推进到问题、欲望、方案和产品。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-010"],
+          "essential": true
+        },
+        {
+          "id": "N-03-11",
+          "statement": "市场会跨越 Awareness 状态，原来有效的标题会随状态变化而失效。",
+          "role": "boundary",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-010"],
+          "essential": true
+        },
+        {
+          "id": "N-03-12",
+          "statement": "Sophistication 第一阶段：市场没有见过同类产品或信息。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-011"],
+          "essential": true
+        },
+        {
+          "id": "N-03-13",
+          "statement": "第二阶段：竞争已出现，但直接主张仍然有效。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-011"],
+          "essential": true
+        },
+        {
+          "id": "N-03-14",
+          "statement": "主张被反复扩大后，词义和可信度耗竭，受众自动折价或忽略旧承诺。",
+          "role": "boundary",
+          "stance_owner": "author",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-011", "SA-012"],
+          "essential": true
+        },
+        {
+          "id": "N-03-15",
+          "statement": "第三阶段以新的 how 或 mechanism 进入标题，旧 claim 缩成后置 shorthand 再展开。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-012"],
+          "essential": true
+        },
+        {
+          "id": "N-03-16",
+          "statement": "竞争者的新机制已被市场接受并正在带来销售。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-012"],
+          "essential": true
+        },
+        {
+          "id": "N-03-17",
+          "statement": "第四阶段扩大已成功的机制，使其更易、更快、更确定或克服更多限制。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-012"],
+          "essential": true
+        },
+        {
+          "id": "N-03-18",
+          "statement": "机制扩张也越过可信边界，最终没有新的机制再被接受，市场对广告饱和。",
+          "role": "boundary",
+          "stance_owner": "author",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-012"],
+          "essential": true
+        },
+        {
+          "id": "N-03-19",
+          "statement": "第五阶段停止以 promise 或 mechanism 拉人，改从 prospect identification 把受众带入广告。",
+          "role": "action",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-012"],
+          "essential": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "R-03-01",
+          "source_node_ids": ["N-03-01", "N-03-02", "N-03-03"],
+          "target_node_ids": ["N-03-04"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须把 Mass Desire、Awareness、Sophistication 作为三个不同输入，共同决定标题内容与进入点。",
+          "required_facets": ["direction", "condition", "mechanism"],
+          "source_anchor_ids": ["SA-003", "SA-008"],
+          "acceptable_paraphrases": ["允许称为欲望力量、对满足方式的认知位置、对同类信息的饱和程度。"],
+          "pass_if": ["三个输入均出现，Awareness 与 Sophistication 的定义和共同决策关系清楚。"],
+          "fail_if": ["把两个状态合成单一成熟度，或只按欲望强弱选择标题。"],
+          "common_false_positives": ["列出三问，却没有说明后二者如何定位市场相对于产品的位置。"],
+          "contradiction_patterns": ["声称同一标题策略只由产品卖点决定。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-03-02",
+          "source_node_ids": ["N-03-04"],
+          "target_node_ids": ["N-03-05"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明标题是进入完整销售故事的第一步，通常不承担全部销售。",
+          "required_facets": ["direction", "argument_function", "boundary"],
+          "source_anchor_ids": ["SA-008"],
+          "acceptable_paraphrases": ["可表述为标题只需赢得下一句，而不是在十个字里完成成交。"],
+          "pass_if": ["继续阅读的功能和 most-aware 特价例外都被保留。"],
+          "fail_if": ["写成标题必须完整说明产品和主诉求，或只说标题要吸睛。"],
+          "common_false_positives": ["提到标题让人继续读，但同时把完整销售职责也放在标题。"],
+          "contradiction_patterns": ["声称除特殊创意外，标题都应独立完成销售。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-03-02B",
+          "source_node_ids": ["N-03-06"],
+          "target_node_ids": ["N-03-05"],
+          "relation_type": "qualifies",
+          "requirement": "候选文章须把标题完成全部销售限定在 most-aware、主动寻找特定品牌且有特殊价格的窄例外。",
+          "required_facets": ["condition", "boundary", "direction"],
+          "source_anchor_ids": ["SA-008"],
+          "acceptable_paraphrases": ["可写成只有交易信息本身是最后缺口时，标题才可能直接成交。"],
+          "pass_if": ["特殊品牌需求、价格新闻和对一般 next-sentence 规则的限定均明确。"],
+          "fail_if": ["把例外扩大为所有 most-aware 受众，或完全省略例外条件。"],
+          "common_false_positives": ["只说高度认知市场可以短文案，没有特定品牌与优惠条件。"],
+          "contradiction_patterns": ["声称只要受众知道产品，标题就应独立完成销售。"],
+          "weight": 1.0,
+          "critical": false
+        },
+        {
+          "id": "R-03-03",
+          "source_node_ids": ["N-03-07"],
+          "target_node_ids": ["N-03-08"],
+          "relation_type": "qualifies",
+          "requirement": "候选文章须保留 Awareness 中段的条件映射：产品已知从产品及优势进入，结果已知从欲望或方案进入，需要已知从问题进入。",
+          "required_facets": ["condition", "direction", "boundary"],
+          "source_anchor_ids": ["SA-008", "SA-009"],
+          "acceptable_paraphrases": ["不要求复述阶段编号，但须区分产品、结果与问题三种认知起点。"],
+          "pass_if": ["至少清楚恢复三种起点及其相应 headline 方向。"],
+          "fail_if": ["只说认知越低文案越长，没有说明从哪里起步。"],
+          "common_false_positives": ["把 desire-aware 与 problem-aware 都写成戳痛点。"],
+          "contradiction_patterns": ["声称所有阶段都应先报产品名和核心利益。"],
+          "weight": 1.0,
+          "critical": false
+        },
+        {
+          "id": "R-03-04",
+          "source_node_ids": ["N-03-09"],
+          "target_node_ids": ["N-03-10"],
+          "relation_type": "enables",
+          "requirement": "候选文章须保留第五 Awareness 阶段的排除与推进：标题不直说价格、产品、功能或欲望，而从身份认同逐段走到产品。",
+          "required_facets": ["condition", "direction", "boundary", "argument_function"],
+          "source_anchor_ids": ["SA-010"],
+          "acceptable_paraphrases": ["可称为先召集并定义市场，再让问题和解决方案逐渐显形。"],
+          "pass_if": ["被排除的直接入口及 identification→problem/desire→solution→product 路径都明确。"],
+          "fail_if": ["把 unaware market 写成加强痛点、情绪化标题或换一个直接欲望。"],
+          "common_false_positives": ["只说用认同型标题，却没有后续逻辑推进。"],
+          "contradiction_patterns": ["建议在完全不知情市场的标题中突出价格和产品机制。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-03-05",
+          "source_node_ids": ["N-03-11"],
+          "target_node_ids": ["N-03-04"],
+          "relation_type": "limits",
+          "requirement": "候选文章须说明 headline 策略只对市场当前 Awareness 有效，市场迁移会使旧标题失效。",
+          "required_facets": ["condition", "boundary", "direction"],
+          "source_anchor_ids": ["SA-010"],
+          "acceptable_paraphrases": ["可以写成有效标题会随市场学习、遗忘或抵触而过时。"],
+          "pass_if": ["明确表达状态变化对标题有效性的限制。"],
+          "fail_if": ["把五阶段写成固定人群标签，未表达动态迁移。"],
+          "common_false_positives": ["说要持续测试标题，但没有连接市场 Awareness 变化。"],
+          "contradiction_patterns": ["声称成功标题可长期跨阶段复用。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-03-06",
+          "source_node_ids": ["N-03-12"],
+          "target_node_ids": ["N-03-04"],
+          "relation_type": "qualifies",
+          "requirement": "候选文章须说明无同类信息的第一 Sophistication 阶段应简单直接陈述 need 或 claim，再由正文戏剧化、引入并证明产品。",
+          "required_facets": ["condition", "direction", "boundary"],
+          "source_anchor_ids": ["SA-011"],
+          "acceptable_paraphrases": ["可称为市场第一次听见这类方案时不需要花哨机制包装。"],
+          "pass_if": ["第一阶段条件、直接标题和正文证明的顺序清楚。"],
+          "fail_if": ["只说新市场适合简单标题，未说明 no-prior-information 条件。"],
+          "common_false_positives": ["把第一阶段误写成受众连问题或欲望都不知道。"],
+          "contradiction_patterns": ["建议第一进入者先用复杂机制或身份伪装。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-03-07",
+          "source_node_ids": ["N-03-13"],
+          "target_node_ids": ["N-03-04"],
+          "relation_type": "qualifies",
+          "requirement": "候选文章须说明第二阶段只在直接主张仍有效时扩大成功主张，并把可信度耗竭作为该策略的内在边界。",
+          "required_facets": ["condition", "boundary", "direction"],
+          "source_anchor_ids": ["SA-011"],
+          "acceptable_paraphrases": ["可写成跟进者在市场尚信直接承诺时 outbid，而不是无条件夸张。"],
+          "pass_if": ["仍有效这一前提、扩大动作与最终怀疑反应都被表达。"],
+          "fail_if": ["把第二阶段简化成夸大卖点，或忽略可信度衰竭。"],
+          "common_false_positives": ["只列更快、更大、更多等用词。"],
+          "contradiction_patterns": ["声称承诺越大越能持续恢复可信度。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-03-08",
+          "source_node_ids": ["N-03-14"],
+          "target_node_ids": ["N-03-15"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明旧 claim 饱和为何触发第三阶段从 what 转向 how：机制进入标题，旧主张后置再展开。",
+          "required_facets": ["direction", "mechanism", "condition", "boundary"],
+          "source_anchor_ids": ["SA-012"],
+          "acceptable_paraphrases": ["可称为让新实现方式承担差异化，结果承诺缩为读者已知的 shorthand。"],
+          "pass_if": ["饱和条件、机制前置和 claim 后置三者均明确。"],
+          "fail_if": ["只说成熟市场要讲机制，没有恢复标题与正文的结构换位。"],
+          "common_false_positives": ["同时提到 claim 和 mechanism，却仍让 claim 完整占据标题。"],
+          "contradiction_patterns": ["主张第三阶段继续扩大结果承诺即可。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-03-09",
+          "source_node_ids": ["N-03-16"],
+          "target_node_ids": ["N-03-17"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明第四阶段的触发条件是竞争者机制已被接受并带来销售，回应才是扩大该机制。",
+          "required_facets": ["condition", "direction", "mechanism"],
+          "source_anchor_ids": ["SA-012"],
+          "acceptable_paraphrases": ["可把扩大写为让机制更易、更快、更确定或克服更多限制。"],
+          "pass_if": ["成功机制的市场验证条件和随后 elaboration 关系清楚。"],
+          "fail_if": ["只说第四阶段继续发明新机制，或把机制扩大与第二阶段 claim 扩大混同。"],
+          "common_false_positives": ["列出机制利益，没有说明它是在复制已成功的新机制。"],
+          "contradiction_patterns": ["声称任何新奇机制都足以进入第四阶段。"],
+          "weight": 1.0,
+          "critical": false
+        },
+        {
+          "id": "R-03-10",
+          "source_node_ids": ["N-03-17"],
+          "target_node_ids": ["N-03-18"],
+          "relation_type": "causes",
+          "requirement": "候选文章须保留机制扩张重复第二阶段的可信度衰竭，最终新机制也不再被市场接受。",
+          "required_facets": ["direction", "mechanism", "boundary"],
+          "source_anchor_ids": ["SA-012"],
+          "acceptable_paraphrases": ["可称为 mechanism embellishment 也会从差异化工具变成被折价的广告噪声。"],
+          "pass_if": ["第四阶段动作与第五阶段广告饱和之间的因果转移明确。"],
+          "fail_if": ["把第五阶段当作自然时间推移，未说明机制可信度耗竭。"],
+          "common_false_positives": ["说市场疲劳，却未说明疲劳对象从 claim 扩展到 mechanism。"],
+          "contradiction_patterns": ["声称机制越复杂越能永久避免饱和。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-03-11",
+          "source_node_ids": ["N-03-18"],
+          "target_node_ids": ["N-03-19"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明第五 Sophistication 阶段为何对应第五 Awareness 难题，并从 promise/mechanism 转向 prospect identification。",
+          "required_facets": ["condition", "direction", "argument_function"],
+          "source_anchor_ids": ["SA-012"],
+          "acceptable_paraphrases": ["可写成市场不再愿意了解产品时，先让目标人群在广告中认出自己。"],
+          "pass_if": ["广告饱和、两种第五阶段的对应关系和 identification 转向均明确。"],
+          "fail_if": ["把第五阶段写成品牌情感化、形象升级或更强 desire appeal。"],
+          "common_false_positives": ["只出现 identification 标签，没有说明它替代了失效的 promise 与 mechanism 入口。"],
+          "contradiction_patterns": ["建议在广告饱和后用更大的承诺重新夺回注意。"],
+          "weight": 1.0,
+          "critical": true
+        }
+      ],
+      "paths": [
+        {
+          "id": "P-03-01",
+          "label": "从市场状态诊断到 Awareness 进入点",
+          "relation_ids": ["R-03-01", "R-03-02", "R-03-04", "R-03-05"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "该路径要求同时保留双状态诊断、标题职责、最难 Awareness 进入和市场迁移边界。"
+        },
+        {
+          "id": "P-03-02",
+          "label": "Sophistication 的主张—机制—认同状态转移",
+          "relation_ids": ["R-03-06", "R-03-07", "R-03-08", "R-03-10", "R-03-11"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "只列五个阶段名称不足；满分须恢复策略为何切换以及可信度如何耗竭。"
+        }
+      ],
+      "weight": 1.0,
+      "rationale": "Awareness 与 Sophistication 的独立定义、条件映射和动态转移是本书最具区分力的结构之一。"
+    },
+    {
+      "id": "CS-04",
+      "label": "三维心智、正文与 Intensification",
+      "central_question": "标题获得注意后，正文怎样把既有欲望推进为相信产品能够兑现的 conviction？",
+      "summary": "正文通过 Desire、Identification、Belief 三维改变读者现实图景；其中 Intensification 不是重复主张，而是以连续、新鲜、具体的满足图景强化同一主导欲望。",
+      "nodes": [
+        {
+          "id": "N-04-01",
+          "statement": "标题暂时截获注意并让读者进入第一段。",
+          "role": "action",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-013"],
+          "essential": true
+        },
+        {
+          "id": "N-04-02",
+          "statement": "正文改变或扩展读者的现实图景，使产品成为主导欲望的实现。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-013"],
+          "essential": true
+        },
+        {
+          "id": "N-04-03",
+          "statement": "Desire：产品将满足的物质、身体或感官目标。",
+          "role": "premise",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-013"],
+          "essential": true
+        },
+        {
+          "id": "N-04-04",
+          "statement": "Identification：产品让顾客扮演、表达或被认可的角色和人格。",
+          "role": "premise",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-013"],
+          "essential": true
+        },
+        {
+          "id": "N-04-05",
+          "statement": "Belief：既有意见、偏见、知识和推理模式形成的信息过滤器。",
+          "role": "premise",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-013", "SA-018"],
+          "essential": true
+        },
+        {
+          "id": "N-04-06",
+          "statement": "三维汇合成读者确信产品既值得要、适合自己且能够兑现的 conviction，并推动行动。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-013", "SA-018"],
+          "essential": true
+        },
+        {
+          "id": "N-04-07",
+          "statement": "广告为处理三维所需的篇幅、结构、展开、文风与节奏。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-013"],
+          "essential": true
+        },
+        {
+          "id": "N-04-08",
+          "statement": "读者心中尚模糊、未被语言和图像结晶的主导欲望。",
+          "role": "premise",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-014"],
+          "essential": true
+        },
+        {
+          "id": "N-04-09",
+          "statement": "同一欲望的一系列具体、合法、彼此不同的满足场景和视角。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-014"],
+          "essential": true
+        },
+        {
+          "id": "N-04-10",
+          "statement": "市场已见过或本广告已用过的相同措辞与重复视角会造成怀疑、厌倦或中途流失。",
+          "role": "boundary",
+          "stance_owner": "author",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-014"],
+          "essential": true
+        },
+        {
+          "id": "N-04-11",
+          "statement": "新视角使同一主导承诺更真实、更鲜明并积累更大情感重量。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-014"],
+          "essential": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "R-04-01",
+          "source_node_ids": ["N-04-01"],
+          "target_node_ids": ["N-04-02"],
+          "relation_type": "precedes",
+          "requirement": "候选文章须区分 headline 的入场功能与 body copy 的销售功能，并按这一方向连接。",
+          "required_facets": ["direction", "argument_function"],
+          "source_anchor_ids": ["SA-013"],
+          "acceptable_paraphrases": ["可写成标题只停住读者，正文才重构他看待产品与现实的方式。"],
+          "pass_if": ["标题→正文→产品成为欲望实现的推进清楚。"],
+          "fail_if": ["只说标题与正文都重要，或让标题独自承担销售。"],
+          "common_false_positives": ["描述了正文展开卖点，却未说明它接续标题并改变读者现实图景。"],
+          "contradiction_patterns": ["声称正文只是为标题提供更多细节。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-04-02",
+          "source_node_ids": ["N-04-03", "N-04-04", "N-04-05"],
+          "target_node_ids": ["N-04-06"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须保留 Desire、Identification、Belief 的不同功能及三者汇合为 conviction 和行动。",
+          "required_facets": ["direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-013", "SA-018"],
+          "acceptable_paraphrases": ["可以分别译为想要什么、产品让自己成为什么人、为何相信它确能做到。"],
+          "pass_if": ["三个维度不只是标签，而有分工并共同产生最终确信。"],
+          "fail_if": ["漏掉任一维度，或把 Identification 当 proof、把 Belief 当泛信任。"],
+          "common_false_positives": ["三词齐全但彼此并列，没有融合关系。"],
+          "contradiction_patterns": ["声称只要 desire 足够强就不需要 belief。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-04-03",
+          "source_node_ids": ["N-04-03", "N-04-04", "N-04-05"],
+          "target_node_ids": ["N-04-07"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须说明三维处理需求共同决定广告所需篇幅和整体表达架构，而非预设固定长度或格式。",
+          "required_facets": ["condition", "argument_function"],
+          "source_anchor_ids": ["SA-013"],
+          "acceptable_paraphrases": ["可写成需要建立多少欲望、身份适配和可信度，决定写多长、怎样推进。"],
+          "pass_if": ["三种工作量与篇幅/结构之间有明确因果关系。"],
+          "fail_if": ["只说长文案或短文案各有场景，没有给出决定变量。"],
+          "common_false_positives": ["把篇幅完全归因于媒介空间。"],
+          "contradiction_patterns": ["声称作者规定所有强广告都应同样长。"],
+          "weight": 1.0,
+          "critical": false
+        },
+        {
+          "id": "R-04-04",
+          "source_node_ids": ["N-04-08"],
+          "target_node_ids": ["N-04-09"],
+          "relation_type": "explains",
+          "requirement": "候选文章须把 Intensification 写成用连续具体满足图景结晶、扩展并锐化既有欲望。",
+          "required_facets": ["direction", "mechanism"],
+          "source_anchor_ids": ["SA-014"],
+          "acceptable_paraphrases": ["可称为替读者把模糊愿望写成一幕幕可感知的未来。"],
+          "pass_if": ["既有模糊欲望、具体图景和强化方向均明确。"],
+          "fail_if": ["把 Intensification 写成提高语气、重复利益或扩大 claim 数字。"],
+          "common_false_positives": ["列举十三种做法，却没有说明它们都服务同一欲望图景。"],
+          "contradiction_patterns": ["声称强化的目标是同时创造多个新欲望。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-04-05",
+          "source_node_ids": ["N-04-10"],
+          "target_node_ids": ["N-04-09"],
+          "relation_type": "limits",
+          "requirement": "候选文章须保留市场旧措辞和文内重复对可用图景的限制：第二次表达必须换新视角，否则应删除。",
+          "required_facets": ["boundary", "condition", "direction"],
+          "source_anchor_ids": ["SA-014"],
+          "acceptable_paraphrases": ["允许说不能 repeat，但可以用差异化 perspective reinforce。"],
+          "pass_if": ["外部市场饱和或内部重复至少被正确连接到新鲜性要求。"],
+          "fail_if": ["鼓励为强化而机械重复核心承诺。"],
+          "common_false_positives": ["只说避免无聊，没有说明新视角仍须服务同一主导欲望。"],
+          "contradiction_patterns": ["声称重复次数本身会增加情感重量。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-04-06",
+          "source_node_ids": ["N-04-09"],
+          "target_node_ids": ["N-04-11"],
+          "relation_type": "supports",
+          "requirement": "候选文章须说明不同满足视角如何共同强化一个 dominant image，而不是变成无结构利益清单。",
+          "required_facets": ["direction", "argument_function"],
+          "source_anchor_ids": ["SA-014"],
+          "acceptable_paraphrases": ["可表述为 variation 保持新鲜，continuity 让同一欲望越来越真实。"],
+          "pass_if": ["新视角与同一主导承诺的累积强化关系明确。"],
+          "fail_if": ["只列许多 benefits，没有说明它们如何回到一个 dominant image。"],
+          "common_false_positives": ["把每一种强化形式当成彼此独立的核心路径。"],
+          "contradiction_patterns": ["声称越多互不相关的满足点越能强化广告。"],
+          "weight": 1.0,
+          "critical": true
+        }
+      ],
+      "paths": [
+        {
+          "id": "P-04-01",
+          "label": "从标题注意到三维 conviction",
+          "relation_ids": ["R-04-01", "R-04-02"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "这是第一部 headline 与第二部 body copy 的关键铰链。"
+        },
+        {
+          "id": "P-04-02",
+          "label": "Intensification 的新鲜视角强化路径",
+          "relation_ids": ["R-04-04", "R-04-05", "R-04-06"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "缺少新鲜性与 continuity 边界，就会把强化误成重复或技巧罗列。"
+        }
+      ],
+      "weight": 1.0,
+      "rationale": "该结构定义正文的总任务，并给出 Desire 维度的首个具体说服机制。"
+    },
+    {
+      "id": "CS-05",
+      "label": "Identification 与可信形象桥",
+      "central_question": "产品怎样在功能满足之外成为角色表达，又怎样把既有产品形象可信地延伸成目标形象？",
+      "summary": "Identification 不是证明或代言，而是把产品建成角色实现工具或角色成就符号。新形象不能否认市场已接受的 primary image，必须保留并调节它，再把它用作 believability bridge。",
+      "nodes": [
+        {
+          "id": "N-05-01",
+          "statement": "产品为顾客提供物理或功能性满足。",
+          "role": "premise",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-015A"],
+          "essential": true
+        },
+        {
+          "id": "N-05-02",
+          "statement": "Character role 是顾客希望拥有并被他人承认的个人特质，常以含蓄符号表达。",
+          "role": "claim",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-015"],
+          "essential": true
+        },
+        {
+          "id": "N-05-03",
+          "statement": "Achievement role 是社会授予的地位或位置，需要用可见产品符号展示。",
+          "role": "claim",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-015"],
+          "essential": true
+        },
+        {
+          "id": "N-05-04",
+          "statement": "产品成为获得角色的工具，或成为角色已经获得的可见确认。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-015"],
+          "essential": true
+        },
+        {
+          "id": "N-05-05",
+          "statement": "一次购买同时获得功能满足和 supra-functional 的自我定义价值。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-015"],
+          "essential": true
+        },
+        {
+          "id": "N-05-06",
+          "statement": "市场已经赋予产品的 primary image，可能有利、中性或不利。",
+          "role": "premise",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-015B", "SA-016A", "SA-017"],
+          "essential": true
+        },
+        {
+          "id": "N-05-07",
+          "statement": "广告希望顾客接受并与自身连接的有利 target image。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-016A", "SA-016B", "SA-017"],
+          "essential": true
+        },
+        {
+          "id": "N-05-08",
+          "statement": "保留 primary image，按需要增强或降低其强度，并用其逻辑延伸到 target image。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-016", "SA-017"],
+          "essential": true
+        },
+        {
+          "id": "N-05-09",
+          "statement": "抛弃既有形象并要求受众直接跳到不可信的理想人格。",
+          "role": "objection",
+          "stance_owner": "opponent",
+          "epistemic_status": "rejected",
+          "source_anchor_ids": ["SA-016", "SA-017"],
+          "essential": true
+        },
+        {
+          "id": "N-05-10",
+          "statement": "Chesterfield 案例保留香烟的男性 primary image，将其弱化为桥，再引向女性可接受的亲密、自由和共同冒险场景。",
+          "role": "case",
+          "stance_owner": "cited_source",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-016B"],
+          "essential": true,
+          "case_profile": {
+            "function": "constitutive",
+            "preservation": "required",
+            "replacement_rule": "当前 draft 要求保留 Chesterfield 案例的身份以及保留—降强度—桥接—新认同功能；Human Owner 尚未确认。"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "id": "R-05-01",
+          "source_node_ids": ["N-05-02"],
+          "target_node_ids": ["N-05-03"],
+          "relation_type": "distinguishes",
+          "requirement": "候选文章须区分 character role 与 achievement role：前者是个人特质及他人认可，后者是社会地位及其可见展示。",
+          "required_facets": ["direction", "boundary", "argument_function"],
+          "source_anchor_ids": ["SA-015"],
+          "acceptable_paraphrases": ["可称为人格认同与成就身份，但不能把二者都写成泛社会地位。"],
+          "pass_if": ["两类角色的来源、验证方式或展示方式至少有一项差异被准确表达。"],
+          "fail_if": ["只列两类名称，或把 character role 当成可验证的产品 performance。"],
+          "common_false_positives": ["将品味、成功、身份、个性全部归为品牌形象。"],
+          "contradiction_patterns": ["声称两类角色都由社会正式授予并必须公开展示。"],
+          "weight": 1.0,
+          "critical": false
+        },
+        {
+          "id": "R-05-02",
+          "source_node_ids": ["N-05-01", "N-05-04"],
+          "target_node_ids": ["N-05-05"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须说明产品同时承担功能满足和角色实现/确认，形成一次购买的双重价值。",
+          "required_facets": ["direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-015A"],
+          "acceptable_paraphrases": ["可以写成消费者既买产品做什么，也买拥有它说明自己是谁。"],
+          "pass_if": ["两种不同价值和共同进入购买理由的关系清楚。"],
+          "fail_if": ["把身份价值当作功能利益的另一种措辞，或把 Identification 写成 testimonial。"],
+          "common_false_positives": ["说品牌提供情绪价值，却没有角色工具或角色符号机制。"],
+          "contradiction_patterns": ["声称 Identification 是证明产品性能的第三方评价。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-05-03",
+          "source_node_ids": ["N-05-06"],
+          "target_node_ids": ["N-05-08"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明 image building 从市场已接受的 primary image 起步；有利时增强，不利或中性时保留但降低强度。",
+          "required_facets": ["direction", "condition", "boundary"],
+          "source_anchor_ids": ["SA-015B", "SA-016A", "SA-017"],
+          "acceptable_paraphrases": ["可称为不能否认产品是什么，只能把既有认识作为原材料和桥。"],
+          "pass_if": ["primary image 的先在性、不可丢弃及强度调节都明确。"],
+          "fail_if": ["主张直接给产品换一个更理想但与既有认知矛盾的人格。"],
+          "common_false_positives": ["泛称品牌要基于用户已有印象，却未说明保留和调节机制。"],
+          "contradiction_patterns": ["建议负面 primary image 应完全隐藏或删除。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-05-04",
+          "source_node_ids": ["N-05-08"],
+          "target_node_ids": ["N-05-07"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明 target image 必须从 primary image 逻辑生长，并通过可被受众立即认同的 bridge 接上自身生活。",
+          "required_facets": ["direction", "mechanism", "condition"],
+          "source_anchor_ids": ["SA-016A", "SA-016B", "SA-017"],
+          "acceptable_paraphrases": ["允许称为从已信的产品人格和 first-seen image 逐步挂上理想身份。"],
+          "pass_if": ["既有形象、桥接和目标形象三者方向完整。"],
+          "fail_if": ["只说新形象要一致可信，没有说明一致性如何从 primary image 建立。"],
+          "common_false_positives": ["把任意 aspirational lifestyle 当作可接受 bridge。"],
+          "contradiction_patterns": ["声称 target image 越远离既有产品印象越有突破性。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-05-05",
+          "source_node_ids": ["N-05-09"],
+          "target_node_ids": ["N-05-07"],
+          "relation_type": "limits",
+          "requirement": "候选文章须保留 believability-chasm 边界：产品特质或顾客自我连接任一不可信，都必须增加桥接，否则整体主张会受损。",
+          "required_facets": ["boundary", "condition", "direction"],
+          "source_anchor_ids": ["SA-017"],
+          "acceptable_paraphrases": ["可写成受众既要相信产品拥有该人格，也要相信这种人格与自己的现在或下一步有关。"],
+          "pass_if": ["两项可信条件及直接跳跃失败被表达。"],
+          "fail_if": ["只说形象要符合目标用户喜好，没有产品—人两侧的可信检查。"],
+          "common_false_positives": ["把精美、向上或精英视觉自动当作有效认同。"],
+          "contradiction_patterns": ["声称只要目标角色有吸引力，顾客就会接受。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-05-06",
+          "source_node_ids": ["N-05-10"],
+          "target_node_ids": ["N-05-06", "N-05-08", "N-05-07"],
+          "relation_type": "instantiates",
+          "requirement": "候选文章须保留 Chesterfield 案例如何依次承认男性 primary image、弱化它、再桥接到女性可接受的新场景。",
+          "required_facets": ["case_identity", "argument_function", "direction", "mechanism"],
+          "source_anchor_ids": ["SA-016B"],
+          "acceptable_paraphrases": ["不要求复述广告画面细节，但必须保留原案例身份和三步论证功能。"],
+          "pass_if": ["案例被用于演示完整形象桥，而不是只作为情感广告或女性市场故事。"],
+          "fail_if": ["省略案例，或只说它借浪漫场景吸引女性。"],
+          "common_false_positives": ["提到该标题和海滩，却未说明男性形象为何必须保留。"],
+          "contradiction_patterns": ["声称案例通过删除男性意象、直接把香烟女性化而成功。"],
+          "weight": 1.0,
+          "critical": true
+        }
+      ],
+      "paths": [
+        {
+          "id": "P-05-01",
+          "label": "功能满足与角色价值的双重购买路径",
+          "relation_ids": ["R-05-02"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "Identification 的首要边界是它不是 proof，也不是功能利益的修辞改写。"
+        },
+        {
+          "id": "P-05-02",
+          "label": "从 primary image 到可信 target image",
+          "relation_ids": ["R-05-03", "R-05-04", "R-05-05", "R-05-06"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "案例与抽象关系共同防止把 image building 误成任意换人格。"
+        }
+      ],
+      "weight": 1.0,
+      "rationale": "该结构既修复中文 OCR 对 Identification 的误译，也保留本书独有的 primary-image bridge。"
+    },
+    {
+      "id": "CS-06",
+      "label": "Gradualization 与 Redefinition",
+      "central_question": "怎样从读者已经接受的事实走到原本不会接受的结论，又怎样在不否认事实的情况下移除产品内置阻力？",
+      "summary": "Gradualization 用已接受事实和前置准备构造 acceptance chain；Redefinition 则重排读者看待既有事实的视角。TV Repair Manual 和 Lifebuoy 分别构成两种机制的关键教学支点。",
+      "nodes": [
+        {
+          "id": "N-06-01",
+          "statement": "读者既有的事实、价值、偏见和推理通道构成当前可接受的 belief 起点。",
+          "role": "premise",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-018", "SA-019"],
+          "essential": true
+        },
+        {
+          "id": "N-06-02",
+          "statement": "广告可以正面击碎或迅速改写读者既有 belief。",
+          "role": "assumption",
+          "stance_owner": "opponent",
+          "epistemic_status": "rejected",
+          "source_anchor_ids": ["SA-018"],
+          "essential": true
+        },
+        {
+          "id": "N-06-03",
+          "statement": "从读者已接受事实出发，经逐步准备好的事实建立 belief bridge。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-018", "SA-019", "SA-021"],
+          "essential": true
+        },
+        {
+          "id": "N-06-04",
+          "statement": "读者最终接受原本不会立即接受的 goal conclusion。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-018", "SA-019", "SA-021"],
+          "essential": true
+        },
+        {
+          "id": "N-06-05",
+          "statement": "一个 claim、image 或 proof 自身内容的强度。",
+          "role": "premise",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-019"],
+          "essential": true
+        },
+        {
+          "id": "N-06-06",
+          "statement": "读者心中已有或广告前文通过位置、顺序和材料铺设的准备。",
+          "role": "premise",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-019", "SA-021"],
+          "essential": true
+        },
+        {
+          "id": "N-06-07",
+          "statement": "TV Repair Manual 广告被作者逐句分析为从共同怨气和 agreement 走到产品 payoff 的接受链。",
+          "role": "case",
+          "stance_owner": "cited_source",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-020", "SA-021", "SA-023"],
+          "essential": true,
+          "case_profile": {
+            "function": "constitutive",
+            "preservation": "required",
+            "replacement_rule": "当前 draft 要求保留 TV Repair Manual 案例身份、两级 goal conclusion 及最终 payoff；Human Owner 尚未确认。"
+          }
+        },
+        {
+          "id": "N-06-08",
+          "statement": "案例先利用修理费怨气、inclusion question 和症状认同建立连续 agreement。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-020A", "SA-020B"],
+          "essential": true
+        },
+        {
+          "id": "N-06-09",
+          "statement": "第一个 goal conclusion：电视本身可靠，绝大多数重大故障可以避免。",
+          "role": "conclusion",
+          "stance_owner": "cited_source",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-020"],
+          "essential": true
+        },
+        {
+          "id": "N-06-10",
+          "statement": "第二个 goal conclusion：普通机主不必是修理工，也能处理常见的外部小调整。",
+          "role": "conclusion",
+          "stance_owner": "cited_source",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-020B", "SA-020C", "SA-023"],
+          "essential": true
+        },
+        {
+          "id": "N-06-11",
+          "statement": "最终 payoff：获得相应知识并自行调整，就能减少服务合同和维修支出。",
+          "role": "conclusion",
+          "stance_owner": "cited_source",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-020", "SA-023"],
+          "essential": true
+        },
+        {
+          "id": "N-06-12",
+          "statement": "产品或过程被认为过于复杂、困难或难以使用。",
+          "role": "objection",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-022", "SA-023", "SA-024"],
+          "essential": true
+        },
+        {
+          "id": "N-06-13",
+          "statement": "Simplification 通过熟悉类比、有限步骤和事实分类，把难任务重定义为可管理动作。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-023", "SA-024"],
+          "essential": true
+        },
+        {
+          "id": "N-06-14",
+          "statement": "产品有效且易用，但原本被理解的利益范围太窄，不能形成足够大的市场。",
+          "role": "objection",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-024"],
+          "essential": true
+        },
+        {
+          "id": "N-06-15",
+          "statement": "Escalation 扩大产品在生活中的角色、回报范围或它所决定的更重要目标。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-024"],
+          "essential": true
+        },
+        {
+          "id": "N-06-16",
+          "statement": "产品相对于同类标准显得价格过高。",
+          "role": "objection",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-024"],
+          "essential": true
+        },
+        {
+          "id": "N-06-17",
+          "statement": "Price redefinition 不改变标价，而是切换到更昂贵或价值更高的比较标准。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-024"],
+          "essential": true
+        },
+        {
+          "id": "N-06-18",
+          "statement": "Lifebuoy 案例保留与清洁力不可分的药味，把注意转向体味问题，再把药味重定义成除味能力的感官证明。",
+          "role": "case",
+          "stance_owner": "cited_source",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-022"],
+          "essential": true,
+          "case_profile": {
+            "function": "constitutive",
+            "preservation": "required",
+            "replacement_rule": "当前 draft 要求保留 Lifebuoy/B.O. 案例身份及不可移除缺点→新问题→能力证明的功能；Human Owner 尚未确认。"
+          }
+        },
+        {
+          "id": "N-06-19",
+          "statement": "在不否认产品事实的前提下，原先的 liability 被重排为支持购买的 asset 或 proof。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-022", "SA-025"],
+          "essential": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "R-06-01",
+          "source_node_ids": ["N-06-01"],
+          "target_node_ids": ["N-06-02"],
+          "relation_type": "refutes",
+          "requirement": "候选文章须把作者观点写成在广告尺度内顺着既有 belief 延伸，而不是正面改变或击碎它。",
+          "required_facets": ["direction", "stance_owner", "epistemic_status", "boundary"],
+          "source_anchor_ids": ["SA-018"],
+          "acceptable_paraphrases": ["允许限定为广告时间和资源不足以教育社会，必须从读者当前事实版本起步。"],
+          "pass_if": ["既有 belief 的约束和 extend-not-change 立场都明确。"],
+          "fail_if": ["写成广告的目标是改变用户信念，或把作者强断言当无条件现实真理而不归属。"],
+          "common_false_positives": ["只说理解用户认知，却未说明不得逆其当前接受方向。"],
+          "contradiction_patterns": ["声称更强证据可以直接粉碎任何既有 belief。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-06-02",
+          "source_node_ids": ["N-06-01"],
+          "target_node_ids": ["N-06-03"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明 Gradualization 从已经接受的事实出发，逐步延伸而非跳到目标主张。",
+          "required_facets": ["direction", "mechanism"],
+          "source_anchor_ids": ["SA-018", "SA-021"],
+          "acceptable_paraphrases": ["可称为先取得一个 agreement，再让每个新事实由前一步准备。"],
+          "pass_if": ["起点、逐步 succession 和延伸方向都出现。"],
+          "fail_if": ["只说循序渐进、先建立信任，未说明以哪些已接受事实为桥。"],
+          "common_false_positives": ["把按章节顺序解释产品称为 Gradualization。"],
+          "contradiction_patterns": ["建议先亮出最强结论，再补理由。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-06-03",
+          "source_node_ids": ["N-06-05", "N-06-06"],
+          "target_node_ids": ["N-06-04"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须说明一个陈述的接受力同时来自内容本身和前文准备、位置与顺序；Gradualization 主要改变后者。",
+          "required_facets": ["mechanism", "direction", "argument_function"],
+          "source_anchor_ids": ["SA-019", "SA-021"],
+          "acceptable_paraphrases": ["可以说同一 claim 放在读者准备好之后会比孤立提前出现更可信。"],
+          "pass_if": ["两种力量来源及它们共同支持 goal conclusion 的关系清楚。"],
+          "fail_if": ["把 Gradualization 等同增加 proof、testimonial 或 promise 强度。"],
+          "common_false_positives": ["只说顺序重要，却未说明顺序在读者心中制造 preparation。"],
+          "contradiction_patterns": ["声称主张内容足够强时，位置和准备无关。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-06-04",
+          "source_node_ids": ["N-06-07", "N-06-08"],
+          "target_node_ids": ["N-06-09"],
+          "relation_type": "supports",
+          "requirement": "候选文章须保留 TV 案例如何先用共同怨气、纳入问题和症状 agreement，才建立电视可靠这一首个结论。",
+          "required_facets": ["case_identity", "argument_function", "direction", "mechanism"],
+          "source_anchor_ids": ["SA-020A", "SA-020B"],
+          "acceptable_paraphrases": ["不要求历史数字逐字复述，但须保留作者分析的 agreement→dependability 功能。"],
+          "pass_if": ["案例身份、初始接受和第一 goal conclusion 的推进均明确。"],
+          "fail_if": ["只说 TV 案例先建立信任，或直接从修理费跳到可自行维修。"],
+          "common_false_positives": ["复述广告标题和测试材料，却未说明它们怎样形成连续 Yes 反应。"],
+          "contradiction_patterns": ["声称案例一开始就直接承诺自己维修电视。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-06-05",
+          "source_node_ids": ["N-06-09"],
+          "target_node_ids": ["N-06-10"],
+          "relation_type": "precedes",
+          "requirement": "候选文章须明确电视可靠是读者接受普通人可做小调整的必要前提，次序不可反转。",
+          "required_facets": ["direction", "condition", "argument_function"],
+          "source_anchor_ids": ["SA-020B", "SA-020C", "SA-023"],
+          "acceptable_paraphrases": ["可写成先把复杂机器重构为大体可靠，才把少数常见问题重定义为外部 adjustments。"],
+          "pass_if": ["两个 goal conclusions 及依赖顺序清楚。"],
+          "fail_if": ["把两点并列，或先说普通人能修再证明机器可靠。"],
+          "common_false_positives": ["列出可靠和易调整两个结论，没有表达 Only when 的必要关系。"],
+          "contradiction_patterns": ["声称会修小故障是相信电视可靠的原因。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-06-06",
+          "source_node_ids": ["N-06-09", "N-06-10"],
+          "target_node_ids": ["N-06-11"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须把节省维修费和购买知识写成前两个 goal conclusions 的 payoff，而非独立口号。",
+          "required_facets": ["direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-020C", "SA-020D", "SA-021", "SA-023"],
+          "acceptable_paraphrases": ["可写成设备多数时间可靠且小调整可自理，所以为知识付费能替代为修理工知识付费。"],
+          "pass_if": ["可靠、可调整和最终经济结论形成完整联合推导。"],
+          "fail_if": ["只保留省钱结论或产品承诺，缺少任一中间桥。"],
+          "common_false_positives": ["概括为先教育用户再成交。"],
+          "contradiction_patterns": ["把省钱主张放在路径起点并视为足够有力。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-06-07",
+          "source_node_ids": ["N-06-12"],
+          "target_node_ids": ["N-06-13"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明 complexity objection 对应 Simplification：用熟悉结构、有限步骤和事实分类证明可管理，而非空喊容易。",
+          "required_facets": ["condition", "mechanism", "boundary"],
+          "source_anchor_ids": ["SA-023", "SA-024"],
+          "acceptable_paraphrases": ["可用 TV 的 repairs→minor outside adjustments 或 Cody 的有限高频规则说明。"],
+          "pass_if": ["复杂条件、认知重定义和不能只喊 easy 的边界均明确。"],
+          "fail_if": ["把 Simplification 写成删减信息、简短文案或重复易用承诺。"],
+          "common_false_positives": ["说降低使用门槛，却未说明通过何种事实重组证明。"],
+          "contradiction_patterns": ["声称革命性产品只需宣称简单即可被接受。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-06-08",
+          "source_node_ids": ["N-06-14"],
+          "target_node_ids": ["N-06-15"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明 appeal 过窄时用 Escalation 扩大产品在生活中的角色或更高层目标，而非夸大同一性能。",
+          "required_facets": ["condition", "mechanism", "boundary"],
+          "source_anchor_ids": ["SA-024"],
+          "acceptable_paraphrases": ["可写成把产品从一个 end 重定义为达到更重要 end 的 means。"],
+          "pass_if": ["窄市场条件和 benefit horizon/role 扩大关系清楚。"],
+          "fail_if": ["把 Escalation 当作扩大 claim 数字或提高紧迫感。"],
+          "common_false_positives": ["泛称提高产品重要性，没有说明重定义其生活角色。"],
+          "contradiction_patterns": ["声称 Escalation 适用于产品难用这一阻力。"],
+          "weight": 1.0,
+          "critical": false
+        },
+        {
+          "id": "R-06-09",
+          "source_node_ids": ["N-06-16"],
+          "target_node_ids": ["N-06-17"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明高价 objection 对应切换比较标准，而不是实际降价或只说物有所值。",
+          "required_facets": ["condition", "mechanism", "boundary"],
+          "source_anchor_ids": ["SA-024"],
+          "acceptable_paraphrases": ["可称为把价格从同类商品基准移到更昂贵的整体价值基准。"],
+          "pass_if": ["原比较导致贵、新比较使价格显小的视角转换明确。"],
+          "fail_if": ["把 Price Reduction 写成折扣、优惠或价值宣言。"],
+          "common_false_positives": ["只出现重新定义价格，没有两个比较标准。"],
+          "contradiction_patterns": ["声称作者建议降低标价来解决阻力。"],
+          "weight": 1.0,
+          "critical": false
+        },
+        {
+          "id": "R-06-10",
+          "source_node_ids": ["N-06-18"],
+          "target_node_ids": ["N-06-19"],
+          "relation_type": "instantiates",
+          "requirement": "候选文章须保留 Lifebuoy 案例如何不删除药味事实，而把它从 liability 重定义成除体味能力的可感证明。",
+          "required_facets": ["case_identity", "argument_function", "direction", "mechanism"],
+          "source_anchor_ids": ["SA-022A", "SA-022B", "SA-025"],
+          "acceptable_paraphrases": ["不要求复述历史广告措辞，但必须保留药味与清洁力不可分及 proof 反转。"],
+          "pass_if": ["案例身份、事实保留、注意转移和 liability→asset 功能完整。"],
+          "fail_if": ["省略案例，或只说把缺点包装成优点。"],
+          "common_false_positives": ["提到 B.O. campaign，却没说明药味为何不能去除及如何变成证据。"],
+          "contradiction_patterns": ["声称案例成功是因为广告掩盖了产品药味。"],
+          "weight": 1.0,
+          "critical": true
+        }
+      ],
+      "paths": [
+        {
+          "id": "P-06-01",
+          "label": "从既有 belief 到延迟 goal conclusion",
+          "relation_ids": ["R-06-01", "R-06-02", "R-06-03"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "该路径将 Gradualization 与泛泛的循序解释、增加证据区分开。"
+        },
+        {
+          "id": "P-06-02",
+          "label": "TV Repair Manual 的两级接受链",
+          "relation_ids": ["R-06-04", "R-06-05", "R-06-06"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "作者以该案例展示为什么只写最终省钱结论不构成 belief architecture。"
+        },
+        {
+          "id": "P-06-03",
+          "label": "Redefinition 不否认事实的反转路径",
+          "relation_ids": ["R-06-07", "R-06-10"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "Simplification 与 Lifebuoy 案例共同显示重定义是事实分类或视角重排，不是遮掩。"
+        }
+      ],
+      "weight": 1.0,
+      "rationale": "这是本书 belief 结构的核心，既包含一般关系，也包含作者用来形成和验证机制的构成性案例。"
+    },
+    {
+      "id": "CS-07",
+      "label": "Mechanization、Concentration 与 Camouflage",
+      "central_question": "怎样回答产品如何兑现、怎样从替代方案夺回欲望，又怎样从特定媒介借用可信度？",
+      "summary": "Mechanization 用销售性的语言逻辑回答 how-it-works；Concentration 证明竞品弱点伤害读者且本品消除它；Camouflage 则让特定媒介的既存信任经其形式和措辞迁移到广告。",
+      "nodes": [
+        {
+          "id": "N-07-01",
+          "statement": "读者已经想要承诺结果，但在特定点提出 how does it work 的机制需求。",
+          "role": "question",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-026"],
+          "essential": true
+        },
+        {
+          "id": "N-07-02",
+          "statement": "Mechanization 以语言和逻辑演示产品如何产生承诺结果，从而建立 belief。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-026", "SA-027"],
+          "essential": true
+        },
+        {
+          "id": "N-07-03",
+          "statement": "受众对机制的熟悉、接受程度及市场竞争饱和状态。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-026", "SA-027"],
+          "essential": true
+        },
+        {
+          "id": "N-07-04",
+          "statement": "机制已知时 name，未知或同质时 describe，机制强或市场高度成熟时 feature 于 headline。",
+          "role": "action",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-027"],
+          "essential": true
+        },
+        {
+          "id": "N-07-05",
+          "statement": "机制文案销售一个 how-it-works 的次级主张。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-027"],
+          "essential": true
+        },
+        {
+          "id": "N-07-06",
+          "statement": "次级机制主张为产品的主要结果承诺提供可理解的 verbal proof。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-027"],
+          "essential": true
+        },
+        {
+          "id": "N-07-07",
+          "statement": "竞争方案中一个可被逻辑说明和记录的具体弱点。",
+          "role": "premise",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-028B"],
+          "essential": true
+        },
+        {
+          "id": "N-07-08",
+          "statement": "该弱点给读者造成的实际 disservice、成本或失败。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-028B"],
+          "essential": true
+        },
+        {
+          "id": "N-07-09",
+          "statement": "本品以对应机制消除该弱点，同时提供读者想要的满足。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-028A"],
+          "essential": true
+        },
+        {
+          "id": "N-07-10",
+          "statement": "读者因此质疑旧忠诚，并把满足欲望的路径转向本品。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-028C"],
+          "essential": true
+        },
+        {
+          "id": "N-07-11",
+          "statement": "只为赢得销售而贬低竞争者，却不给出本品如何解决弱点。",
+          "role": "objection",
+          "stance_owner": "opponent",
+          "epistemic_status": "rejected",
+          "source_anchor_ids": ["SA-028"],
+          "essential": true
+        },
+        {
+          "id": "N-07-12",
+          "statement": "读者识别到攻击偏见，产生 skepticism 和 dislike。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-028"],
+          "essential": true
+        },
+        {
+          "id": "N-07-13",
+          "statement": "Fire Injectors 历史广告逐点连接它所声称的 spark plug 弱点、对车主的损害与 injector 对应消除机制。",
+          "role": "case",
+          "stance_owner": "cited_source",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-028C"],
+          "essential": true,
+          "case_profile": {
+            "function": "constitutive",
+            "preservation": "required",
+            "replacement_rule": "当前 draft 要求保留 Fire Injectors 案例身份和 Bad→Disservice→Good 的一一对应功能；Human Owner 尚未确认。"
+          }
+        },
+        {
+          "id": "N-07-14",
+          "statement": "目标受众长期信任某个具体传播媒介的真实性。",
+          "role": "premise",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-029"],
+          "essential": true
+        },
+        {
+          "id": "N-07-15",
+          "statement": "该媒介反复使用的 format、style、tone 与 phraseology 已成为受众熟悉的真相线索。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-029"],
+          "essential": true
+        },
+        {
+          "id": "N-07-16",
+          "statement": "适配该具体媒介的广告减少 editorial→ad 的认知换挡，并借得 stored believability。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-029"],
+          "essential": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "R-07-01",
+          "source_node_ids": ["N-07-01"],
+          "target_node_ids": ["N-07-02"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明 mechanism 在读者从想要结果转为追问如何做到的时点出现，并以语言逻辑建立兑现可信度。",
+          "required_facets": ["direction", "mechanism", "condition", "argument_function"],
+          "source_anchor_ids": ["SA-026"],
+          "acceptable_paraphrases": ["可写成正文在 desire 开始显得 too good to be true 时转向 reason why。"],
+          "pass_if": ["读者需求、切换时点和 verbal demonstration 的功能完整。"],
+          "fail_if": ["把 Mechanization 写成任意技术说明或产品研发机制。"],
+          "common_false_positives": ["说解释产品原理能建立信任，却没有读者 how-demand 与文案切换。"],
+          "contradiction_patterns": ["声称机制应固定放在广告开头。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-07-02",
+          "source_node_ids": ["N-07-03"],
+          "target_node_ids": ["N-07-04"],
+          "relation_type": "qualifies",
+          "requirement": "候选文章须保留机制呈现强度的条件映射：已知则命名，未知则销售性描述，强机制或高 Sophistication 则前置主打。",
+          "required_facets": ["condition", "boundary", "direction"],
+          "source_anchor_ids": ["SA-027"],
+          "acceptable_paraphrases": ["不要求沿用三个 Stage 编号，但三个认知条件和动作须对应。"],
+          "pass_if": ["name/describe/feature 至少以完整条件映射恢复。"],
+          "fail_if": ["声称所有广告都应详细解释机制，或越复杂越好。"],
+          "common_false_positives": ["列出三种机制写法，没有说明由 Awareness/Sophistication 决定。"],
+          "contradiction_patterns": ["建议熟悉机制也要展开 nuts and bolts。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-07-03",
+          "source_node_ids": ["N-07-05"],
+          "target_node_ids": ["N-07-06"],
+          "relation_type": "supports",
+          "requirement": "候选文章须把 mechanism copy 写成仍在销售的次级主张，用它证明主要承诺，而不是枯燥科学说明。",
+          "required_facets": ["direction", "argument_function", "boundary"],
+          "source_anchor_ids": ["SA-027"],
+          "acceptable_paraphrases": ["可写成 how-it-works 本身也必须带 promise 与 emotion，但服务于 primary claim。"],
+          "pass_if": ["次级机制主张→主要结果承诺的证明方向和非科学论文边界清楚。"],
+          "fail_if": ["只说机制要有趣，或把机制与主要承诺当两个平行卖点。"],
+          "common_false_positives": ["提供大量技术细节就判为机制充分。"],
+          "contradiction_patterns": ["声称机制文案越中立客观越可信。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-07-04",
+          "source_node_ids": ["N-07-07"],
+          "target_node_ids": ["N-07-08"],
+          "relation_type": "explains",
+          "requirement": "候选文章须说明 Concentration 先把竞争方案的具体弱点连接到它给读者造成的损害，而非停在竞品更差。",
+          "required_facets": ["direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-028B"],
+          "acceptable_paraphrases": ["可写成旧方案为何浪费、失败或妨碍欲望满足的因果链。"],
+          "pass_if": ["弱点和读者 disservice 之间有明确解释关系。"],
+          "fail_if": ["只比较功能参数或宣称竞品落后。"],
+          "common_false_positives": ["列出竞品缺点，但没有说明这些缺点为何与顾客利益有关。"],
+          "contradiction_patterns": ["把竞争者弱点当成无需证明的攻击素材。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-07-05",
+          "source_node_ids": ["N-07-08", "N-07-09"],
+          "target_node_ids": ["N-07-10"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须说明只有同时证明旧方案损害和本品对应消除，才可能使读者转移忠诚。",
+          "required_facets": ["direction", "mechanism", "condition"],
+          "source_anchor_ids": ["SA-028B"],
+          "acceptable_paraphrases": ["可写成 Bad→对我不利，与 Good→本品为何没有该问题必须逐点接上。"],
+          "pass_if": ["disservice、本品补足和 loyalty shift 三者方向完整。"],
+          "fail_if": ["只攻击竞品或只列本品优点，缺少对应桥。"],
+          "common_false_positives": ["写成竞品有问题、我方更好，却没有同一弱点的消除机制。"],
+          "contradiction_patterns": ["声称攻击越激烈越能打破忠诚。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-07-06",
+          "source_node_ids": ["N-07-11"],
+          "target_node_ids": ["N-07-12"],
+          "relation_type": "causes",
+          "requirement": "候选文章须保留 attack-only 的失败模式：读者看见广告主偏见，产生怀疑和反感。",
+          "required_facets": ["direction", "stance_owner", "epistemic_status"],
+          "source_anchor_ids": ["SA-028A"],
+          "acceptable_paraphrases": ["可写成若不能同时证明自己补足缺陷，作者主张宁可不攻击。"],
+          "pass_if": ["攻击行为、缺少顾客利益证明和负面反应的因果清楚。"],
+          "fail_if": ["把 Concentration 解释成作者提倡的竞品抹黑术。"],
+          "common_false_positives": ["提到攻击要有逻辑，却未说明本品必须提供解决。"],
+          "contradiction_patterns": ["声称贬低竞品本身就能建立本品优势。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-07-07",
+          "source_node_ids": ["N-07-13"],
+          "target_node_ids": ["N-07-07", "N-07-08", "N-07-09"],
+          "relation_type": "instantiates",
+          "requirement": "候选文章须保留 Fire Injectors 案例如何把 spark-plug 弱点、车主损害和 injector 的对应消除逐点交织，并把技术效果保持为历史广告中被引的销售主张，而非作者认可的工程事实。",
+          "required_facets": ["case_identity", "argument_function", "direction", "mechanism", "stance_owner", "epistemic_status"],
+          "source_anchor_ids": ["SA-028C"],
+          "acceptable_paraphrases": ["不要求性能数字，但必须保留案例身份和一一对应比较结构；技术效果可概括为广告所称的效果，不得替作者背书为客观工程事实。"],
+          "pass_if": ["案例被用于演示完整 Concentration 链，而非一般 superiority comparison。", "技术效果明确归于历史广告、文案或被引主张，未被升级为作者认可的工程事实。"],
+          "fail_if": ["省略案例，或只说它通过对比证明本品更好。", "把 Fire Injectors 的性能写成作者认可、保证或以工程事实身份采纳的结论。"],
+          "common_false_positives": ["提到 spark plugs 与 injectors，却没有 disservice 与 removal 的对应。", "保留 Bad—Good 结构，却把历史广告的技术宣称当成作者或基准认可的客观事实。"],
+          "contradiction_patterns": ["声称案例主要靠攻击火花塞制造恐惧。", "声称作者已确认广告中的技术效果属于工程事实。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-07-08",
+          "source_node_ids": ["N-07-14", "N-07-15"],
+          "target_node_ids": ["N-07-16"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须说明 Camouflage 依赖特定受众对特定媒介的信任及其熟悉表达惯例，共同把可信度条件性迁移到广告。",
+          "required_facets": ["direction", "condition", "mechanism", "boundary"],
+          "source_anchor_ids": ["SA-029"],
+          "acceptable_paraphrases": ["可称为适配 host medium 以减少换挡并借其 stored believability。"],
+          "pass_if": ["媒介信任、形式/措辞适配和迁移结果三者完整，且不是通用新闻模板。"],
+          "fail_if": ["把 Camouflage 写成伪装成报道、隐藏广告身份或只换版式。"],
+          "common_false_positives": ["说原生广告更可信，却未说明可信度来自该受众已信任的具体媒介。"],
+          "contradiction_patterns": ["声称任何广告只要像新闻就能借到同等信任。"],
+          "weight": 1.0,
+          "critical": true
+        }
+      ],
+      "paths": [
+        {
+          "id": "P-07-01",
+          "label": "从 how-demand 到销售性的机制证明",
+          "relation_ids": ["R-07-01", "R-07-02", "R-07-03"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "Mechanization 的核心在读者需求、条件性详略和次级主张证明主承诺。"
+        },
+        {
+          "id": "P-07-02",
+          "label": "Concentration 的顾客利益比较链",
+          "relation_ids": ["R-07-04", "R-07-05", "R-07-06", "R-07-07"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "缺少任一桥都会把该机制退化成参数对比或攻击竞争者。"
+        },
+        {
+          "id": "P-07-03",
+          "label": "Camouflage 的条件性媒介信任迁移",
+          "relation_ids": ["R-07-08"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "一条联合关系足以区分借用具体媒介信任与泛新闻伪装。"
+        }
+      ],
+      "weight": 1.0,
+      "rationale": "三种技术都建立 belief，但对象、机制和失败边界完全不同，混写会严重扭曲作者结构。"
+    },
+    {
+      "id": "CS-08",
+      "label": "Verification 与整体编织",
+      "central_question": "分析时拆开的 promises、images、proof 和说服过程，怎样按读者当下需求重新组成一个完整广告？",
+      "summary": "终章要求把分解元素重新绑定：proof 要放在读者准备接受的位置，相邻主张要互相强化，句段要多功能交织，整体则随读者饱和与新问题在恰当 shift point 改变方向。",
+      "nodes": [
+        {
+          "id": "N-08-01",
+          "statement": "前文为分析而分别讨论的 Desire、Identification、Belief、promise、image、proof 与结构装置。",
+          "role": "premise",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-030"],
+          "essential": true
+        },
+        {
+          "id": "N-08-02",
+          "statement": "从标题到行动持续保持注意和递增 conviction 的 cohesive unit。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-030"],
+          "essential": true
+        },
+        {
+          "id": "N-08-03",
+          "statement": "Documentation：统计、事实、测试、权威等外部证明材料。",
+          "role": "evidence",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-031C"],
+          "essential": true
+        },
+        {
+          "id": "N-08-04",
+          "statement": "Mechanization：不必依靠外部资料、以语言逻辑和结构演示产品如何有效。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-031A", "SA-031B", "SA-031C"],
+          "essential": true
+        },
+        {
+          "id": "N-08-05",
+          "statement": "Verification：把 documentation 安排进广告，使其获得最大即时接受和情感效果。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-031"],
+          "essential": true
+        },
+        {
+          "id": "N-08-06",
+          "statement": "读者已被前文准备到认为某项 proof 必要、合逻辑并主动寻找答案的时点。",
+          "role": "condition",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-031"],
+          "essential": true
+        },
+        {
+          "id": "N-08-07",
+          "statement": "逻辑相邻、彼此解释或形成对照的两个 claim 或 image。",
+          "role": "premise",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-032"],
+          "essential": true
+        },
+        {
+          "id": "N-08-08",
+          "statement": "后一项使前一项更可信或更尖锐，组合效果大于孤立相加。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-032"],
+          "essential": true
+        },
+        {
+          "id": "N-08-09",
+          "statement": "一个句段可承载 promise、logic、emotion 与 image 等多种功能。",
+          "role": "premise",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-032"],
+          "essential": true
+        },
+        {
+          "id": "N-08-10",
+          "statement": "多种功能被自然 interweave，形成难以拆开的 conviction 与 desire，而不是按标签机械拼装。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-032"],
+          "essential": true
+        },
+        {
+          "id": "N-08-11",
+          "statement": "读者对当前 promise、mechanism、documentation 或其他材料已经饱和，并开始要求另一类信息。",
+          "role": "condition",
+          "stance_owner": "neutral",
+          "epistemic_status": "observed",
+          "source_anchor_ids": ["SA-033A"],
+          "essential": true
+        },
+        {
+          "id": "N-08-12",
+          "statement": "作者以同理心识别读者兴趣改变的 shift point。",
+          "role": "mechanism",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-033A"],
+          "essential": true
+        },
+        {
+          "id": "N-08-13",
+          "statement": "在 shift point 从一种 copy 模块转向读者此刻需要的另一种模块。",
+          "role": "action",
+          "stance_owner": "author",
+          "epistemic_status": "qualified",
+          "source_anchor_ids": ["SA-033A"],
+          "essential": true
+        },
+        {
+          "id": "N-08-14",
+          "statement": "广告的整体 architecture：不同模块何时、何处、多少次切换的模式。",
+          "role": "conclusion",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-033A", "SA-033B"],
+          "essential": true
+        },
+        {
+          "id": "N-08-15",
+          "statement": "每个产品、市场、读者和材料组合提出不同问题与结构需求。",
+          "role": "condition",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-001", "SA-003", "SA-033B"],
+          "essential": true
+        },
+        {
+          "id": "N-08-16",
+          "statement": "即使内容相同，重构模块顺序和连接也会产生新的主张力量、可信度和广告。",
+          "role": "implication",
+          "stance_owner": "author",
+          "epistemic_status": "asserted",
+          "source_anchor_ids": ["SA-033B"],
+          "essential": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "R-08-01",
+          "source_node_ids": ["N-08-01"],
+          "target_node_ids": ["N-08-02"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明前文拆分只服务分析，真正成文必须把元素重新连接成从头到尾的整体推进。",
+          "required_facets": ["direction", "argument_function", "boundary"],
+          "source_anchor_ids": ["SA-030"],
+          "acceptable_paraphrases": ["可写成七种过程不是清单，只有编织后才形成持续 attention→conviction。"],
+          "pass_if": ["分析拆分与最终综合的先后及目的清楚。"],
+          "fail_if": ["把终章写成再增加几种独立技巧。"],
+          "common_false_positives": ["列出各技巧并称它们共同重要，却没有 cohesive progression。"],
+          "contradiction_patterns": ["主张广告应按技巧名称逐项分段。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-08-02",
+          "source_node_ids": ["N-08-03"],
+          "target_node_ids": ["N-08-04"],
+          "relation_type": "distinguishes",
+          "requirement": "候选文章须区分外部 documentation 与内部 verbal/logical Mechanization，不能把一切都称为 proof。",
+          "required_facets": ["argument_function", "boundary"],
+          "source_anchor_ids": ["SA-031C"],
+          "acceptable_paraphrases": ["可称为事实材料证明与推理结构证明。"],
+          "pass_if": ["两者来源和证明方式差异明确。"],
+          "fail_if": ["把机制、数据、权威、测试当作同一类证据。"],
+          "common_false_positives": ["同时提到 mechanism 和 documentation，但没有定义差异。"],
+          "contradiction_patterns": ["声称 Mechanization 必须依靠第三方测试或权威。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-08-03",
+          "source_node_ids": ["N-08-03", "N-08-06"],
+          "target_node_ids": ["N-08-05"],
+          "relation_type": "jointly_supports",
+          "requirement": "候选文章须说明 Verification 不是拥有 proof，而是把 documentation 放在读者已准备并需要它的位置。",
+          "required_facets": ["condition", "direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-031A", "SA-031B", "SA-031C"],
+          "acceptable_paraphrases": ["可写成同一统计过早出现会枯燥，在问题已戏剧化后出现才成为答案。"],
+          "pass_if": ["外部证明、准备状态和安排动作三者完整。"],
+          "fail_if": ["把 Verification 写成收集更多证据、权威背书或单独 proof section。"],
+          "common_false_positives": ["说证据要在恰当时机出现，却未说明时机由 acceptance/demand 决定。"],
+          "contradiction_patterns": ["声称所有 proof 越早展示越可信。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-08-04",
+          "source_node_ids": ["N-08-07"],
+          "target_node_ids": ["N-08-08"],
+          "relation_type": "supports",
+          "requirement": "候选文章须说明 Reinforcement 依赖相邻主张之间的解释或对照，使组合效果放大，而非单纯多写主张。",
+          "required_facets": ["direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-032"],
+          "acceptable_paraphrases": ["可用 Avis 的第二名所以更努力说明 reason-why juxtaposition。"],
+          "pass_if": ["相邻连接和非加和强化效果明确。"],
+          "fail_if": ["把 Reinforcement 写成重复、堆叠或同时出现多个 claim。"],
+          "common_false_positives": ["说两个观点互相强化，却没有具体连接关系。"],
+          "contradiction_patterns": ["声称把 claim 分散在页面各处也有同样效果。"],
+          "weight": 1.0,
+          "critical": false
+        },
+        {
+          "id": "R-08-05",
+          "source_node_ids": ["N-08-09"],
+          "target_node_ids": ["N-08-10"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明 Interweaving 让一个句段自然承担 promise、logic、emotion、image 等多重功能，而不是机械贴标签。",
+          "required_facets": ["mechanism", "argument_function", "boundary"],
+          "source_anchor_ids": ["SA-032"],
+          "acceptable_paraphrases": ["允许表述为经过分析训练后把装置内化为直觉，使每句话同时推进多个目标。"],
+          "pass_if": ["多功能融合和反机械拼装边界均明确。"],
+          "fail_if": ["要求每句都显式包含所有元素，或把它写成修辞密度。"],
+          "common_false_positives": ["列出 promise、logic、emotion、image 四词，没有说明它们在同一表达中互相工作。"],
+          "contradiction_patterns": ["声称作者主张按固定槽位插入各技巧。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-08-06",
+          "source_node_ids": ["N-08-11"],
+          "target_node_ids": ["N-08-12"],
+          "relation_type": "causes",
+          "requirement": "候选文章须说明读者对当前材料的饱和或新问题会触发作者寻找 shift point，而不是按预定配方换段。",
+          "required_facets": ["condition", "direction", "mechanism"],
+          "source_anchor_ids": ["SA-033A"],
+          "acceptable_paraphrases": ["可写成作者同时扮演读者，感知何时已经听够 promise 而开始要 proof 或 mechanism。"],
+          "pass_if": ["读者状态变化与 shift-point 识别的因果关系清楚。"],
+          "fail_if": ["只说文案要有节奏、转折或同理心。"],
+          "common_false_positives": ["把段落长度或模板节点当成切换依据。"],
+          "contradiction_patterns": ["声称七种技术有固定使用顺序。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-08-07",
+          "source_node_ids": ["N-08-15"],
+          "target_node_ids": ["N-08-14"],
+          "relation_type": "qualifies",
+          "requirement": "候选文章须说明每个具体问题和材料需求限定其整体 architecture，因此不存在唯一模块次序。",
+          "required_facets": ["condition", "boundary", "argument_function"],
+          "source_anchor_ids": ["SA-001", "SA-003", "SA-033B"],
+          "acceptable_paraphrases": ["可写成每个广告都要让读者反应决定结构，而非复刻案例或章节顺序。"],
+          "pass_if": ["问题特异性与架构差异之间的限定关系明确。"],
+          "fail_if": ["把全书七种过程总结成固定漏斗或步骤法。"],
+          "common_false_positives": ["说不同产品策略不同，却仍给出普适固定结构。"],
+          "contradiction_patterns": ["声称完整广告必须依次走完七种技巧。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-08-08",
+          "source_node_ids": ["N-08-12"],
+          "target_node_ids": ["N-08-13"],
+          "relation_type": "enables",
+          "requirement": "候选文章须说明识别 shift point 后，应切到读者此刻需要的另一类材料，使整体继续黏合。",
+          "required_facets": ["direction", "mechanism", "argument_function"],
+          "source_anchor_ids": ["SA-033A"],
+          "acceptable_paraphrases": ["可用 promise→mechanism→documentation→promise 等非固定序列说明。"],
+          "pass_if": ["识别与实际模块切换的方向关系清楚。"],
+          "fail_if": ["只写发现读者疲劳后缩短或删减文案。"],
+          "common_false_positives": ["说要换新鲜内容，却未说明换到哪类未满足需求。"],
+          "contradiction_patterns": ["声称一旦选定 headline，后续 copy flow 不应改变。"],
+          "weight": 1.0,
+          "critical": true
+        },
+        {
+          "id": "R-08-09",
+          "source_node_ids": ["N-08-14"],
+          "target_node_ids": ["N-08-16"],
+          "relation_type": "implies",
+          "requirement": "候选文章须保留作者的结构结论：改变模块关系会改变同一内容的主张力量、可信度，形成新的广告。",
+          "required_facets": ["direction", "argument_function"],
+          "source_anchor_ids": ["SA-033B"],
+          "acceptable_paraphrases": ["可写成结构不是内容容器，顺序本身生成新的反应和含义。"],
+          "pass_if": ["architecture 变化与新广告效果之间有明确推论。"],
+          "fail_if": ["只说同样内容可以换写法，未说明认知功能随结构改变。"],
+          "common_false_positives": ["把重写理解为语言风格变化。"],
+          "contradiction_patterns": ["声称内容不变时结构只影响可读性、不影响说服。"],
+          "weight": 1.0,
+          "critical": true
+        }
+      ],
+      "paths": [
+        {
+          "id": "P-08-01",
+          "label": "从拆分元素到读者驱动的整体 architecture",
+          "relation_ids": ["R-08-01", "R-08-05", "R-08-06", "R-08-07", "R-08-08", "R-08-09"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "该路径阻止把七种技术和终章装置写成无结构 atom bag。"
+        },
+        {
+          "id": "P-08-02",
+          "label": "从 proof 类型区分到 Verification placement",
+          "relation_ids": ["R-08-02", "R-08-03"],
+          "path_type": "mandatory",
+          "weight": 1.0,
+          "rationale": "必须先分清 documentation 与 mechanization，才可能正确理解 verification。"
+        }
+      ],
+      "weight": 1.0,
+      "rationale": "终章把全书从技巧集合重新变回认知过程，结构和 shift point 因而进入 V1 主分。"
+    }
+  ],
+  "genericity_traps": [
+    {
+      "id": "G-01",
+      "statement": "好广告能够创造消费者原本没有的需求。",
+      "why_insufficient": "它反转了作者对 Mass Desire 的立场；本书把社会性既存欲望作为广告导流和放大作用的前提。",
+      "related_relation_ids": ["R-02-01", "R-02-02"]
+    },
+    {
+      "id": "G-02",
+      "statement": "分析产品就是从 features 中提炼 benefits，再尽量展示更多卖点。",
+      "why_insufficient": "它遗漏物理事实对功能表现的从属关系、主导欲望对表现取舍的条件，以及一次只突出一个主导 performance。",
+      "related_relation_ids": ["R-02-04", "R-02-05", "R-02-06"]
+    },
+    {
+      "id": "G-03",
+      "statement": "根据用户成熟度选择不同标题。",
+      "why_insufficient": "它把 Awareness 与 Sophistication 合成一个模糊变量，无法恢复一个描述产品知识、另一个描述同类信息饱和的双诊断。",
+      "related_relation_ids": ["R-03-01", "R-03-03", "R-03-04"]
+    },
+    {
+      "id": "G-04",
+      "statement": "标题必须抓住注意并把核心卖点说清楚。",
+      "why_insufficient": "作者通常只要求标题赢得下一句；完整销售只在最知情且有特价的窄条件下可能由标题承担。",
+      "related_relation_ids": ["R-03-02", "R-04-01"]
+    },
+    {
+      "id": "G-05",
+      "statement": "市场越成熟，就要用越强、越夸张的承诺击穿注意力。",
+      "why_insufficient": "它反转第三阶段从 what 转到 how 的机制换位，也遗漏第四阶段机制耗竭后转向 identification。",
+      "related_relation_ids": ["R-03-07", "R-03-08", "R-03-10", "R-03-11"]
+    },
+    {
+      "id": "G-06",
+      "statement": "正文要同时调动欲望、身份和信任。",
+      "why_insufficient": "三词共现不证明其功能被恢复；Identification 不是信任或背书，Belief 也不是一般品牌信任，三者须汇合为 conviction。",
+      "related_relation_ids": ["R-04-02", "R-05-02", "R-06-01"]
+    },
+    {
+      "id": "G-07",
+      "statement": "Identification 就是用用户评价、理想生活方式或新的品牌人格提高社会认同。",
+      "why_insufficient": "它误解术语，并删除 functional+role 双重价值、primary image、believability bridge 和不可跨越的形象鸿沟。",
+      "related_relation_ids": ["R-05-02", "R-05-03", "R-05-04", "R-05-05"]
+    },
+    {
+      "id": "G-08",
+      "statement": "Gradualization 就是循序渐进地解释，并逐步增加更多证据。",
+      "why_insufficient": "作者明确区分它与 proof/documentation；其核心是从已接受事实出发，用准备和顺序使原本不会接受的 goal conclusion 被接受。",
+      "related_relation_ids": ["R-06-01", "R-06-02", "R-06-03", "R-06-04", "R-06-05", "R-06-06"]
+    },
+    {
+      "id": "G-09",
+      "statement": "Redefinition 是换一种说法，把产品缺点包装成优点。",
+      "why_insufficient": "合格重定义不能否认事实；它按阻力类型重排事实分类、产品角色或比较标准，Lifebuoy 案例还要求保留缺点与性能的因果联系。",
+      "related_relation_ids": ["R-06-07", "R-06-08", "R-06-09", "R-06-10"]
+    },
+    {
+      "id": "G-10",
+      "statement": "建立信任就是解释机制，再加入数据、测试和权威证明。",
+      "why_insufficient": "它混淆 Mechanization、Documentation 与 Verification，也遗漏机制详略由市场状态决定、proof 效力由读者准备状态决定。",
+      "related_relation_ids": ["R-07-01", "R-07-02", "R-07-03", "R-08-02", "R-08-03"]
+    },
+    {
+      "id": "G-11",
+      "statement": "Concentration 就是直接指出竞品缺点，让自己的优势更突出。",
+      "why_insufficient": "作者要求完整的竞品弱点→读者损害→本品对应消除链；单纯攻击只会暴露偏见并引起怀疑和反感。",
+      "related_relation_ids": ["R-07-04", "R-07-05", "R-07-06", "R-07-07"]
+    },
+    {
+      "id": "G-12",
+      "statement": "Camouflage 就是让广告看起来像新闻或原生内容。",
+      "why_insufficient": "本书机制依赖特定受众对特定媒介的先在信任，以及对该媒介 format、tone、phraseology 的条件反射；通用新闻外观不足。",
+      "related_relation_ids": ["R-07-08"]
+    },
+    {
+      "id": "G-13",
+      "statement": "完整广告应按七种技术的章节次序逐项加入欲望、身份、信念、机制、竞品和证明。",
+      "why_insufficient": "作者最后反对机械拼装；读者当下需求决定 shift point，每个具体问题要求不同 architecture，同一内容换结构会产生新广告。",
+      "related_relation_ids": ["R-08-01", "R-08-05", "R-08-06", "R-08-07", "R-08-08", "R-08-09"]
+    },
+    {
+      "id": "G-14",
+      "statement": "掌握 38 种标题写法和 13 种欲望强化技巧，就掌握了这本书。",
+      "why_insufficient": "这些枚举是有条件的表达实现库；它们不能替代独特问题分析、状态诊断、主导欲望和新鲜视角对同一结构的服务关系。",
+      "related_relation_ids": ["R-01-02", "R-02-03", "R-03-01", "R-04-04", "R-04-05", "R-04-06"]
+    }
+  ],
+  "provenance": {
+    "generated_by": "Codex Rubric Builder draft, 2026-08-22",
+    "reviewed_by": ["Human Owner (conversation decision, 2026-08-22)"],
+    "review_notes": "Human Owner 已通过八个一级结构，并批准 TV Repair Manual、Chesterfield、Lifebuoy、Fire Injectors 四例暂定 constitutive + required；这不等于逐关系审核或冻结。Human Owner 否决把英文 OCR 设为跨书主锚规则，定位协议已改为语言中立的哈希绑定 src 行空间。6000–8000 仍是正式任务候选区间，但第一阶段先制作无评分篇幅约束的 Oracle，再运行 8000/6000/4000/3000 字上限消融。等权和细粒度关系仍待审核。"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "book_card_sha256": "e25d3605b31af522ea0f98ae98304e93add167fbf644b91c4eea7acf04aad51c",
+  "book_card_status": "draft",
+  "book_id": "breakthrough-advertising-dev",
+  "criteria_sha256": "687dc8d81817576459e98317dc8a664189dc76235b12da0908ea4c787097313d",
+  "criterion_count": 60,
+  "criterion_schema_sha256": "3317de4852d9bcebf4911e17190183af031dbb8631bb4519ffb4390e0518cc34",
+  "leakage_audit": {
+    "forbidden_keys": [
+      "compression",
+      "critical",
+      "genericity_traps",
+      "paths",
+      "source",
+      "source_anchor_ids",
+      "weight"
+    ],
+    "source_anchor_ids_absent": true,
+    "status": "passed"
+  },
+  "prompt_versions": {
+    "judge": "judge-v1-0d1c1039fc78",
+    "locator": "locator-v1-3d13e999675e"
+  },
+  "relation_ids_sha256": "93797e2fa43a757fc0ef9c3ea2032acb9ff69f4640b7523919026ee60e622b70",
+  "schema_version": "1.0",
+  "visibility": "verifier_only"
+}

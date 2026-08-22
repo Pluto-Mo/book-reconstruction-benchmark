@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/discourse-aggregate.schema.json",
+  "title": "Deterministic discourse reconstruction aggregate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "book_id",
+    "submission_id",
+    "panel_id",
+    "authorial_edge_recovery",
+    "authorial_strata",
+    "editorial",
+    "discourse_reconstruction"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "status": {"type": "string", "enum": ["complete", "unscorable"]},
+    "book_id": {"type": "string", "minLength": 1},
+    "submission_id": {"type": "string", "minLength": 1},
+    "panel_id": {"type": "string", "minLength": 1},
+    "authorial_edge_recovery": {
+      "type": ["number", "null"], "minimum": 0, "maximum": 1
+    },
+    "authorial_strata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["number", "null"], "minimum": 0, "maximum": 1
+      }
+    },
+    "editorial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "local_progression",
+        "global_order",
+        "spine_connectivity",
+        "example_integration",
+        "closure",
+        "editorial_coherence"
+      ],
+      "properties": {
+        "local_progression": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "global_order": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "spine_connectivity": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "example_integration": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "closure": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "editorial_coherence": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+      }
+    },
+    "discourse_reconstruction": {
+      "type": ["number", "null"], "minimum": 0, "maximum": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "complete"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "authorial_edge_recovery": {"type": "number"},
+          "editorial": {
+            "properties": {
+              "local_progression": {"type": "number"},
+              "global_order": {"type": "number"},
+              "spine_connectivity": {"type": "number"},
+              "example_integration": {"type": "number"},
+              "closure": {"type": "number"},
+              "editorial_coherence": {"type": "number"}
+            }
+          },
+          "discourse_reconstruction": {"type": "number"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "unscorable"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "discourse_reconstruction": {"const": null}
+        }
+      }
+    }
+  ]
+}

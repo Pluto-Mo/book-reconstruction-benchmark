@@ -1,0 +1,31 @@
+{
+  "schema_version": "calibration-mutation-v1",
+  "case_id": "BA-CAL-NEG-D-002",
+  "baseline_text_path": "workbench/breakthrough-advertising/oracle_l8000.draft.md",
+  "baseline_sha256": "22f52fe1c2ea2913a954b3c4756d48d75ead661c6debadc3cb8db7ca7ae6df15",
+  "output_text_path": "workbench/breakthrough-advertising/perturbations/neg_transition_flattening.draft.md",
+  "expected_output_sha256": "9478586499fa1d6aa5f7236aa355f18e6c61e6c18a98f8853118ae5f7cba5ee7",
+  "expected_nonwhitespace_codepoints": 6340,
+  "operations": [
+    {
+      "type": "replace_once",
+      "old": "广告创作因而不是从寻找句子开始，而是从一组问题开始：",
+      "new": "此外，广告创作不是从寻找句子开始，而是从一组问题开始："
+    },
+    {
+      "type": "replace_once",
+      "old": "渐进式接受安排的正是第二种力量。",
+      "new": "此外，渐进式接受也安排这第二种力量。"
+    },
+    {
+      "type": "replace_once",
+      "old": "前面对市场熟化的诊断在这里决定机制的篇章地位。",
+      "new": "此外，机制也有不同的篇章地位。"
+    },
+    {
+      "type": "replace_once",
+      "old": "信念的渐进结构由此在证明安排中再次出现：内容本身和抵达内容以前的准备，共同决定证明的力量。",
+      "new": "此外，内容本身和抵达内容以前的准备，共同决定证明的力量。"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+schema_version = "1.4"
+artifacts = ["/app/submission.md"]
+
+[task]
+name = "local/breakthrough-advertising-dev"
+version = "0.4.0"
+description = "Development Harbor task for cognitive and discourse reconstruction of Breakthrough Advertising."
+authors = []
+keywords = ["book-reconstruction", "long-form-writing", "cognitive-evaluation", "development"]
+
+[metadata]
+author_name = "Human Owner"
+author_email = "unknown"
+difficulty = "hard"
+category = "book_reconstruction"
+tags = ["nonfiction", "high-compression", "development", "cognitive", "discourse"]
+instruction_variant = "natural"
+expert_time_estimate_min = 60.0
+junior_time_estimate_min = 180.0
+
+[agent]
+timeout_sec = 3600.0
+
+[environment]
+network_mode = "no-network"
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+
+[verifier]
+timeout_sec = 3600.0
+environment_mode = "separate"
+
+[verifier.env]
+BENCHMARK_JUDGE_MODEL = "openai/qwen3.8-max"
+BENCHMARK_JUDGE_API_KEY = "${QWEN_BENCHMARK_API_KEY}"
+BENCHMARK_JUDGE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+BENCHMARK_JUDGE_ENABLE_THINKING = "true"
+
+[verifier.environment]
+network_mode = "public"
+build_timeout_sec = 1200.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+
+# The model and endpoint are frozen above. For hosted runs, grant the
+# organization-scoped QWEN_BENCHMARK_API_KEY stored secret to every trial;
+# never place its value in this file, the command line, or the task package.

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/editorial-closure-model-response.schema.json",
+  "title": "Raw closure Judge response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "returns_to_opening",
+    "depends_on_body",
+    "non_generic",
+    "evidence",
+    "reason"
+  ],
+  "properties": {
+    "returns_to_opening": {"type": "boolean"},
+    "depends_on_body": {"type": "boolean"},
+    "non_generic": {"type": "boolean"},
+    "evidence": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "reason": {"type": "string", "minLength": 1}
+  }
+}

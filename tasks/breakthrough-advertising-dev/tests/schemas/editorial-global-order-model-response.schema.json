@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/editorial-global-order-model-response.schema.json",
+  "title": "Raw global order pairwise Judge response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["probe_id", "winner", "confidence", "reason"],
+  "properties": {
+    "probe_id": {"type": "string", "minLength": 1},
+    "winner": {"type": "string", "enum": ["left", "right", "tie"]},
+    "confidence": {"type": "string", "enum": ["sufficient", "insufficient"]},
+    "reason": {"type": "string", "minLength": 1}
+  }
+}

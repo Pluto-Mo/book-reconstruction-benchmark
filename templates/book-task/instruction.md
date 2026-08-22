@@ -13,7 +13,7 @@
 ## 交付要求
 
 - 输出文件：`/app/submission.md`
-- 正文长度：`{{MIN_CHARS}}–{{MAX_CHARS}}` 个非空白中文字符；实例化任务时必须替换占位符。
+- 提交文件长度：`{{MIN_CHARS}}–{{MAX_CHARS}}` 个计数字符；使用 `nonwhitespace-codepoints-v1` 对整个 UTF-8 文件计数，标题、标点和 Markdown 标记计入，Unicode White_Space 不计入。实例化任务时必须替换占位符。
 - 文件中只保留最终文章。
 - 不附阅读笔记、写作计划、自我评价或任务说明。
 - 不提及评分规则、金标准、裁判、模型或执行过程。
