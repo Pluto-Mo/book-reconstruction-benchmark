@@ -1,9 +1,22 @@
 # V1 scalar reward is intentionally not frozen.
 #
-# During development, the verifier must emit at least:
+# During development, the verifier must emit numeric fields for at least:
 #
+# Cognitive structure:
 # - cognitive_relation_coverage
 # - complete_core_path_rate
+#
+# Discourse reconstruction:
+# - authorial_edge_recovery
+# - local_progression
+# - global_order
+# - spine_connectivity
+# - example_integration
+# - closure
+# - editorial_coherence
+# - discourse_reconstruction
+#
+# Other:
 # - hard_constraints
 # - genericity_failure_rate
 # - judge_disagreement_rate
@@ -12,6 +25,6 @@
 #
 # reward = cognitive_relation_coverage
 #
-# Do not combine relation coverage and path completion into a permanent
-# leaderboard score until the development book, Oracle, and calibration
-# variants have been run and reviewed.
+# Do not combine cognitive structure and discourse reconstruction into a
+# permanent leaderboard score until the development book, Oracle, source-edge
+# panels, editorial perturbations, and calibration variants have been run.

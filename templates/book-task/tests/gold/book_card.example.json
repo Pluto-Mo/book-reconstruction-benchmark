@@ -20,7 +20,15 @@
       "chapter": "Replace Me",
       "section": "Replace Me",
       "evidence_summary": "原书先呈现一种表面合理的解释，随后用关键案例暴露其缺陷。",
-      "argument_function": "支撑假设、反例、机制和结论之间的完整推进。"
+      "argument_function": "支撑假设与反例之间的转换。"
+    },
+    {
+      "id": "SA-002",
+      "locator": "chapter-02/section-01/p0006-p0012",
+      "chapter": "Replace Me",
+      "section": "Replace Me",
+      "evidence_summary": "原书随后从该反例提出中间机制，并推进到带有适用边界的最终判断。",
+      "argument_function": "支撑案例、机制与限定性结论之间的跨段推进。"
     }
   ],
   "cognitive_structures": [
@@ -64,7 +72,7 @@
           "stance_owner": "author",
           "epistemic_status": "asserted",
           "source_anchor_ids": [
-            "SA-001"
+            "SA-002"
           ],
           "essential": true
         },
@@ -75,7 +83,7 @@
           "stance_owner": "author",
           "epistemic_status": "qualified",
           "source_anchor_ids": [
-            "SA-001"
+            "SA-002"
           ],
           "essential": true
         }
@@ -135,7 +143,8 @@
             "argument_function"
           ],
           "source_anchor_ids": [
-            "SA-001"
+            "SA-001",
+            "SA-002"
           ],
           "acceptable_paraphrases": [
             "可以先讲机制再回到案例，只要二者的支持关系不变。"
@@ -172,7 +181,7 @@
             "epistemic_status"
           ],
           "source_anchor_ids": [
-            "SA-001"
+            "SA-002"
           ],
           "acceptable_paraphrases": [
             "不要求复述原句，但不能删除结论的关键限定。"
