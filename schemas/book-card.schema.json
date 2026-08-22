@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/book-card.schema.json",
+  "title": "Book-specific evaluation card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["book_id", "title", "domain", "compression", "relations", "organization_behaviors"],
+  "properties": {
+    "book_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
+    "compression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min_chars", "max_chars"],
+      "properties": {
+        "min_chars": {"type": "integer", "minimum": 1},
+        "max_chars": {"type": "integer", "minimum": 1}
+      }
+    },
+    "relations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "summary", "atoms", "non_examples", "contradictions", "weight", "rationale"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "summary": {"type": "string", "minLength": 1},
+          "atoms": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "question"],
+              "properties": {
+                "id": {"type": "string", "minLength": 1},
+                "question": {"type": "string", "minLength": 1},
+                "acceptable_paraphrases": {
+                  "type": "array",
+                  "items": {"type": "string"}
+                }
+              }
+            }
+          },
+          "non_examples": {"type": "array", "items": {"type": "string"}},
+          "contradictions": {"type": "array", "items": {"type": "string"}},
+          "weight": {"type": "number", "exclusiveMinimum": 0},
+          "rationale": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "organization_behaviors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "behavior", "positive_anchor", "negative_anchor"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "behavior": {"type": "string", "minLength": 1},
+          "positive_anchor": {"type": "string", "minLength": 1},
+          "negative_anchor": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

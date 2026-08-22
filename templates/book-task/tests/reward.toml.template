@@ -1,0 +1,4 @@
+[[reward]]
+name = "reward"
+aggregation = "weighted_mean"
+weights = { cognitive_structure = 7.0, genericity_resistance = 1.0, authorial_organization = 1.0, hard_constraints = 1.0 }

@@ -1,0 +1,14 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+jobs/
+dist/
+*.tar.gz
+
+# Book text is private by default. Keep only the README marker in source dirs.
+**/environment/source/*
+!**/environment/source/README.md

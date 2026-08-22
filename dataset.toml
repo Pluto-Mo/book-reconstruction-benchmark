@@ -1,0 +1,16 @@
+# Dataset manifest for local/book-reconstruction-benchmark
+# Add tasks using: harbor add <org>/<name>
+# Publish using: harbor publish
+
+[dataset]
+name = "local/book-reconstruction-benchmark"
+version = "1.0.0"
+description = "Benchmark for high-compression reconstruction of nonfiction books, focused on book-specific cognitive structure and anchored authorial organization."
+authors = []
+keywords = [ "benchmark", "long-form-writing", "book-reconstruction", "automatic-evaluation",]
+
+tasks = []
+
+[[files]]
+path = "metric.py"
+digest = "sha256:3217558884124d63ad29301e8f5b9d0ad1c3dfd534b82d4270d9118c2246c0a1"

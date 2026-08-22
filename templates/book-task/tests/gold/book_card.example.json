@@ -1,0 +1,11 @@
+{
+  "book_id": "replace-me",
+  "title": "Replace Me",
+  "domain": "replace-me",
+  "compression": {
+    "min_chars": 3000,
+    "max_chars": 4000
+  },
+  "relations": [],
+  "organization_behaviors": []
+}

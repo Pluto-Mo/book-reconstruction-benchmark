@@ -1,0 +1,40 @@
+schema_version = "1.4"
+artifacts = ["/app/submission.md"]
+
+[task]
+name = "local/book-template"
+version = "1.0.0"
+description = "Template task for reconstructing one nonfiction book under a fixed compression budget."
+authors = []
+keywords = ["book-reconstruction", "long-form-writing", "automatic-evaluation"]
+
+[metadata]
+author_name = "unknown"
+author_email = "unknown"
+difficulty = "hard"
+category = "book_reconstruction"
+tags = ["nonfiction", "high-compression", "v1-template"]
+expert_time_estimate_min = 0.0
+junior_time_estimate_min = 0.0
+
+[verifier]
+timeout_sec = 600.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 3600.0
+
+[environment]
+network_mode = "no-network"
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]
