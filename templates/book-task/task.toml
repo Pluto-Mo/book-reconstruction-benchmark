@@ -14,6 +14,7 @@ author_email = "unknown"
 difficulty = "hard"
 category = "book_reconstruction"
 tags = ["nonfiction", "high-compression", "v1-template"]
+instruction_variant = "natural"
 expert_time_estimate_min = 0.0
 junior_time_estimate_min = 0.0
 
