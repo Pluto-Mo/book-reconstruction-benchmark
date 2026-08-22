@@ -9,8 +9,21 @@ if [ ! -f /tests/gold/book_card.json ]; then
   exit 1
 fi
 
-# V1 verifier wiring is intentionally left for design work. It will combine:
-# 1) deterministic hard-constraint checks;
-# 2) evidence-first binary checks for cognitive atoms;
-# 3) anchored checks for genericity resistance and authorial organization.
-echo '{"reward": 0.0, "status": "verifier_not_implemented"}' > /logs/verifier/reward.json
+# The production verifier has not been implemented yet. Fail loudly instead
+# of emitting a syntactically valid zero score that could be mistaken for a
+# completed benchmark run.
+cat > /logs/verifier/verifier-status.json <<'JSON'
+{
+  "status": "verifier_not_implemented",
+  "message": "Implement the Evidence Locator, Relation Adjudicator, Quote Validator, and Graph Aggregator before running this task."
+}
+JSON
+
+echo "Book reconstruction verifier is not implemented." >&2
+exit 2
+
+# A production implementation must write one of:
+#   /logs/verifier/reward.txt   # one numeric value
+#   /logs/verifier/reward.json  # an object whose values are all numeric
+# Put strings, versions, reasons, and other audit metadata in separate files
+# such as verifier-status.json or reward-details.json.
