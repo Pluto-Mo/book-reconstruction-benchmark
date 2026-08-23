@@ -91,10 +91,23 @@ def build_completion_kwargs(
     if api_key:
         kwargs["api_key"] = api_key
         kwargs["api_base"] = api_base
-    if _enabled(runtime_env.get("BENCHMARK_JUDGE_ENABLE_THINKING")):
+    thinking_enabled = _enabled(runtime_env.get("BENCHMARK_JUDGE_ENABLE_THINKING"))
+    reasoning_effort = runtime_env.get(
+        "BENCHMARK_JUDGE_REASONING_EFFORT", ""
+    ).strip()
+    if reasoning_effort and reasoning_effort not in {"high", "max"}:
+        raise AdapterProtocolError(
+            "BENCHMARK_JUDGE_REASONING_EFFORT must be high or max"
+        )
+    if reasoning_effort and not thinking_enabled:
+        raise AdapterProtocolError(
+            "BENCHMARK_JUDGE_REASONING_EFFORT requires thinking to be enabled"
+        )
+    if thinking_enabled:
         # The Qwen OpenAI-compatible protocol uses a boolean thinking switch;
-        # its current Pi route does not expose a graded reasoning-effort scale.
         kwargs["extra_body"] = {"enable_thinking": True}
+        if reasoning_effort:
+            kwargs["reasoning_effort"] = reasoning_effort
     return kwargs
 
 

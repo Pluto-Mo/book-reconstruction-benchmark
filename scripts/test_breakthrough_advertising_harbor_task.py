@@ -36,6 +36,10 @@ class BreakthroughAdvertisingHarborTaskTests(unittest.TestCase):
             config["verifier"]["env"]["BENCHMARK_JUDGE_ENABLE_THINKING"],
             "true",
         )
+        self.assertEqual(
+            config["verifier"]["env"]["BENCHMARK_JUDGE_REASONING_EFFORT"],
+            "high",
+        )
         self.assertNotIn("ANTHROPIC_API_KEY", config["verifier"]["env"])
         self.assertNotIn("OPENAI_API_KEY", config["verifier"]["env"])
         self.assertEqual(config["metadata"]["instruction_variant"], "natural")

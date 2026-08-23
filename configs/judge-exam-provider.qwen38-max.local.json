@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "provider_type": "command",
+  "command": [
+    "python3",
+    "scripts/litellm_provider_adapter.py"
+  ],
+  "model_id": "openai/qwen3.8-max",
+  "timeout_seconds": 180,
+  "max_concurrency": 8,
+  "max_protocol_attempts": 2,
+  "locator_context_chars": 160,
+  "generation_parameters": {
+    "evidence_locator": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_output_tokens": 1200,
+      "seed": 17
+    },
+    "relation_adjudicator": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_output_tokens": 1200,
+      "seed": 17
+    }
+  }
+}

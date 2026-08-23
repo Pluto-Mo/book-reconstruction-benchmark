@@ -45,11 +45,20 @@ class LiteLLMProviderAdapterTests(unittest.TestCase):
                 "BENCHMARK_JUDGE_API_KEY": "test-secret",
                 "BENCHMARK_JUDGE_BASE_URL": "https://qwen.example/v1",
                 "BENCHMARK_JUDGE_ENABLE_THINKING": "true",
+                "BENCHMARK_JUDGE_REASONING_EFFORT": "high",
             },
         )
         self.assertEqual(kwargs["api_key"], "test-secret")
         self.assertEqual(kwargs["api_base"], "https://qwen.example/v1")
         self.assertEqual(kwargs["extra_body"], {"enable_thinking": True})
+        self.assertEqual(kwargs["reasoning_effort"], "high")
+
+    def test_rejects_reasoning_effort_when_thinking_is_disabled(self) -> None:
+        with self.assertRaisesRegex(AdapterProtocolError, "requires thinking"):
+            build_completion_kwargs(
+                self.request,
+                {"BENCHMARK_JUDGE_REASONING_EFFORT": "high"},
+            )
 
     def test_rejects_partial_explicit_judge_connection(self) -> None:
         with self.assertRaisesRegex(AdapterProtocolError, "must be set together"):

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-"""Build the frozen five-model Harbor job without importing personal secrets.
+"""Build and run the frozen five-model benchmark on local Harbor.
 
-The repository contains only non-sensitive Pi provider definitions and Harbor
-secret names. Hosted runs select organization-scoped stored secrets. Local runs
-require an explicit, repository-external secret file and never inspect the
-user's Pi auth store or provider environment automatically.
+The GitHub-safe repository contains only non-sensitive Pi provider definitions
+and runtime credential names. A paid local run requires an explicit secret file
+outside the repository and never inspects the user's Pi auth store or provider
+environment automatically.
 """
 
 from __future__ import annotations
@@ -36,17 +36,53 @@ SENSITIVE_ENV_PATTERN = re.compile(
 PREFLIGHT_SECRET = "__HARBOR_CONFIG_PREFLIGHT_ONLY__"
 
 APPROVED_AGENT_ROUTES = (
-    ("GPT-5.6 sol", "openai-benchmark", "gpt-5.6-sol", "OPENAI_BENCHMARK_API_KEY"),
-    ("Opus 5", "openai-benchmark", "claude-opus-5", "OPENAI_BENCHMARK_API_KEY"),
-    ("Qwen 3.8 Max", "qwen-benchmark", "qwen3.8-max", "QWEN_BENCHMARK_API_KEY"),
-    ("K3", "kimi-benchmark", "kimi-k3", "KIMI_BENCHMARK_API_KEY"),
-    ("DS V4 Pro", "deepseek", "deepseek-v4-pro", "DEEPSEEK_API_KEY"),
+    (
+        "GPT-5.6 sol",
+        "openai-benchmark",
+        "gpt-5.6-sol",
+        "OPENAI_BENCHMARK_API_KEY",
+        "high",
+        "provider_managed",
+    ),
+    (
+        "Opus 5",
+        "openai-benchmark",
+        "claude-opus-5",
+        "OPENAI_BENCHMARK_API_KEY",
+        "high",
+        "provider_managed",
+    ),
+    (
+        "Qwen 3.8 Max",
+        "qwen-benchmark",
+        "qwen3.8-max",
+        "QWEN_BENCHMARK_API_KEY",
+        "high",
+        "boolean_plus_reasoning_effort_high",
+    ),
+    (
+        "K3",
+        "kimi-benchmark",
+        "kimi-k3",
+        "KIMI_BENCHMARK_API_KEY",
+        "high",
+        "provider_managed",
+    ),
+    (
+        "DS V4 Pro",
+        "deepseek",
+        "deepseek-v4-pro",
+        "DEEPSEEK_API_KEY",
+        "xhigh",
+        "graded_reasoning_effort_max",
+    ),
 )
 APPROVED_JUDGE_ROUTE = (
     "Qwen 3.8 Max",
     "qwen-benchmark",
     "qwen3.8-max",
     "QWEN_BENCHMARK_API_KEY",
+    "boolean_plus_reasoning_effort_high",
 )
 
 
@@ -60,10 +96,11 @@ class ResolvedRoute:
     provider: str
     model: str
     secret_name: str
+    pi_thinking: str
+    thinking_control: str
     base_url: str
     provider_document: dict[str, Any]
     fingerprint: str
-    graded_reasoning_effort: bool
 
     @property
     def host(self) -> str:
@@ -117,6 +154,12 @@ def resolve_route(
     secret_name = _required_string(
         route_config.get("secret_name"), f"route {label} secret_name"
     )
+    pi_thinking = _required_string(
+        route_config.get("pi_thinking"), f"route {label} pi_thinking"
+    )
+    thinking_control = _required_string(
+        route_config.get("thinking_control"), f"route {label} thinking_control"
+    )
     if ENV_NAME_PATTERN.fullmatch(secret_name) is None:
         raise MatrixConfigError(f"route {label} has invalid secret name {secret_name}")
 
@@ -149,20 +192,55 @@ def resolve_route(
     public_bytes = json.dumps(
         selected_provider, ensure_ascii=False, sort_keys=True, separators=(",", ":")
     ).encode("utf-8")
-    compat = provider_config.get("compat")
-    explicitly_graded = (
-        isinstance(compat, Mapping) and compat.get("supportsReasoningEffort") is True
-    )
-    deepseek_graded = provider == "deepseek" and urlparse(base_url).hostname == "api.deepseek.com"
+    provider_compat = provider_config.get("compat")
+    model_compat = selected_model.get("compat")
+    compat = {
+        **(dict(provider_compat) if isinstance(provider_compat, Mapping) else {}),
+        **(dict(model_compat) if isinstance(model_compat, Mapping) else {}),
+    }
+    thinking_format = compat.get("thinkingFormat")
+    supports_effort = compat.get("supportsReasoningEffort")
+    if thinking_control == "provider_managed":
+        if pi_thinking != "high" or supports_effort is not False:
+            raise MatrixConfigError(
+                f"route {label} provider-managed thinking requires high and "
+                "supportsReasoningEffort=false"
+            )
+    elif thinking_control == "boolean_plus_reasoning_effort_high":
+        if (
+            pi_thinking != "high"
+            or thinking_format != "qwen"
+            or supports_effort is False
+        ):
+            raise MatrixConfigError(
+                f"route {label} Qwen thinking requires Pi high, thinkingFormat=qwen, "
+                "and reasoning-effort support"
+            )
+    elif thinking_control == "graded_reasoning_effort_max":
+        thinking_map = selected_model.get("thinkingLevelMap")
+        if (
+            pi_thinking != "xhigh"
+            or provider != "deepseek"
+            or urlparse(base_url).hostname != "api.deepseek.com"
+            or thinking_format != "deepseek"
+            or not isinstance(thinking_map, Mapping)
+            or thinking_map.get("max") != "max"
+        ):
+            raise MatrixConfigError(
+                f"route {label} graded max thinking does not match the official DeepSeek contract"
+            )
+    else:
+        raise MatrixConfigError(f"route {label} has unsupported thinking_control")
     return ResolvedRoute(
         label=label,
         provider=provider,
         model=model,
         secret_name=secret_name,
+        pi_thinking=pi_thinking,
+        thinking_control=thinking_control,
         base_url=base_url,
         provider_document={"providers": {provider: selected_provider}},
         fingerprint=hashlib.sha256(public_bytes).hexdigest(),
-        graded_reasoning_effort=explicitly_graded or deepseek_graded,
     )
 
 
@@ -172,15 +250,11 @@ def resolve_matrix(
     repo_root: Path = REPO_ROOT,
 ) -> tuple[dict[str, Any], list[ResolvedRoute], ResolvedRoute, Path]:
     manifest = load_json_object(manifest_path)
-    if manifest.get("schema_version") != "2.0":
-        raise MatrixConfigError("Pi matrix schema_version must be 2.0")
+    if manifest.get("schema_version") != "2.1":
+        raise MatrixConfigError("Pi matrix schema_version must be 2.1")
     pi_config = manifest.get("pi")
     if not isinstance(pi_config, Mapping):
         raise MatrixConfigError("manifest pi must be an object")
-    if pi_config.get("harbor_thinking") != "xhigh":
-        raise MatrixConfigError("Harbor-native Pi must use its highest xhigh setting")
-    if pi_config.get("thinking_policy") != "highest_available":
-        raise MatrixConfigError("Pi thinking policy must be highest_available")
     _required_string(pi_config.get("version"), "Pi version")
     models_relative = _required_string(pi_config.get("models_path"), "Pi models_path")
     models_path = (repo_root / models_relative).resolve()
@@ -202,6 +276,8 @@ def resolve_matrix(
             route.get("provider"),
             route.get("model"),
             route.get("secret_name"),
+            route.get("pi_thinking"),
+            route.get("thinking_control"),
         )
         for route in route_configs
     )
@@ -217,10 +293,13 @@ def resolve_matrix(
         judge_config.get("provider"),
         judge_config.get("model"),
         judge_config.get("secret_name"),
+        judge_config.get("thinking_control"),
     )
     if actual_judge != APPROVED_JUDGE_ROUTE:
         raise MatrixConfigError("judge route must remain Qwen 3.8 Max")
-    judge = resolve_route(judge_config, providers)
+    judge_route_config = dict(judge_config)
+    judge_route_config["pi_thinking"] = "high"
+    judge = resolve_route(judge_route_config, providers)
     if judge_config.get("enable_thinking") is not True:
         raise MatrixConfigError("Qwen judge thinking must be enabled")
     _required_string(judge_config.get("litellm_model"), "judge LiteLLM model")
@@ -239,22 +318,17 @@ def build_job(
     routes: list[ResolvedRoute],
     judge: ResolvedRoute,
     repo_root: Path = REPO_ROOT,
-    hosted: bool = False,
-    hosted_task_name: str | None = None,
-    hosted_task_ref: str | None = None,
 ) -> dict[str, Any]:
     job_config = manifest.get("job")
     pi_config = manifest.get("pi")
     judge_config = manifest.get("judge")
-    hosted_config = manifest.get("hosted")
     if not all(
         isinstance(value, Mapping)
-        for value in (job_config, pi_config, judge_config, hosted_config)
+        for value in (job_config, pi_config, judge_config)
     ):
-        raise MatrixConfigError("manifest job, pi, judge, and hosted must be objects")
+        raise MatrixConfigError("manifest job, pi, and judge must be objects")
 
     version = _required_string(pi_config.get("version"), "Pi version")
-    thinking = _required_string(pi_config.get("harbor_thinking"), "Pi thinking")
     config_dir = _required_string(
         pi_config.get("container_config_dir"), "Pi container_config_dir"
     )
@@ -266,7 +340,7 @@ def build_job(
         agent: dict[str, Any] = {
             "import_path": NATIVE_PI_IMPORT_PATH,
             "model_name": f"{route.provider}/{route.model}",
-            "kwargs": {"version": version, "thinking": thinking},
+            "kwargs": {"version": version, "thinking": route.pi_thinking},
             "env": {
                 "PI_CODING_AGENT_DIR": config_dir,
                 "PI_OFFLINE": "1",
@@ -274,25 +348,13 @@ def build_job(
             },
             "extra_allowed_hosts": [route.host],
         }
-        if hosted:
-            # Every trial's separate verifier uses the fixed Qwen judge.
-            agent["secrets"] = sorted({route.secret_name, judge.secret_name})
         agents.append(agent)
 
-    if hosted:
-        if not hosted_task_name or "/" not in hosted_task_name:
-            raise MatrixConfigError(
-                "hosted config requires a published task name in org/name form"
-            )
-        task: dict[str, Any] = {"name": hosted_task_name}
-        if hosted_task_ref:
-            task["ref"] = hosted_task_ref
-    else:
-        task_path_value = _required_string(job_config.get("task_path"), "job task_path")
-        task_path = (repo_root / task_path_value).resolve()
-        if not _inside_repository(task_path, repo_root=repo_root):
-            raise MatrixConfigError("local task path must remain inside the repository")
-        task = {"path": str(task_path)}
+    task_path_value = _required_string(job_config.get("task_path"), "job task_path")
+    task_path = (repo_root / task_path_value).resolve()
+    if not _inside_repository(task_path, repo_root=repo_root):
+        raise MatrixConfigError("local task path must remain inside the repository")
+    task = {"path": str(task_path)}
 
     setup_hosts = manifest.get("setup_allowed_hosts")
     if not isinstance(setup_hosts, list) or not all(
@@ -315,15 +377,11 @@ def build_job(
                 "BENCHMARK_JUDGE_API_KEY": "${" + judge.secret_name + "}",
                 "BENCHMARK_JUDGE_BASE_URL": judge.base_url,
                 "BENCHMARK_JUDGE_ENABLE_THINKING": "true",
+                "BENCHMARK_JUDGE_REASONING_EFFORT": "high",
             }
         },
+        "jobs_dir": str((repo_root / "jobs").resolve()),
     }
-    if hosted:
-        if hosted_config.get("credential_mode") != "direct":
-            raise MatrixConfigError("hosted credential_mode must be direct")
-        job["credential_mode"] = "direct"
-    else:
-        job["jobs_dir"] = str((repo_root / "jobs").resolve())
     return job
 
 
@@ -333,26 +391,31 @@ def sanitized_status(
     judge: ResolvedRoute,
     models_path: Path,
 ) -> dict[str, Any]:
-    pi_config = manifest["pi"]
+    effects = {
+        "provider_managed": "Pi emits no thinking/effort field; provider default applies",
+        "boolean_plus_reasoning_effort_high": (
+            "Pi emits enable_thinking=true + reasoning_effort=high"
+        ),
+        "graded_reasoning_effort_max": (
+            "Pi clamps xhigh to model max and emits thinking enabled + reasoning_effort=max"
+        ),
+    }
     return {
         "status": "configuration_ready",
         "paid_model_calls_started": False,
         "personal_pi_auth_read": False,
         "native_harbor_agent": "pi",
         "provider_config": str(models_path),
-        "thinking": {
-            "policy": pi_config["thinking_policy"],
-            "harbor_native_flag": pi_config["harbor_thinking"],
-            "deepseek_effective_effort": "max",
-            "other_routes": "highest mode exposed by each frozen provider record",
-        },
+        "thinking_policy": "declared_per_route_and_translated_by_pi",
         "agents": [
             {
                 "label": route.label,
                 "model": f"{route.provider}/{route.model}",
                 "endpoint_host": route.host,
                 "secret_name": route.secret_name,
-                "graded_reasoning_effort": route.graded_reasoning_effort,
+                "pi_thinking": route.pi_thinking,
+                "thinking_control": route.thinking_control,
+                "effective_request": effects[route.thinking_control],
                 "route_fingerprint": route.fingerprint,
             }
             for route in routes
@@ -362,8 +425,12 @@ def sanitized_status(
             "endpoint_host": judge.host,
             "secret_name": judge.secret_name,
             "thinking_enabled": True,
+            "thinking_control": judge.thinking_control,
+            "effective_request": (
+                "adapter emits enable_thinking=true + reasoning_effort=high"
+            ),
         },
-        "required_harbor_stored_secrets": list(required_secret_names(routes, judge)),
+        "required_local_runtime_credentials": list(required_secret_names(routes, judge)),
     }
 
 
@@ -431,13 +498,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--print-config", action="store_true")
     mode.add_argument("--write-config", type=Path, metavar="PATH")
-    mode.add_argument("--write-hosted-config", type=Path, metavar="PATH")
     mode.add_argument("--run", action="store_true", help="run locally with an external secret file")
-    mode.add_argument("--launch", action="store_true", help="launch with Harbor stored secrets")
     parser.add_argument("--secrets-file", type=Path)
-    parser.add_argument("--hosted-task", help="published Harbor task in org/name form")
-    parser.add_argument("--hosted-task-ref", help="published task tag, revision, or digest")
-    parser.add_argument("--org", help="Harbor organization for hosted launch")
     return parser.parse_args(argv)
 
 
@@ -449,9 +511,7 @@ def main(argv: list[str] | None = None) -> int:
         )
         secret_names = required_secret_names(routes, judge)
 
-        if not any(
-            (args.print_config, args.write_config, args.write_hosted_config, args.run, args.launch)
-        ):
+        if not any((args.print_config, args.write_config, args.run)):
             print(
                 json.dumps(
                     sanitized_status(manifest, routes, judge, models_path),
@@ -463,39 +523,6 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.secrets_file is not None and not args.run:
             raise MatrixConfigError("--secrets-file is accepted only with --run")
-
-        if args.write_hosted_config or args.launch:
-            hosted_job = build_job(
-                manifest=manifest,
-                routes=routes,
-                judge=judge,
-                hosted=True,
-                hosted_task_name=args.hosted_task,
-                hosted_task_ref=args.hosted_task_ref,
-            )
-            if args.write_hosted_config:
-                _write_json(args.write_hosted_config.resolve(), hosted_job)
-                return 0
-            if not args.org:
-                raise MatrixConfigError("--launch requires --org")
-            with tempfile.TemporaryDirectory(prefix="brb-pi-hosted-") as temporary_dir:
-                config_path = Path(temporary_dir) / "job.json"
-                _write_json(config_path, hosted_job)
-                completed = subprocess.run(
-                    [
-                        "harbor",
-                        "job",
-                        "start",
-                        "--config",
-                        str(config_path),
-                        "--launch",
-                        "--org",
-                        args.org,
-                    ],
-                    cwd=REPO_ROOT,
-                    check=False,
-                )
-                return completed.returncode
 
         local_job = build_job(manifest=manifest, routes=routes, judge=judge)
         if args.write_config:

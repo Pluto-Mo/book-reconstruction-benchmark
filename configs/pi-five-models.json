@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "2.1",
   "job": {
     "name": "breakthrough-advertising-pi-five-models-dev",
     "task_path": "tasks/breakthrough-advertising-dev",
@@ -8,13 +8,8 @@
   },
   "pi": {
     "version": "0.84.1",
-    "harbor_thinking": "xhigh",
-    "thinking_policy": "highest_available",
     "models_path": "tasks/breakthrough-advertising-dev/environment/pi/models.json",
     "container_config_dir": "/opt/book-reconstruction/pi"
-  },
-  "hosted": {
-    "credential_mode": "direct"
   },
   "setup_allowed_hosts": [
     "raw.githubusercontent.com",
@@ -31,31 +26,41 @@
       "label": "GPT-5.6 sol",
       "provider": "openai-benchmark",
       "model": "gpt-5.6-sol",
-      "secret_name": "OPENAI_BENCHMARK_API_KEY"
+      "secret_name": "OPENAI_BENCHMARK_API_KEY",
+      "pi_thinking": "high",
+      "thinking_control": "provider_managed"
     },
     {
       "label": "Opus 5",
       "provider": "openai-benchmark",
       "model": "claude-opus-5",
-      "secret_name": "OPENAI_BENCHMARK_API_KEY"
+      "secret_name": "OPENAI_BENCHMARK_API_KEY",
+      "pi_thinking": "high",
+      "thinking_control": "provider_managed"
     },
     {
       "label": "Qwen 3.8 Max",
       "provider": "qwen-benchmark",
       "model": "qwen3.8-max",
-      "secret_name": "QWEN_BENCHMARK_API_KEY"
+      "secret_name": "QWEN_BENCHMARK_API_KEY",
+      "pi_thinking": "high",
+      "thinking_control": "boolean_plus_reasoning_effort_high"
     },
     {
       "label": "K3",
       "provider": "kimi-benchmark",
       "model": "kimi-k3",
-      "secret_name": "KIMI_BENCHMARK_API_KEY"
+      "secret_name": "KIMI_BENCHMARK_API_KEY",
+      "pi_thinking": "high",
+      "thinking_control": "provider_managed"
     },
     {
       "label": "DS V4 Pro",
       "provider": "deepseek",
       "model": "deepseek-v4-pro",
-      "secret_name": "DEEPSEEK_API_KEY"
+      "secret_name": "DEEPSEEK_API_KEY",
+      "pi_thinking": "xhigh",
+      "thinking_control": "graded_reasoning_effort_max"
     }
   ],
   "judge": {
@@ -64,6 +69,7 @@
     "model": "qwen3.8-max",
     "secret_name": "QWEN_BENCHMARK_API_KEY",
     "litellm_model": "openai/qwen3.8-max",
-    "enable_thinking": true
+    "enable_thinking": true,
+    "thinking_control": "boolean_plus_reasoning_effort_high"
   }
 }

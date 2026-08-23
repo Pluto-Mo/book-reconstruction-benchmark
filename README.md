@@ -67,48 +67,50 @@ harbor run -p "." -a pi -m "<provider>/<model>" -k 3
 
 前提是已经通过 `harbor add "tasks/<book-id>"` 把任务写入 `dataset.toml`。
 
-当前开发 Task 的五模型 Pi 矩阵可以直接以路径运行，不需要先加入 Dataset。四个 provider 的非敏感定义冻结在 Task 镜像内；启动器不会读取 `~/.pi/agent`、个人 OAuth、PAT 或当前 shell 中的个人 provider key。仓库和 JobConfig 只保存 Harbor secret 名称：
+当前开发 Task 的五模型 Pi 矩阵只在本机 Harbor + Docker 上运行，不需要 Harbor Cloud，也不需要先加入 Dataset。四个 provider 的非敏感定义冻结在 Task 镜像内；启动器不会读取 `~/.pi/agent`、个人 OAuth、PAT 或当前 shell 中的个人 provider key。仓库和 JobConfig 只保存本地运行时凭据名称：
 
 ```bash
 PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py
 PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py --print-config
-PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py \
-  --write-hosted-config /tmp/pi-five-models.hosted.json \
-  --hosted-task "<org>/<published-task>" \
-  --hosted-task-ref "<frozen-ref>"
+PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py --write-config /tmp/pi-five-models.json
 ```
 
-本轮矩阵固定为 GPT‑5.6 sol、Opus 5、Qwen 3.8 Max、K3、DS V4 Pro，Pi 0.84.1，单任务每模型一次、trial 顺序执行。Agent 使用 Harbor 0.22 原生 Pi adapter 的最高档 `xhigh`；Pi 会把 DeepSeek V4 的这一档收敛为官方 `reasoning_effort=max`。其余三组 provider 记录只暴露“是否思考”，没有可审计的分档 effort，因此运行的是各记录可表达的最高模式。Judge 固定为 Qwen 3.8 Max 并开启 Qwen thinking。
+本轮矩阵固定为 GPT‑5.6 sol、Opus 5、Qwen 3.8 Max、K3、DS V4 Pro，Pi 0.84.1，单任务每模型一次、trial 顺序执行。Judge 固定为 Qwen 3.8 Max。
+
+Pi 的 `--thinking` 是统一选择器，不是统一的厂商请求字段。Pi 会先按每个模型的 `thinkingLevelMap` 限制档位，再根据 `thinkingFormat` 与 `supportsReasoningEffort` 翻译。为了不把不同能力伪装成同一个“最高档”，本矩阵逐路线冻结控制契约：
+
+| 路线 | Pi 选择 | 实际请求控制 |
+| --- | --- | --- |
+| GPT‑5.6 sol | `high` | 当前 `openai-benchmark` 记录禁止 effort 字段；Pi 不发送 thinking/effort，由 gateway/provider 管理 |
+| Opus 5 | `high` | 同上 |
+| Qwen 3.8 Max | `high` | `enable_thinking=true`、`reasoning_effort=high` |
+| K3 | `high` | 当前 Kimi 记录禁止 effort 字段；Pi 不发送 thinking/effort，由 provider 管理 |
+| DS V4 Pro | `xhigh` | Pi 根据模型映射收敛到 `thinking=enabled`、`reasoning_effort=max` |
+
+因此 Benchmark 会报告“请求了什么、Pi 实际能翻译成什么”，不会统一声称五家都被锁到同一个 max。
 
 路由是硬约束：GPT‑5.6 sol 与 Opus 5 只使用 `openai-benchmark`，Qwen 只使用 `qwen-benchmark`，K3 只使用 `kimi-benchmark`，DS V4 Pro 只使用 `https://api.deepseek.com` 的官方 API。不会读取或回退到个人 OAuth、`opencode-go` 或其他 Pi provider。路由来源和非敏感配置 SHA‑256 会进入预检。
 
-Hosted 运行必须先在 Benchmark 所属 Harbor 组织中独立录入四个 stored secrets；录入过程隐藏输入，值不会进入 task、dataset、JobConfig 或命令行：
+付费本地运行时，`--run` 必须显式提供一个仓库外、权限为 `0600`、只含四个独立比赛 key 的文件；启动器会清除 Harbor 子进程中的其他 token/key 环境变量。它绝不会自动借用 Pi `auth.json`：
 
-```bash
-harbor hub secrets add OPENAI_BENCHMARK_API_KEY --org "<benchmark-org>"
-harbor hub secrets add QWEN_BENCHMARK_API_KEY --org "<benchmark-org>"
-harbor hub secrets add KIMI_BENCHMARK_API_KEY --org "<benchmark-org>"
-harbor hub secrets add DEEPSEEK_API_KEY --org "<benchmark-org>"
+```dotenv
+OPENAI_BENCHMARK_API_KEY=<independent-benchmark-key>
+QWEN_BENCHMARK_API_KEY=<independent-benchmark-key>
+KIMI_BENCHMARK_API_KEY=<independent-benchmark-key>
+DEEPSEEK_API_KEY=<independent-benchmark-key>
 ```
 
-正式 hosted 启动使用已发布的冻结 Task；本地路径不会被 Harbor Hub 自动上传：
-
 ```bash
-PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py \
-  --launch \
-  --org "<benchmark-org>" \
-  --hosted-task "<benchmark-org>/<published-task>" \
-  --hosted-task-ref "<frozen-ref>"
-```
-
-若只在本机 Docker 上校准，`--run` 必须显式提供一个仓库外、权限为 `0600`、只含四个独立比赛 key 的文件；启动器会清除子进程中的其他 token/key 环境变量。它绝不会自动借用 Pi `auth.json`：
-
-```bash
+chmod 600 "/absolute/path/outside/repository/benchmark-secrets.env"
 PYTHONPATH=scripts python3 scripts/run_pi_benchmark.py \
   --run --secrets-file "/absolute/path/outside/repository/benchmark-secrets.env"
 ```
 
-若使用 Harbor 托管基础设施，先运行 `harbor auth login`。本 Benchmark 只选择组织级 stored secrets，不使用会从本机环境取值的 one-off secret 路径。
+GitHub 上传的是可公开 Dataset 源码，不是本机运行环境。书稿由 `.gitignore` 排除，secrets 文件被强制放在仓库外，`jobs/` 与本地 `results/` 也不会进入公开快照。提交或推送前运行：
+
+```bash
+PYTHONPATH=scripts python3 scripts/audit_public_export.py
+```
 
 ## 核心设计
 
@@ -203,6 +205,7 @@ book-reconstruction-benchmark/
 │   ├── harbor_cognitive_verifier.py
 │   ├── litellm_provider_adapter.py
 │   ├── run_pi_benchmark.py
+│   ├── audit_public_export.py
 │   ├── compile_cognitive_criteria.py
 │   ├── evaluate_cognitive_semantic_runs.py
 │   ├── replay_calibration.py

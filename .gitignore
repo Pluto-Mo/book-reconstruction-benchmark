@@ -8,6 +8,10 @@ __pycache__/
 jobs/
 dist/
 *.tar.gz
+results/*
+!results/README.md
+*.secrets.env
+**/auth.json
 
 # Book text is private by default. Keep only the README marker in source dirs.
 **/environment/source/*

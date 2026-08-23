@@ -32,13 +32,23 @@ class RunPiBenchmarkTests(unittest.TestCase):
 
     def test_resolves_only_the_approved_routes_without_personal_auth(self) -> None:
         actual = tuple(
-            (route.label, route.provider, route.model, route.secret_name)
+            (
+                route.label,
+                route.provider,
+                route.model,
+                route.secret_name,
+                route.pi_thinking,
+                route.thinking_control,
+            )
             for route in self.routes
         )
         self.assertEqual(actual, APPROVED_AGENT_ROUTES)
         self.assertEqual(self.routes[-1].base_url, "https://api.deepseek.com")
         self.assertEqual(self.routes[-1].host, "api.deepseek.com")
-        self.assertTrue(self.routes[-1].graded_reasoning_effort)
+        self.assertEqual(self.routes[-1].pi_thinking, "xhigh")
+        self.assertEqual(
+            self.routes[-1].thinking_control, "graded_reasoning_effort_max"
+        )
         status = sanitized_status(
             self.manifest, self.routes, self.judge, self.models_path
         )
@@ -57,6 +67,10 @@ class RunPiBenchmarkTests(unittest.TestCase):
         self.assertEqual(
             {name: provider["apiKey"] for name, provider in providers.items()},
             expected,
+        )
+        self.assertEqual(
+            providers["deepseek"]["models"][0]["thinkingLevelMap"]["max"],
+            "max",
         )
         serialized = json.dumps(document, ensure_ascii=False).casefold()
         self.assertNotIn("opencode-go", serialized)
@@ -78,6 +92,8 @@ class RunPiBenchmarkTests(unittest.TestCase):
             "provider": "openai-benchmark",
             "model": "gpt-5.6-sol",
             "secret_name": "OPENAI_BENCHMARK_API_KEY",
+            "pi_thinking": "high",
+            "thinking_control": "provider_managed",
         }
         with self.assertRaises(MatrixConfigError):
             resolve_route(route, providers)
@@ -93,8 +109,9 @@ class RunPiBenchmarkTests(unittest.TestCase):
         self.assertTrue(
             all(agent["import_path"] == NATIVE_PI_IMPORT_PATH for agent in job["agents"])
         )
-        self.assertTrue(
-            all(agent["kwargs"]["thinking"] == "xhigh" for agent in job["agents"])
+        self.assertEqual(
+            [agent["kwargs"]["thinking"] for agent in job["agents"]],
+            ["high", "high", "high", "high", "xhigh"],
         )
         self.assertTrue(all("secrets" not in agent for agent in job["agents"]))
         self.assertNotIn("PI_HARBOR_AUTH_CONFIG", serialized)
@@ -104,30 +121,20 @@ class RunPiBenchmarkTests(unittest.TestCase):
         for value in ("personal-key", "personal-token", "personal-oauth"):
             self.assertNotIn(value, serialized)
 
-    def test_hosted_job_selects_least_privilege_stored_secrets(self) -> None:
-        job = build_job(
-            manifest=self.manifest,
-            routes=self.routes,
-            judge=self.judge,
-            hosted=True,
-            hosted_task_name="benchmark-org/breakthrough-advertising",
-            hosted_task_ref="0.4.0",
-        )
-        self.assertEqual(job["credential_mode"], "direct")
+    def test_thinking_contract_is_per_route_and_local_only(self) -> None:
+        job = build_job(manifest=self.manifest, routes=self.routes, judge=self.judge)
         self.assertEqual(
-            job["tasks"],
-            [{"name": "benchmark-org/breakthrough-advertising", "ref": "0.4.0"}],
-        )
-        self.assertEqual(
-            [agent["secrets"] for agent in job["agents"]],
+            [route.thinking_control for route in self.routes],
             [
-                ["OPENAI_BENCHMARK_API_KEY", "QWEN_BENCHMARK_API_KEY"],
-                ["OPENAI_BENCHMARK_API_KEY", "QWEN_BENCHMARK_API_KEY"],
-                ["QWEN_BENCHMARK_API_KEY"],
-                ["KIMI_BENCHMARK_API_KEY", "QWEN_BENCHMARK_API_KEY"],
-                ["DEEPSEEK_API_KEY", "QWEN_BENCHMARK_API_KEY"],
+                "provider_managed",
+                "provider_managed",
+                "boolean_plus_reasoning_effort_high",
+                "provider_managed",
+                "graded_reasoning_effort_max",
             ],
         )
+        self.assertTrue(all("secrets" not in agent for agent in job["agents"]))
+        self.assertNotIn("credential_mode", job)
         self.assertNotIn("job_secrets", job)
 
     def test_local_run_requires_external_private_secret_file(self) -> None:
